@@ -1,0 +1,15 @@
+{
+  "embeddingProvider": "ollama",
+  "scope": "project",
+  "indexing": {
+    "autoIndex": false,
+    "watchFiles": true,
+    "maxFileSize": 1048576,
+    "autoGc": true
+  },
+  "search": {
+    "maxResults": 20,
+    "fusionStrategy": "rrf",
+    "contextLines": 0
+  }
+}

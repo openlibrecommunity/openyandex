@@ -1,0 +1,9 @@
+# vibecode
+node_modules/
+package-lock.json
+package.json
+.opencode/node_modules/
+.opencode/package.json
+.opencode/package-lock.json
+.opencode/index/
+.opencode/logs/
