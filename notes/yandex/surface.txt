@@ -1,0 +1,35 @@
+yandex surface notes
+
+scope:
+- public yandex open source presence
+- public developer ecosystem
+- high-level repositories and technologies
+- no private data, no account probing
+
+initial observations:
+- github org: https://github.com/yandex
+- public open source page: https://opensource.yandex/
+- verified github domains listed by github: opensource.yandex, yandex-team.ru
+- public contact listed by github: opensource-support@yandex-team.ru
+- location listed by github: moscow, russia
+
+popular public repositories observed:
+- yandex/gixy: nginx configuration static analyzer
+- yandex/yalm-100b: pretrained 100b language model
+- yandex/odyssey: postgresql connection pooler
+- yandex/perforator: cluster-wide continuous profiling tool
+- yandex/yandex-tank: load/performance benchmark tool
+- yandex/yafsdp: fully sharded data parallel project
+
+active/public areas to map later:
+- monorepo/build tooling: yatool
+- databases and infra: odyssey, mysync, pgconsul, ch-backup
+- profiling/performance: perforator, yandex-tank
+- maps/mobile sdk artifacts: yandex_maps_mapkit_lite, yandex_maps_navikit
+- ai/ml: yalm-100b, yafsdp
+
+next steps:
+- list public repos via github api
+- rank by stars, recent updates, language, license
+- collect package/binary artifacts only from public releases
+- keep raw command output in .workflows/exports/
