@@ -1,0 +1,143 @@
+Metadata Schema V1
+
+This is the initial schema sketch for swarm input. It is intentionally simple and append-only. JSONL is the raw transport format; SQLite can be generated from JSONL for joins.
+
+Common row envelope
+- schema: string.
+- schema_version: 1.
+- artifact: string.
+- artifact_sha256: string or null.
+- extractor: string.
+- extractor_version: string or null.
+- command: string or null.
+- collected_at_utc: string.
+- confidence: number.
+- data: object.
+
+product_version data
+- product_name
+- product_version
+- product_chromium_version
+- product_yandex_version
+- last_change
+- official_build
+- source
+
+chromium_base data
+- chromium_version
+- chromium_commit
+- tag
+- branch_head
+- branched_from
+- local_source_path
+- archive_url
+
+installer data
+- path
+- url
+- sha256
+- size
+- pe_type
+- timestamp_utc
+- signature_subject
+- signature_status
+
+installed_file data
+- path
+- relative_path
+- sha256
+- size
+- file_type
+- extension
+- is_pe
+- is_resource
+- is_archive
+
+pe_module data
+- path
+- machine
+- subsystem
+- timestamp_utc
+- image_size
+- entry_point
+- version_info
+- debug_directory
+- pdb_path
+- imports_count
+- exports_count
+- sections_count
+
+pe_section data
+- module_path
+- name
+- virtual_address
+- virtual_size
+- raw_size
+- entropy
+- characteristics
+
+import data
+- module_path
+- imported_dll
+- symbol
+- ordinal
+
+export data
+- module_path
+- symbol
+- ordinal
+- rva
+
+resource data
+- module_path
+- resource_type
+- resource_name
+- language
+- size
+- sha256
+
+string data
+- source_path
+- encoding
+- value
+- offset
+- category
+- tags
+
+chromium_file data
+- path
+- extension
+- size
+- sha256
+- component_guess
+
+chromium_name data
+- source_path
+- name
+- kind
+- namespace
+- line
+- evidence
+
+github_search_hit data
+- query
+- repo
+- path
+- url
+- matched_text
+- reason
+
+source_mapping_hypothesis data
+- yandex_artifact
+- yandex_evidence
+- chromium_path
+- chromium_name
+- mapping_kind
+- confidence_reason
+
+patch_hunk_candidate data
+- chromium_path
+- patch_path
+- source_mapping_ids
+- status
+- confidence_reason

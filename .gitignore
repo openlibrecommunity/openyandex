@@ -11,6 +11,7 @@ package.json
 .workflows/tmp/
 .workflows/logs/
 .workflows/exports/
+.workflows/metadata/
 artifacts/binaries/
 artifacts/samples/
 artifacts/tools/

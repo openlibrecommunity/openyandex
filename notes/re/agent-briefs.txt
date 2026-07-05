@@ -1,0 +1,59 @@
+Agent Briefs
+
+Global rules
+- Use .workflows/metadata/swarm-handoff.json as the entry point.
+- Treat .workflows/metadata/*.jsonl as source-of-truth machine context.
+- Do not run gclient sync or fetch chromium.
+- Do not touch project src/.
+- Do not commit bulky artifacts.
+- Append new generated facts to .workflows/metadata/shards/ or create clearly named JSONL files.
+- Durable conclusions go to notes/re/.
+- Every claim about names, source mappings, or patches needs artifact hash, evidence, and confidence.
+
+Acquisition agent
+- Inputs: notes/re/baseline-facts.txt, .workflows/metadata/swarm-handoff.json.
+- Goals: find related Yandex Browser payloads, symbols, debug packages, Chrome/Chromium matching binaries, and symbol-server evidence.
+- Outputs: acquisition JSONL facts, download URLs, hashes, and notes/re/acquisition-findings.txt.
+- Hard limit: do not download large files without checking free space and expected size.
+
+Metadata agent
+- Inputs: artifacts/binaries/yandex-browser-25.6.0.2372/payload, .workflows/metadata/yandex-files.jsonl.
+- Goals: enrich inventory with PE resources, signatures, entropy, version info, debug info, and archive/resource expansion.
+- Outputs: JSONL shards under .workflows/metadata/shards/.
+- Must preserve existing JSONL files; do not rewrite baseline corpus unless explicitly requested.
+
+PE reverse agent
+- Inputs: .workflows/metadata/yandex-pe.jsonl, .workflows/metadata/swarm-handoff.json.
+- Initial targets: browser.dll, textclassifier.dll, cspeechkit.dll, speechkit_action_lib.dll, service_update.exe, pins/browser/Yandex.exe.
+- Goals: identify PDB paths, exports/import clusters, suspicious high-value sections, RTTI-like strings, and module ownership.
+- Outputs: yandex-pe-analysis JSONL shard and notes/re/pe-priority-analysis.txt.
+
+String and OSINT agent
+- Inputs: .workflows/metadata/yandex-strings.jsonl, .workflows/metadata/swarm-handoff.json.
+- Goals: select rare strings for GitHub search, search public code for Yandex/Chromium identifiers, and record exact hits.
+- Outputs: .workflows/metadata/github-search-hits.jsonl and notes/re/github-search-findings.txt.
+- Search strategy: use exact quoted strings first; avoid broad terms like yandex alone.
+
+Chromium mapping agent
+- Inputs: .workflows/metadata/chromium-files.jsonl, .workflows/metadata/chromium-names.jsonl, .workflows/metadata/yandex-strings.jsonl.
+- Goals: map Yandex source-path strings and identifiers back to Chromium files, targets, resources, and likely integration points.
+- Outputs: source_mapping_hypothesis JSONL shard and notes/re/source-mapping-findings.txt.
+- Confidence must distinguish exact source path hits from heuristic name similarity.
+
+Ghidra agent
+- Inputs: priority module list from .workflows/metadata/swarm-handoff.json.
+- Goals: import selected binaries, run analysis, export functions, strings, xrefs, callgraph, decompiler text for selected hot spots.
+- Outputs: Ghidra project artifacts under artifacts/tools or artifacts/binaries-derived if needed, JSONL facts under .workflows/metadata/shards/.
+- Start with browser.dll only after PE/string mapping identifies candidate namespaces or functions.
+
+Patch reconstruction agent
+- Inputs: source_mapping_hypothesis rows, Chromium source snapshot, decompiler evidence.
+- Goals: create candidate overlay files and patches with confidence labels.
+- Outputs: patch_hunk_candidate JSONL shard, candidate patches under a future patches/ directory only after review.
+- Do not present guessed code as confirmed source.
+
+Validator agent
+- Inputs: candidate patches/overlay, Chromium source snapshot.
+- Goals: apply patches, run static checks, compare resource and string deltas.
+- Outputs: validation JSONL facts and notes/re/validation-findings.txt.
+- Build attempts must be explicit and disk-aware; no gclient sync by default.

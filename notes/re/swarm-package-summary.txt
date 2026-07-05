@@ -1,0 +1,51 @@
+Swarm Package Summary
+
+Prepared metadata corpus
+- .workflows/metadata/baseline.jsonl: baseline product/chromium/installer facts.
+- .workflows/metadata/yandex-files.jsonl: installed payload file inventory.
+- .workflows/metadata/yandex-pe.jsonl: PE module, section, import, export, and debug metadata.
+- .workflows/metadata/yandex-strings.jsonl: filtered reverse-engineering seed strings from payload files.
+- .workflows/metadata/chromium-files.jsonl: Chromium source snapshot file inventory for source-like files.
+- .workflows/metadata/chromium-names.jsonl: lightweight Chromium name/target/resource candidates.
+- .workflows/metadata/swarm-handoff.json: entry manifest for agents.
+- .workflows/metadata/corpus.sqlite: queryable SQLite index generated from the JSONL corpus.
+
+Corpus counts
+- Yandex payload files: 410.
+- Yandex PE modules: 26.
+- Yandex PE metadata rows: 10897.
+- Yandex filtered string rows: 52118.
+- Chromium source file rows: 182038.
+- Chromium lightweight name rows: 3380757.
+- SQLite corpus rows: 3626223.
+
+SQLite tables
+- corpus: generic JSON-backed row table.
+- yandex_files: payload file inventory.
+- pe_modules: one row per PE module.
+- yandex_strings: filtered string seeds.
+- chromium_files: source file inventory.
+- chromium_names: lightweight name/target/resource index.
+
+High-priority modules from manifest
+- Browser-bin/25.6.0.2372/browser.dll.
+- Browser-bin/25.6.0.2372/textclassifier.dll.
+- Browser-bin/25.6.0.2372/libGLESv2.dll.
+- Browser-bin/25.6.0.2372/cspeechkit.dll.
+- Browser-bin/25.6.0.2372/service_update.exe.
+- Browser-bin/25.6.0.2372/speechkit_action_lib.dll.
+- pins/browser/Yandex.exe.
+- Browser-bin/25.6.0.2372/libdart_precompiled_runtime_product.dll.
+
+Recommended first swarm jobs
+1. String and OSINT agent: process github_search_seed_strings from swarm-handoff.json.
+2. Chromium mapping agent: correlate source_path_seed_strings with chromium-files/chromium-names.
+3. PE reverse agent: inspect browser.dll, cspeechkit.dll, textclassifier.dll debug info and import clusters.
+4. Metadata agent: expand resources from browser.dll/resources.pak/browser_*.pak into JSONL rows.
+5. Ghidra agent: delay full import until mapping agents identify high-value functions or modules.
+
+Current constraints
+- No gclient sync.
+- No full Chromium build checkout.
+- No project src/ reads or edits.
+- Bulky outputs stay ignored.

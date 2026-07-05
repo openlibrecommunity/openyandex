@@ -1,0 +1,39 @@
+Baseline Facts
+
+Target product
+- Product: Yandex Browser for Windows.
+- Selected build: 25.6.0.2372 / CDN build directory 25_6_0_2372_82987.
+- Installer kind: Windows full installer.
+- Installer path: artifacts/binaries/yandex-browser-25.6.0.2372-82987.exe.
+- Installer SHA256: 5e894754e2f54897450957c801bd70d163b4e8c6b2976326c4ebf538953507dd.
+- Installer PE type: PE32 GUI Intel 80386.
+- Installer timestamp: 2025-07-01 12:22:34 UTC.
+- Signature subject: YANDEX LLC.
+
+Embedded version info
+- ProductYandexVersion: 25.6.0.2372.
+- ProductChromiumVersion: 136.0.7103.156.
+- LastChange: 16be3361483f8de36991d7a41aff79fece808742.
+- LastChange lookup in public Chromium Gitiles: 404, likely Yandex internal source/build revision.
+- Official Build: 1.
+
+Chromium base
+- Chromium version/tag: 136.0.7103.156.
+- Chromium src tag commit: 465616851cd99c308e1ce42d0fd818c04c094830.
+- Chromium branch head: refs/branch-heads/7103.
+- Chromium branch origin: e09430c64983fc906f37a9f7e6806275c9b67b86 / refs/heads/main@{#1440670}.
+- Local source snapshot: chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830/.
+- Source snapshot method: Gitiles +archive tar.gz for exact commit, no git history, no gclient sync.
+- Source snapshot size observed: 5.1G.
+
+Canonical URLs
+- Yandex Windows download redirect observed from: https://browser.yandex.ru/download?partner_id=internal&os=win
+- Yandex CDN payload observed: https://cdn.browser.yandex.net/browser/yandex/25_6_0_2372_82987/ru/Yandex.exe
+- Chromium Gitiles archive: https://chromium.googlesource.com/chromium/src/+archive/465616851cd99c308e1ce42d0fd818c04c094830.tar.gz
+- Chromium tag lookup: https://chromium.googlesource.com/chromium/src.git/+/refs/tags/136.0.7103.156
+
+Evidence commands already used
+- exiftool artifacts/binaries/yandex-browser-25.6.0.2372-82987.exe
+- osslsigncode verify artifacts/binaries/yandex-browser-25.6.0.2372-82987.exe
+- 7z l artifacts/binaries/yandex-browser-25.6.0.2372-82987.exe
+- git ls-remote https://chromium.googlesource.com/chromium/src.git refs/tags/136.0.7103.156

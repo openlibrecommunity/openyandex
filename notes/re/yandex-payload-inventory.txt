@@ -1,0 +1,41 @@
+Yandex Payload Inventory
+
+Input
+- Installer: artifacts/binaries/yandex-browser-25.6.0.2372-82987.exe.
+- Installer SHA256: 5e894754e2f54897450957c801bd70d163b4e8c6b2976326c4ebf538953507dd.
+- ProductYandexVersion: 25.6.0.2372.
+- ProductChromiumVersion: 136.0.7103.156.
+
+Extraction
+- Installer resources extracted to: artifacts/binaries/yandex-browser-25.6.0.2372/extracted-installer/.
+- Nested archive found: artifacts/binaries/yandex-browser-25.6.0.2372/extracted-installer/browser.7z.
+- Browser payload extracted to: artifacts/binaries/yandex-browser-25.6.0.2372/payload/.
+- Payload top-level entries: Browser-bin/ and pins/.
+- Extracted payload size reported by 7z: 489048379 bytes.
+- Artifact directory size after extraction: 934M.
+
+Generated metadata
+- File inventory: .workflows/metadata/yandex-files.jsonl.
+- Inventory rows: 410.
+- PE files detected by MZ header: 26.
+- Total payload bytes from inventory: 489048379.
+
+Largest files
+- Browser-bin/25.6.0.2372/browser.dll: 226193496 bytes, PE32 DLL.
+- Browser-bin/25.6.0.2372/browser_200_percent.pak: 18640695 bytes.
+- Browser-bin/25.6.0.2372/resources.pak: 17968194 bytes.
+- Browser-bin/25.6.0.2372/browsericu.dat: 10484208 bytes.
+- Browser-bin/25.6.0.2372/cspeechkit.dll: 10143832 bytes, PE32 DLL.
+- Browser-bin/25.6.0.2372/widgets/neuroedit_bubble.so: 7914024 bytes, ELF 32-bit shared object.
+- Browser-bin/25.6.0.2372/widgets/neuro_question_bubble.so: 7799336 bytes, ELF 32-bit shared object.
+- Browser-bin/25.6.0.2372/widgets/coupons_bubble.so: 7455272 bytes, ELF 32-bit shared object.
+- Browser-bin/25.6.0.2372/textclassifier.dll: 7404120 bytes, PE32 DLL.
+- Browser-bin/25.6.0.2372/widgets/flutter_components_demo.so: 7324200 bytes, ELF 32-bit shared object.
+
+Notable observation
+- The Windows payload contains multiple 32-bit ELF shared objects under Browser-bin/25.6.0.2372/widgets/. These are likely bundled Flutter/native widget modules and should be treated as separate reverse engineering targets after PE inventory is complete.
+
+Next small steps
+1. Generate yandex-pe.jsonl for PE module metadata: version info, imports, exports, sections, debug/PDB path.
+2. Generate yandex-strings.jsonl for selected binaries/resources, starting with browser.dll and Yandex-specific modules.
+3. Build a PE priority list for Ghidra import.
