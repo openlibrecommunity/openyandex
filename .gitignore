@@ -7,3 +7,11 @@ package.json
 .opencode/package-lock.json
 .opencode/index/
 .opencode/logs/
+.opencode/.gitignore
+.workflows/tmp/
+.workflows/logs/
+.workflows/exports/
+artifacts/binaries/
+artifacts/samples/
+artifacts/tools/
+refs/

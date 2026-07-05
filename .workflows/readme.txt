@@ -1,11 +1,12 @@
 workflow scratch space
 
-keep temporary command output, logs, exports, and local analysis garbage here.
-
 tracked:
-- this readme only
+- readme.txt
 
 ignored:
 - tmp/
 - logs/
 - exports/
+
+rule:
+- keep all throwaway command output here, not in notes.

@@ -5,4 +5,8 @@ purpose:
 - samples/
 - tools/
 
-these folders are ignored by git. keep large files, downloaded blobs, and local tooling there.
+these folders are ignored by git.
+
+rule:
+- downloaded installers, unpacked browser trees, symbols, pdbs, dwarf/debug files, and local tools go here.
+- do not commit binaries.
