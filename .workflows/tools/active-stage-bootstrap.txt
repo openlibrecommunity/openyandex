@@ -1,0 +1,36 @@
+active-stage bootstrap
+
+current observed platform:
+- Debian Linux x86_64 VM.
+
+already present in this environment:
+- Ghidra headless: analyzeHeadless, ghidraRun.
+- Rizin: rizin, rz-bin.
+- GNU/binutils-like: file, strings, objdump, readelf.
+- Static triage: diec, upx, floss, capa, yara.
+- Metadata tools: jq, sqlite3, python3, 7z, bsdtar, exiftool, osslsigncode.
+- Dev/network: git, gh, curl, wget, go, bun, node, npm.
+
+useful optional additions:
+- llvm: llvm-objdump, llvm-readobj, llvm-pdbutil, llvm-undname.
+- radare2/rabin2 if rizin output compatibility is not enough.
+- RetDec or Ghidra extensions only if a concrete need appears.
+- Python packages in a venv if needed later: pefile, lief, capstone, intervaltree, rich.
+- Diaphora/BinDiff only after baseline binaries are selected and project export format is fixed.
+
+Debian/Ubuntu package hints:
+- sudo apt-get update
+- sudo apt-get install llvm clang lld python3-venv python3-pip radare2 graphviz ripgrep
+
+Python venv hint:
+- python3 -m venv .workflows/active-stage/tmp/venv
+- . .workflows/active-stage/tmp/venv/bin/activate
+- pip install pefile lief capstone rich intervaltree
+
+Arch package hints:
+- sudo pacman -Syu llvm clang lld python-pipx python-virtualenv radare2 graphviz ripgrep
+
+safety:
+- do not run PE payload on host.
+- do static import only.
+- dynamic unpacking/debugging requires explicit VM snapshot and approval.

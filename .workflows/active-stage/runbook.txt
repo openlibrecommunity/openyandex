@@ -1,0 +1,96 @@
+Active Stage Runbook
+
+Scope
+- Prepare and run static-first RE for Yandex Browser 25.6.0.2372.
+- This runbook avoids executing Windows samples on the host.
+- Heavy outputs must stay under .workflows/active-stage/ or artifacts/ ignored dirs.
+
+Baseline Inputs
+- Payload root: artifacts/binaries/yandex-browser-25.6.0.2372/payload/
+- Main module: artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/browser.dll
+- Standalone priority modules:
+  - artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/service_update.exe
+  - artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/cspeechkit.dll
+  - artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/speechkit_action_lib.dll
+  - artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/textclassifier.dll
+
+Preparation Commands
+1. Tool check:
+   .workflows/tools/active-stage-toolcheck.sh
+2. Artifact map from existing metadata:
+   python3 .workflows/tools/build-active-artifact-map.py
+3. Check high-level queue:
+   sed -n '1,220p' .workflows/active-stage/artifact-map.txt
+
+Static Triage Command Templates
+- Do not run these until active RE starts.
+- Write raw output to .workflows/active-stage/logs/ or exports/.
+
+Hashes and file type:
+  sha256sum '<sample>' > .workflows/active-stage/logs/<name>.sha256.txt
+  sha1sum '<sample>' > .workflows/active-stage/logs/<name>.sha1.txt
+  md5sum '<sample>' > .workflows/active-stage/logs/<name>.md5.txt
+  file '<sample>' > .workflows/active-stage/logs/<name>.file.txt
+
+PE metadata:
+  exiftool '<sample>' > .workflows/active-stage/logs/<name>.exiftool.txt
+  osslsigncode verify '<sample>' > .workflows/active-stage/logs/<name>.osslsigncode.txt 2>&1
+  objdump -x '<sample>' > .workflows/active-stage/logs/<name>.objdump-x.txt
+  objdump -h '<sample>' > .workflows/active-stage/logs/<name>.objdump-h.txt
+
+Packer and capability hints:
+  diec '<sample>' > .workflows/active-stage/logs/<name>.diec.txt
+  capa '<sample>' > .workflows/active-stage/logs/<name>.capa.txt
+  floss '<sample>' > .workflows/active-stage/exports/<name>.floss.txt
+
+Rizin static info:
+  rz-bin -I '<sample>' > .workflows/active-stage/logs/<name>.rz-bin-info.txt
+  rz-bin -S '<sample>' > .workflows/active-stage/logs/<name>.rz-bin-sections.txt
+  rz-bin -i '<sample>' > .workflows/active-stage/logs/<name>.rz-bin-imports.txt
+  rz-bin -E '<sample>' > .workflows/active-stage/logs/<name>.rz-bin-exports.txt
+
+Ghidra Headless Import Template
+- Use deterministic project names.
+- Keep projects ignored under .workflows/active-stage/ghidra/projects/.
+
+Command shape:
+  analyzeHeadless \
+    .workflows/active-stage/ghidra/projects \
+    yb-25.6.0.2372-<name> \
+    -import '<sample>' \
+    -analysisTimeoutPerFile 3600 \
+    -log .workflows/active-stage/logs/<name>.ghidra.log \
+    -scriptlog .workflows/active-stage/logs/<name>.ghidra-script.log
+
+Policy Queue Use
+- Primary file: .workflows/metadata/policy-priority.jsonl
+- Start with top Yandex-only policy roots.
+- Require at least two independent evidence types before creating source_mapping_hypothesis rows:
+  - policy name
+  - payload string hit
+  - source path string
+  - import/export evidence
+  - decompiler/xref evidence
+
+First Active RE Batch
+1. Run static triage templates for standalone modules only:
+   - service_update.exe
+   - cspeechkit.dll
+   - speechkit_action_lib.dll
+   - textclassifier.dll
+2. Import standalone modules into Ghidra headless.
+3. Defer browser.dll full analysis until targeted strings/xrefs are selected.
+4. For browser.dll, start with policy-priority names as string/xref seeds, not full manual browsing.
+
+Dynamic Gate
+- If any unpacking/debugging requires executing PE code, stop.
+- Required before dynamic work:
+  - VM snapshot confirmed.
+  - Host-only or controlled network posture confirmed.
+  - Procmon/API/network capture plan confirmed.
+  - Explicit approval for execution.
+
+Durable Notes
+- Raw output: .workflows/active-stage/logs/ or exports/.
+- Durable conclusions: notes/re/.
+- Machine rows: .workflows/metadata/.

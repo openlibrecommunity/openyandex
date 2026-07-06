@@ -12,6 +12,16 @@ package.json
 .workflows/logs/
 .workflows/exports/
 .workflows/metadata/
+.workflows/active-stage/logs/*
+!.workflows/active-stage/logs/.gitkeep
+.workflows/active-stage/exports/*
+!.workflows/active-stage/exports/.gitkeep
+.workflows/active-stage/tmp/*
+!.workflows/active-stage/tmp/.gitkeep
+.workflows/active-stage/ghidra/projects/*
+!.workflows/active-stage/ghidra/projects/.gitkeep
+.workflows/active-stage/ghidra/cache/*
+!.workflows/active-stage/ghidra/cache/.gitkeep
 artifacts/binaries/
 artifacts/samples/
 artifacts/tools/

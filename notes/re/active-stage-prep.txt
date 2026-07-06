@@ -1,0 +1,55 @@
+Active Stage Prep
+
+Date: 2026-07-06
+
+Scope
+- Prepare the repository and local workspace for active static reverse engineering.
+- No new disassembly, decompilation, string extraction, or unpacking was run in this prep pass.
+- PE execution on host remains forbidden.
+
+Workspace added
+- .workflows/active-stage/readme.txt
+- .workflows/active-stage/runbook.txt
+- .workflows/active-stage/artifact-map.txt
+- .workflows/active-stage/ghidra/readme.txt
+- .workflows/active-stage/logs/
+- .workflows/active-stage/exports/
+- .workflows/active-stage/tmp/
+- .workflows/active-stage/ghidra/projects/
+- .workflows/active-stage/ghidra/cache/
+
+Scripts added
+- .workflows/tools/active-stage-toolcheck.sh
+- .workflows/tools/build-active-artifact-map.py
+- .workflows/tools/active-stage-bootstrap.txt
+
+Tooling observed
+- Platform: Debian Linux x86_64 VM.
+- Present: file, strings, objdump, readelf, rizin, rz-bin, ghidraRun, analyzeHeadless, upx, diec, floss, capa, yara, jq, sqlite3, 7z, bsdtar, sha256sum, sha1sum, md5sum, osslsigncode, exiftool, python3, go, bun, node, npm, git, gh, curl, wget.
+- Missing from quick PATH check: llvm-objdump, llvm-readobj, rabin2, r2, cargo, rustc.
+
+Generated prep logs
+- .workflows/active-stage/logs/toolcheck.txt
+- .workflows/active-stage/artifact-map.txt
+
+Prepared target queue
+- Main target, deferred until targeted seeds are ready: Browser-bin/25.6.0.2372/browser.dll.
+- First standalone modules for static triage when active RE begins:
+  - service_update.exe
+  - cspeechkit.dll
+  - speechkit_action_lib.dll
+  - textclassifier.dll
+- First policy/name seeds:
+  - YandexAntiTracking
+  - YandexAdblock
+  - YandexDevicePosture
+  - YandexClipboardAccessByPolicyEnabled
+  - YandexCMURLAllowlistIfNotEnrolled
+  - YandexCustomHeader
+  - YandexNoRefererSettingAllowlist
+
+Next setup improvements
+1. Optionally install LLVM tools for llvm-pdbutil, llvm-undname, llvm-readobj, and llvm-objdump.
+2. Optionally create a Python venv under .workflows/active-stage/tmp/venv with pefile, lief, capstone, rich, and intervaltree.
+3. Decide whether to use Ghidra headless only or also keep rizin JSON exports as a second index.
+4. Before any dynamic execution, confirm VM snapshot, network posture, and capture plan.

@@ -1,0 +1,128 @@
+Active Stage Artifact Map
+
+Generated UTC: 2026-07-06T12:24:06Z
+
+Sources
+- Existing metadata only. No new binary analysis performed by this script.
+- .workflows/metadata/yandex-files.jsonl
+- .workflows/metadata/yandex-pe.jsonl
+- .workflows/metadata/yandex-pdb-index.jsonl
+- .workflows/metadata/policy-priority.jsonl
+
+Payload Summary
+- files: 410
+- total bytes: 489048379
+- PE modules: 26
+- PDB identities: 26
+
+Extensions
+- [none]: 224
+- .json: 57
+- .png: 29
+- .so: 20
+- .dll: 19
+- .pak: 19
+- .exe: 7
+- .ico: 6
+- .yprt: 6
+- .txt: 4
+- .xml: 2
+- .sig: 2
+- .dat: 2
+- .pb: 2
+- .wav: 2
+- .nnet: 2
+- .mat: 2
+- .manifest: 1
+- .bin: 1
+- .cfg: 1
+- .ytxt: 1
+- .website: 1
+
+Largest Files
+- Browser-bin/25.6.0.2372/browser.dll | 226193496 bytes | PE32 executable (DLL) (console) Intel 80386, for MS Windows, 12 sections
+- Browser-bin/25.6.0.2372/browser_200_percent.pak | 18640695 bytes | data
+- Browser-bin/25.6.0.2372/resources.pak | 17968194 bytes | data
+- Browser-bin/25.6.0.2372/browsericu.dat | 10484208 bytes | data
+- Browser-bin/25.6.0.2372/cspeechkit.dll | 10143832 bytes | PE32 executable (DLL) (console) Intel 80386, for MS Windows, 6 sections
+- Browser-bin/25.6.0.2372/widgets/neuroedit_bubble.so | 7914024 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c03656dfe6ffc023b7c92757b, stripped
+- Browser-bin/25.6.0.2372/widgets/neuro_question_bubble.so | 7799336 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c668ff3a96ffc023be9e07ef2, stripped
+- Browser-bin/25.6.0.2372/widgets/coupons_bubble.so | 7455272 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cb17ffdc66ffc023bd5e6cbea, stripped
+- Browser-bin/25.6.0.2372/textclassifier.dll | 7404120 bytes | PE32 executable (DLL) (console) Intel 80386, for MS Windows, 4 sections
+- Browser-bin/25.6.0.2372/widgets/flutter_components_demo.so | 7324200 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c1ff6d0656ffc023be590bbb5, stripped
+- Browser-bin/25.6.0.2372/widgets/ntp_settings_bubble.so | 7225896 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cfd6374a26ffc023b9d14bbfe, stripped
+- Browser-bin/25.6.0.2372/libGLESv2.dll | 7014488 bytes | PE32 executable (DLL) (console) Intel 80386, for MS Windows, 7 sections
+- Browser-bin/25.6.0.2372/widgets/dropdown_menu.so | 6636072 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cc27493206ffc023b8222ec6d, stripped
+- Browser-bin/25.6.0.2372/widgets/simple_dialog.so | 6619688 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cdfc057da6ffc023b12c6d968, stripped
+- Browser-bin/25.6.0.2372/widgets/suggest.so | 6586920 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c8dca84366ffc023b77ac6ce5, stripped
+- Browser-bin/25.6.0.2372/widgets/ecom_reviews_bubble.so | 6308392 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c8bff956b6ffc023b7f2ac94f, stripped
+- Browser-bin/25.6.0.2372/widgets/find_bar.so | 6177320 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cddcbba3d6ffc023b054c68a9, stripped
+- Browser-bin/25.6.0.2372/browser_100_percent.pak | 6039435 bytes | data
+- Browser-bin/25.6.0.2372/widgets/prices_bubble.so | 6029864 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1cd06b85476ffc023bfd61b0a7, stripped
+- Browser-bin/25.6.0.2372/widgets/best_price_bubble.so | 5636648 bytes | ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=7cdd6b1c328527896ffc023bb83f7295, stripped
+
+Priority PE Targets
+- Browser-bin/25.6.0.2372/browser.dll | sha256 d880aa068a08dc1d1f4b2a5271f340a2ef40f8a5d88f3e797e7fde49d877dfe6 | 226193496 bytes
+- Browser-bin/25.6.0.2372/service_update.exe | sha256 9275e756b2667f6321836e4e9af485bad7fa3096afe0db1e2316c3cd0667e77c | 3376728 bytes
+- Browser-bin/25.6.0.2372/cspeechkit.dll | sha256 3b56d1b3234fe503e2ccd669a75c99dcc1867f9db2d0be3efbe9bf85e43f1a37 | 10143832 bytes
+- Browser-bin/25.6.0.2372/speechkit_action_lib.dll | sha256 c22b1cfffe28c21336518796b71f02ce456ba174e83716cfdebb2d33569f34a8 | 2711448 bytes
+- Browser-bin/25.6.0.2372/textclassifier.dll | sha256 fea916657e8557ef4ef0aed1e8ca7740f4d41e69e9204dd5a05ed37b56c9d369 | 7404120 bytes
+- Browser-bin/25.6.0.2372/browser_elf.dll | sha256 9e63f1e9413ddf9d149ec38f319a3af186c6ad965153aa74b54ad94e974dd90d | 2297432 bytes
+- Browser-bin/25.6.0.2372/browser_wer.dll | sha256 d781ed7d0c2043e98f0cd83b4984db2f55050fc6ca9f911408612565ebc53e63 | 100952 bytes
+
+Known PDB Identities
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/pins/alice/Alice.exe | Alice.exe.pdb | 138E34ABFB6460A84C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/pins/browser/Yandex.exe | Yandex.exe.pdb | 9E5DBA162D5AA0864C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/browser.exe | browser.exe.pdb | 667BC9756C38438F4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/browser_proxy.exe | browser_proxy.exe.pdb | 83AF92D5CCF6201C4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/clidmgr.exe | clidmgr.pdb | 106DB3CF7C32437B926D715CED05D6F11
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/7z.dll | 7z.pdb | 994D071E62874C63B49680432C339E451
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/abt-bindings.dll | abt-bindings.pdb | 7810188DEA184562B00ED8C03FE35BAF1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/brodef.dll | brodef.dll.pdb | 2B4C0A5D71F16E4B4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/browser.dll | browser.dll.pdb | 5881CBC31AEA815B4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/browser_elf.dll | browser_elf.dll.pdb | F7F4A9CB2574C5854C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/browser_wer.dll | browser_wer.dll.pdb | 7124DA22C3C5282D4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/cspeechkit.dll | cspeechkit.pdb | 66ED23A6AACD4892B1F244B0A43748A51
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/d3dcompiler_47.dll | D3DCompiler_47.pdb | E1246001B45638CDE666D5DD4750A0751
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/eventlog_provider.dll | eventlog_provider.dll.pdb | D0900FA824BE561C4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/libEGL.dll | libEGL.dll.pdb | F9499E58A344E2164C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/libGLESv2.dll | libGLESv2.dll.pdb | C10E202D325189824C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/libdart_precompiled_runtime_product.dll | libdart_precompiled_runtime_product.dll.pdb | 4CE01D5954734FD38BE3233B5701A1A81
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/notification_helper.exe | notification_helper.exe.pdb | 3C48AD99E88AD5A34C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/offline_spellchecker.dll | offline_spellchecker.pdb | 31C166A3C234455C8260B40F3BE32D401
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/service_update.exe | service_update.exe.pdb | E42043EDF87584334C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/speechkit_action_lib.dll | speechkit_action_lib.pdb | C9BFCE5484534A5799EBF64C9F3E593D1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/textclassifier.dll | textclassifier.pdb | 5E9CAB2DC0B84D76ACB4DF0CEA13A6651
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/unpacki.dll | unpacki.pdb | A96D9E6B9BB44B618965DC703254AC501
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/vk_swiftshader.dll | vk_swiftshader.dll.pdb | 8EDBEAD245302D3A4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/vulkan-1.dll | vulkan-1.dll.pdb | 1030C5985C97D4FF4C4C44205044422E1
+- artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/winrt_helper.dll | winrt_helper.dll.pdb | 15266EDA24F626364C4C44205044422E1
+
+Top Policy Queue
+- 195 | yandex_only | YandexAntiTracking | network_privacy,yandex_services
+- 170 | yandex_only | YandexAdblock | yandex_services
+- 170 | yandex_only | YandexDevicePosture | yandex_services
+- 160 | yandex_only | YandexClipboardAccessByPolicyEnabled | clipboard_dlp,yandex_services
+- 150 | not_in_chromium_admx | RenderInInternetExplorerEnabled | unclassified
+- 150 | not_in_chromium_admx | RenderInInternetExplorerException | unclassified
+- 145 | yandex_only | YandexCMURLAllowlistIfNotEnrolled | cloud_management,yandex_services
+- 140 | not_in_chromium_admx | DisableInformationDragAllowedUrls | drag_drop_dlp
+- 139 | yandex_only | YandexCustomHeader | network_privacy,yandex_services
+- 139 | yandex_only | YandexNoRefererSettingAllowlist | network_privacy,yandex_services
+- 130 | yandex_only | YandexClipboardMaxImageSize | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexClipboardMaxSizePasteApplyUrls | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexClipboardMaxSizePasteNotApplyUrls | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexClipboardMaxTextSize | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexCopyAllowlist | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexCopyBlocklist | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexCopyShareButton | clipboard_dlp,yandex_services
+- 130 | yandex_only | YandexDevicePostureRules | yandex_services
+- 130 | yandex_only | YandexDownloadRestrictionsAllowedTypes | download_restrictions,yandex_services
+- 130 | yandex_only | YandexDownloadRestrictionsAllowedUrls | download_restrictions,yandex_services
+
+Prepared Output Locations
+- .workflows/active-stage/logs/
+- .workflows/active-stage/exports/
+- .workflows/active-stage/tmp/
+- .workflows/active-stage/ghidra/projects/
+- .workflows/active-stage/ghidra/cache/
