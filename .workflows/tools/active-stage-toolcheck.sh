@@ -12,10 +12,10 @@ out="$log_dir/toolcheck.txt"
   uname -a
   printf '\n[tools]\n'
   for tool in \
-    file strings objdump readelf llvm-objdump llvm-readobj \
+    file strings objdump readelf llvm-objdump llvm-readobj llvm-pdbutil llvm-undname \
     rabin2 r2 rizin rz-bin ghidraRun analyzeHeadless \
     upx diec floss capa yara jq sqlite3 7z bsdtar \
-    sha256sum sha1sum md5sum osslsigncode exiftool python3 go bun node npm git gh curl wget; do
+    sha256sum sha1sum md5sum osslsigncode exiftool python3 go cargo rustc bun node npm git gh curl wget; do
     if command -v "$tool" >/dev/null 2>&1; then
       printf 'ok %s %s\n' "$tool" "$(command -v "$tool")"
     else
@@ -28,6 +28,12 @@ out="$log_dir/toolcheck.txt"
     'file --version' \
     'objdump --version' \
     'readelf --version' \
+    'llvm-objdump --version' \
+    'llvm-readobj --version' \
+    'llvm-pdbutil --version' \
+    'llvm-undname --version' \
+    'rabin2 -v' \
+    'r2 -v' \
     'rizin -v' \
     'rz-bin -v' \
     'analyzeHeadless -version' \
@@ -43,6 +49,8 @@ out="$log_dir/toolcheck.txt"
     'osslsigncode --version' \
     'exiftool -ver' \
     'go version' \
+    'cargo --version' \
+    'rustc --version' \
     'bun --version' \
     'node --version' \
     'npm --version' \

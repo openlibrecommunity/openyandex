@@ -25,8 +25,8 @@ Scripts added
 
 Tooling observed
 - Platform: Debian Linux x86_64 VM.
-- Present: file, strings, objdump, readelf, rizin, rz-bin, ghidraRun, analyzeHeadless, upx, diec, floss, capa, yara, jq, sqlite3, 7z, bsdtar, sha256sum, sha1sum, md5sum, osslsigncode, exiftool, python3, go, bun, node, npm, git, gh, curl, wget.
-- Missing from quick PATH check: llvm-objdump, llvm-readobj, rabin2, r2, cargo, rustc.
+- Present: file, strings, objdump, readelf, llvm-objdump, llvm-readobj, llvm-pdbutil, llvm-undname, rabin2, r2, rizin, rz-bin, ghidraRun, analyzeHeadless, upx, diec, floss, capa, yara, jq, sqlite3, 7z, bsdtar, sha256sum, sha1sum, md5sum, osslsigncode, exiftool, python3, go, cargo, rustc, bun, node, npm, git, gh, curl, wget.
+- LLVM, radare2, and Rust were installed through Linuxbrew after the initial prep pass.
 
 Generated prep logs
 - .workflows/active-stage/logs/toolcheck.txt
@@ -49,7 +49,6 @@ Prepared target queue
   - YandexNoRefererSettingAllowlist
 
 Next setup improvements
-1. Optionally install LLVM tools for llvm-pdbutil, llvm-undname, llvm-readobj, and llvm-objdump.
-2. Optionally create a Python venv under .workflows/active-stage/tmp/venv with pefile, lief, capstone, rich, and intervaltree.
-3. Decide whether to use Ghidra headless only or also keep rizin JSON exports as a second index.
-4. Before any dynamic execution, confirm VM snapshot, network posture, and capture plan.
+1. Optionally create a Python venv under .workflows/active-stage/tmp/venv with pefile, lief, capstone, rich, and intervaltree.
+2. Decide whether to use Ghidra headless only or also keep rizin/radare2 JSON exports as a second index.
+3. Before any dynamic execution, confirm VM snapshot, network posture, and capture plan.
