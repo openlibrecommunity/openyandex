@@ -1,0 +1,114 @@
+Work Scope Assessment
+
+Baseline
+- Target: Yandex Browser for Windows 25.6.0.2372.
+- Base: Chromium 136.0.7103.156 / commit 465616851cd99c308e1ce42d0fd818c04c094830.
+- Local Chromium snapshot: source reference only, no gclient sync.
+
+Corpus scale
+- Yandex payload files: 410.
+- Yandex payload bytes: 489048379.
+- PE modules: 26.
+- Widget ELF modules: 20.
+- Filtered Yandex/string seed rows: 52118.
+- Chromium source file rows: 182038.
+- Chromium lightweight name rows: 3380757.
+- SQLite corpus rows: 3626223.
+
+Binary surface
+- browser.dll dominates the Windows PE surface: 226193496 bytes, 837 imports, 91 exports.
+- Other important PE modules: cspeechkit.dll, textclassifier.dll, speechkit_action_lib.dll, service_update.exe, browser_elf.dll, pins/browser/Yandex.exe.
+- There are no PDB paths in parsed PE debug directories so far.
+- 20 ELF widget modules are bundled inside the Windows payload under Browser-bin/25.6.0.2372/widgets/, total 121105184 bytes.
+
+Resource and config surface
+- .pak files: 19 files, 51009973 bytes.
+- JSON files: 57 files, 1436693 bytes.
+- Locale PAK files contain many Yandex strings but are lower priority for source reconstruction.
+- web_app_config/component/*.json is heavily Yandex-specific and likely easy to reconstruct as data/config overlay.
+
+Yandex-specific string surface
+- yandex: 9222 filtered rows.
+- zen: 3571 filtered rows.
+- neuro: 1586 filtered rows.
+- speechkit: 1102 filtered rows.
+- alice: 414 filtered rows.
+- price: 190 filtered rows.
+- coupon: 110 filtered rows.
+- passport: 67 filtered rows.
+- kinopoisk: 65 filtered rows.
+- taxi: 61 filtered rows.
+
+Important name-recovery observation
+- Many Yandex-only identifiers survive in strings even without PDBs.
+- Examples observed: YandexUpdater::*, NYastreb::*, PassportO2TS::*, SpeechKit, SpeechkitServiceHost, TSpeechkitMessage, YaGPT, YandexAdblock, YandexAntiTracking, YandexBrowserFileTracing, KYandexBrowserService.
+- Exact source path strings are sparse and often not direct Chromium file paths. Name recovery will rely more on surviving identifiers, imports/exports, RTTI-like strings, resources, and decompiler output.
+
+Expected reconstruction difficulty by layer
+- Easy: configs, web_app_config JSON, pins, icons, manifests, simple resources. These can become overlay data quickly.
+- Medium: branding/resource PAK deltas, feature flags, command line switches, localized strings, installer/update/service behavior.
+- Hard: browser.dll integration points inside Chromium, UI wiring, feature controllers, sync/passport/auth flows, anti-tracking/adblock logic.
+- Very hard: exact source-level restoration of optimized C++ in browser.dll without PDBs, especially large modified Chromium functions.
+- Separate hard track: ELF widget modules, likely Flutter/native bundles. They are recoverable as separate components but not normal Chromium C++ patches.
+
+Work packages
+1. Config/data overlay
+- Inputs: yandex-files.jsonl, yandex-strings.jsonl, web_app_config/component/*, pins/*.
+- Expected output: overlay/config and resource inventory.
+- Complexity: low.
+
+2. Resource extraction and diff
+- Inputs: resources.pak, browser_*.pak, locale PAKs, Chromium resource files.
+- Expected output: resource rows, Yandex-specific resource IDs/strings/assets.
+- Complexity: medium.
+
+3. PE module triage
+- Inputs: yandex-pe.jsonl, PE files.
+- Expected output: module ownership, imports/exports clusters, surviving class/function names.
+- Complexity: medium.
+
+4. Source mapping
+- Inputs: yandex-strings.jsonl, chromium-files.jsonl, chromium-names.jsonl, corpus.sqlite.
+- Expected output: source_mapping_hypothesis rows for Chromium integration points.
+- Complexity: hard.
+
+5. Ghidra browser.dll track
+- Inputs: browser.dll plus source mapping hints.
+- Expected output: function clusters, decompiler snippets, class/function naming, callgraphs.
+- Complexity: very hard.
+
+6. Yandex-only modules track
+- Inputs: cspeechkit.dll, speechkit_action_lib.dll, textclassifier.dll, service_update.exe, pins/browser/Yandex.exe.
+- Expected output: recovered interfaces and standalone source/overlay candidates.
+- Complexity: medium to hard.
+
+7. Widget ELF track
+- Inputs: widgets/*.so.
+- Expected output: identify framework/runtime, extract symbols/strings, reconstruct component boundaries.
+- Complexity: medium to hard, separate from Chromium patching.
+
+8. Patch/overlay builder
+- Inputs: confirmed mapping and recovered code/data.
+- Expected output: ordered patches plus overlay files.
+- Complexity: hard, should start only after enough mappings are confirmed.
+
+Rough effort estimate
+- First useful public artifact: 1-3 days with agents. Scope: baseline facts, unpacked payload, config/resource inventory, first name lists, OSINT hits.
+- First meaningful overlay: 1-2 weeks with agents. Scope: data/config/resources/pins plus some standalone Yandex modules/interfaces.
+- First Chromium integration patchset skeleton: 2-6 weeks. Scope: build flags, resource wiring, known feature flags, identified integration points.
+- High-fidelity browser.dll source-level reconstruction: months, not days, unless symbols or source leaks are found.
+- Full open-source Yandex-like browser reconstruction: long-term project. Treat as incremental layers, not a single reverse-engineering pass.
+
+Strategic recommendation
+- Do not start with full Ghidra on browser.dll as the first main task.
+- Start with easy/medium layers to create visible progress and reduce uncertainty.
+- Run OSINT/name recovery early because surviving identifiers are rich and may map to public code or internal naming conventions.
+- Prioritize standalone Yandex-specific modules before Chromium core modifications.
+- Use browser.dll Ghidra only after resource/string/source mapping points to specific subsystems.
+
+Immediate next tasks
+1. Extract PAK/resource metadata into .workflows/metadata/yandex-resources.jsonl.
+2. Create a curated Yandex-only name list from yandex-strings.jsonl.
+3. Run GitHub search on curated rare identifiers.
+4. Cluster PE imports/exports by module responsibility.
+5. Pick 3 standalone modules for deeper analysis: service_update.exe, cspeechkit.dll, speechkit_action_lib.dll.

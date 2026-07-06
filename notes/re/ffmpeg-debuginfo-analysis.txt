@@ -1,0 +1,49 @@
+FFmpeg Debuginfo Analysis
+
+Input
+- RPM: artifacts/binaries/linux-debug/ffmpeg-plugin-yandex-browser-debuginfo-142-alt1.x86_64.rpm.
+- SHA256: 49df734cc37cb87ff0339fc01621d2ede06e5593c2ef06db22822ea42b319fee.
+- Source URL: https://download.basealt.ru/pub/distributions/ALTLinux/Sisyphus/x86_64/RPMS.debuginfo/ffmpeg-plugin-yandex-browser-debuginfo-142-alt1.x86_64.rpm.
+
+Extraction
+- Extracted RPM with 7z into artifacts/binaries/linux-debug/ffmpeg-plugin-yandex-browser-debuginfo-142-alt1.x86_64.extract/.
+- Extracted CPIO with bsdtar into artifacts/binaries/linux-debug/ffmpeg-plugin-yandex-browser-debuginfo-142-alt1.x86_64.files/.
+
+Contents
+- Debug ELF: usr/lib/debug/usr/lib64/yandex/browser/libffmpeg.so.debug.
+- Build ID: 21458bf9c542356b08450eca945687d86073231a.
+- Debug source root: usr/src/debug/ffmpeg-plugin-yandex-browser-142/.
+- Debug source files: 627.
+- Symbol rows extracted with nm: 8506.
+- Source components:
+  - libavcodec: 327 files.
+  - libavutil: 205 files.
+  - libavformat: 95 files.
+
+Generated metadata
+- .workflows/metadata/linux-debug-symbols.jsonl.
+- Rows: 9144.
+- Schemas: linux_debug_file, elf_section, elf_symbol, linux_debug_source_file.
+
+Compiler and build clues
+- DWARF producer: GNU C17 15.2.1 20260413 (ALT Sisyphus 15.2.1-alt2).
+- Main compile directory: /usr/src/debug/ffmpeg-plugin-yandex-browser-142.
+- Compiler flags observed include -fstack-protector-strong, -fstack-clash-protection, -mtune=generic, -march=x86-64, -g, -O3, -std=c17, -fomit-frame-pointer, -fPIC, -fno-math-errno, -fno-signed-zeros, -fcf-protection.
+
+Usefulness assessment
+- This is a real public DWARF/debug-info artifact.
+- It is useful for FFmpeg/libavcodec/libavformat/libavutil symbol recovery, build environment mapping, and Linux media-stack diffing.
+- It is not direct evidence for browser.dll names or Yandex proprietary C++ browser components.
+- Most source files and symbols are upstream FFmpeg-style names, not Yandex-specific browser code.
+- It can still help identify how Yandex packages and links libffmpeg under /usr/lib64/yandex/browser/.
+- It can support cross-platform media-stack matching if a Windows Yandex Browser payload contains comparable FFmpeg/libav* code.
+
+Strategic conclusion
+- Keep this artifact in the corpus, but do not over-weight it for Chromium/Yandex browser-core patch reconstruction.
+- The highest-value next Linux debug targets are still any debuginfo/debugsource packages for yandex-browser itself, Yandex-specific shared libraries, or ADMX/source packages that expose policy names.
+
+Next actions
+1. Acquire matching runtime ffmpeg-plugin-yandex-browser RPM, not just debuginfo, to pair debug file with stripped ELF.
+2. Verify admx-yandex-browser package and extract policy names.
+3. Search BaseALT/Etersoft for any other yandex-browser-related debuginfo/debugsource packages.
+4. Compare libffmpeg.so.debug source/file list with Chromium/FFmpeg source layout if media-stack patching becomes a focus.

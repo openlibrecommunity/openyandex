@@ -1,0 +1,61 @@
+Public Artifact Leads
+
+Purpose
+Track externally verified acquisition and symbol leads. This file separates confirmed public evidence from unverified claims.
+
+Confirmed: official Yandex Linux repo
+- URL: https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/
+- Current stable DEB observed: yandex-browser-stable_26.4.1.1110-1_amd64.deb.
+- Date in index: 17-Jun-2026 10:55.
+- Size in index: 183M.
+- Use: high-confidence current Linux artifact source.
+
+Confirmed: Etersoft historical DEB mirror
+- URL: https://download.etersoft.ru/pub/download/yandex-browser/deb/pool/main/y/yandex-browser-stable/
+- Observed range includes 22.5.3.673-1 through 25.12.1.1319-1.
+- Notable historical entries observed:
+  - yandex-browser-stable_22.5.3.673-1_amd64.deb, 22-Jun-2022, 108182892 bytes.
+  - yandex-browser-stable_25.8.5.993-1_amd64.deb, 17-Nov-2025, 175488648 bytes.
+  - yandex-browser-stable_25.12.1.1319-1_amd64.deb, 17-Feb-2026, 176293960 bytes.
+- Use: historical Linux acquisition and version archaeology.
+
+Confirmed: Etersoft historical beta RPM mirror
+- URL: https://download.etersoft.ru/pub/download/yandex-browser/rpm/beta/x86_64/RPMS.classic/
+- Earliest observed beta RPM: yandex-browser-beta-22.5.0.1879-1.x86_64.rpm, 27-May-2022, 108345030 bytes.
+- Use: historical beta acquisition, RPM metadata comparison.
+
+Confirmed: Gridinsoft public report for browser.exe 25.2.4.955
+- URL: https://gridinsoft.com/online-virus-scanner/id/66e95997fb0610182181e138e995b27334e6294c27bd547940fc680f3e08b1f8
+- SHA256: 66e95997fb0610182181e138e995b27334e6294c27bd547940fc680f3e08b1f8.
+- File: browser.exe.
+- File type: PE32+ executable x86-64.
+- FileVersion/ProductVersion/ProductYandexVersion: 25.2.4.955.
+- ProductChromiumVersion: 132.0.6834.210.
+- LastChange: ff102d7073a0b4af5e2b046265a6da8ef562a423.
+- PDB Path: browser.exe.pdb.
+- Compile time: 2025-03-26 17:34:58.
+- Imports: browser_elf, KERNEL32, VERSION, ntdll.
+- Exports: 5.
+- Use: public evidence that Windows browser.exe releases carry external PDB references.
+
+Confirmed: Hybrid Analysis public report for browser.exe 25.12.1.1134
+- URL: https://hybrid-analysis.com/sample/5f71231516481b8de1cb58c10879b8ef9bb919c788796feea40ca0c4fc96cd99/696e2f191d1f400912039d0c
+- SHA256: 5f71231516481b8de1cb58c10879b8ef9bb919c788796feea40ca0c4fc96cd99.
+- Public page confirms PDB pathways and browser.exe.pdb.
+- Public page confirms version strings 25.12.1.1134.
+- Public page exposes Yandex Dev and Yandex Canary strings.
+- Public page says sample unavailable without access; treat as metadata lead unless acquired through allowed channels.
+- Use: public evidence of later Windows browser.exe PDB reference and internal channel strings.
+
+Partially blocked: ALT package search
+- URL attempted: https://packages.altlinux.org/en/search/?q=ffmpeg-plugin-yandex-browser-debuginfo
+- Result: Anubis JavaScript/proof-of-work challenge in current environment.
+- Status: unresolved; needs alternate mirror/index or manual browser access.
+- Use if confirmed: Linux debuginfo/DWARF source-assisted naming.
+
+Immediate acquisition priorities
+1. Do not chase restricted sample downloads first.
+2. Harvest public package indexes into JSONL: official Yandex repo, Etersoft stable/beta DEB/RPM.
+3. Try to locate direct official CDN payload for 25.2.4.955 and 25.12.1.1134 using version/build patterns before relying on sample repositories.
+4. Search public web/GitHub for exact hashes, ProductChromiumVersion values, LastChange hashes, and PDB names.
+5. Continue symbol endpoint probing using yandex-pdb-index.jsonl plus any new PDB identities from historical Windows samples.

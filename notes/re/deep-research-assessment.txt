@@ -1,0 +1,53 @@
+Deep Research Assessment
+
+Status
+- User supplied a large Deep Research report with artifact and symbol leads.
+- Treat report as leads, not facts, unless locally verified.
+- Verified/unverified machine rows are in .workflows/metadata/deep-research-leads.jsonl.
+
+Verified claims
+- Chromium tag 132.0.6834.210 exists and resolves to commit 5c0cb964bca15fcf41718d54f4b8d70d6b9079de.
+- Gridinsoft public page confirms browser.exe 25.2.4.955, SHA256 66e95997fb0610182181e138e995b27334e6294c27bd547940fc680f3e08b1f8, ProductChromiumVersion 132.0.6834.210, LastChange ff102d7073a0b4af5e2b046265a6da8ef562a423, and PDB Path browser.exe.pdb.
+- Hybrid Analysis public page confirms browser.exe 25.12.1.1134, SHA256 5f71231516481b8de1cb58c10879b8ef9bb919c788796feea40ca0c4fc96cd99, PDB pathway browser.exe.pdb, and Yandex Dev/Canary strings.
+- ALT/BaseALT ffmpeg-plugin-yandex-browser-debuginfo x86_64 package is publicly downloadable.
+- ALT/BaseALT ffmpeg-plugin-yandex-browser-debuginfo aarch64 package is publicly downloadable.
+- Etersoft redos RPM yandex-browser-stable-25.6.1.1049-1.x86_64.rpm is publicly downloadable.
+
+Downloaded during assessment
+- artifacts/binaries/linux-debug/ffmpeg-plugin-yandex-browser-debuginfo-142-alt1.x86_64.rpm.
+- SHA256: 49df734cc37cb87ff0339fc01621d2ede06e5593c2ef06db22822ea42b319fee.
+- Size: 4890858 bytes.
+
+Partially verified or corrected
+- The claimed Etersoft classic stable URL without RPMS.classic returned 404:
+  https://download.etersoft.ru/pub/download/yandex-browser/rpm/stable/x86_64/yandex-browser-stable-25.12.1.1303-1.x86_64.rpm
+- The correct classic RPM listing path is:
+  https://download.etersoft.ru/pub/download/yandex-browser/rpm/stable/x86_64/RPMS.classic/
+- Need to verify exact file names from the listing before using generated URLs.
+
+Needs verification
+- admx-yandex-browser 132.0-alt1 details and exact downloadable package URL.
+- yandex-browser-stable-25.2.4.1000-alt1 ALT details.
+- CVE-2024-6473 PoC claim and whether the referenced Setup.exe URL exists.
+- ProductChromiumVersion for Windows 25.12.1.1134.
+- Direct official Yandex CDN build suffixes for 25.2.4.955 and 25.12.1.1134.
+- Public availability of Google Chrome PDBs for matching Chrome binaries should be verified against actual symbol identities, not assumed.
+
+Refuted or not established
+- No public Yandex Windows PDB download was found.
+- PDB breadcrumbs do not imply accessible PDB files.
+- Direct no-suffix Windows CDN paths for 25.2.4.955 and 25.12.1.1134 returned 404 in local probes.
+- GitHub code search did not find exact internal Yandex source paths or selected Yandex identifiers in this pass.
+
+Impact on plan
+- The confirmed ffmpeg debuginfo package is the first actual public debug-symbol artifact found for the project.
+- The 25.2.4.955 Chromium tag confirmation gives us a second exact Chromium source baseline for temporal comparison.
+- Linux acquisition is now clearly the easiest historical path; Windows historical acquisition still depends on CDN suffix discovery or allowed sample sources.
+- ADMX policy packages may provide high-value enterprise configuration names and should be verified next.
+
+Next actions
+1. Extract ffmpeg-plugin-yandex-browser-debuginfo RPM and inventory DWARF/build paths.
+2. Verify and acquire admx-yandex-browser package.
+3. Verify Etersoft exact target files by listing, not guessed URLs.
+4. Fetch Chromium source snapshot for 132.0.6834.210 if needed for 25.2 mapping.
+5. Continue searching for Windows CDN suffixes via public pages, update metadata, and sample reports.

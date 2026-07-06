@@ -1,0 +1,47 @@
+PDB Symbol Search
+
+Current finding
+- The payload does contain CodeView RSDS debug records for all 26 PE modules.
+- PDB file identities are recoverable as PDB name + GUIDAge.
+- Full PDB paths are present for some non-browser modules.
+- browser.dll has PDB name browser.dll.pdb and GUIDAge 5881CBC31AEA815B4C4C44205044422E1.
+- Parsed PE debug directory initially appeared to have empty pdb_path for browser.dll, but raw RSDS parsing recovered the PDB identity.
+
+Generated metadata
+- .workflows/metadata/yandex-pdb-index.jsonl contains one pdb_identity row per PE module.
+- Each row includes module path, PDB path/name, GUID, age, GUIDAge, and candidate symbol URLs.
+
+Important PDB identities
+- Browser-bin/25.6.0.2372/browser.dll: browser.dll.pdb / 5881CBC31AEA815B4C4C44205044422E1.
+- Browser-bin/browser.exe: browser.exe.pdb / 667BC9756C38438F4C4C44205044422E1.
+- pins/browser/Yandex.exe: Yandex.exe.pdb / 9E5DBA162D5AA0864C4C44205044422E1.
+- Browser-bin/25.6.0.2372/cspeechkit.dll: cspeechkit.pdb / 66ED23A6AACD4892B1F244B0A43748A51.
+- Browser-bin/25.6.0.2372/textclassifier.dll: textclassifier.pdb / 5E9CAB2DC0B84D76ACB4DF0CEA13A6651.
+- Browser-bin/25.6.0.2372/speechkit_action_lib.dll: speechkit_action_lib.pdb / C9BFCE5484534A5799EBF64C9F3E593D1.
+- Browser-bin/25.6.0.2372/abt-bindings.dll: abt-bindings.pdb / 7810188DEA184562B00ED8C03FE35BAF1.
+
+Leaked build path clues
+- abt-bindings.dll: Z:\place\sandbox-data\build_cache\yb\build_root\2px5\000320\browser\experiments\abt\bindings\dynamic\abt-bindings.pdb
+- cspeechkit.dll: C:\Users\valbon\.ya\build\build_root\9nts\00066f\speechkit\capi\dynamic\cspeechkit.pdb
+- offline_spellchecker.dll: Z:\place\home\rj42\trunk\build\build_root\g66q\00005e\dict\misspell\spellchecker\offline\dynamic\offline_spellchecker.pdb
+- speechkit_action_lib.dll: C:\BuildAgent\work\d14fd8884e233a06\Output\x32\Release\speechkit_action_lib.pdb
+- textclassifier.dll: Z:\home\miryable\.ya\build\build_root\mjhp\00023d\cv\imageproc\ocr\api\text_classifier\dll\textclassifier.pdb
+
+Endpoint probes already tried for browser.dll.pdb
+- https://msdl.microsoft.com/download/symbols/browser.dll.pdb/5881CBC31AEA815B4C4C44205044422E1/browser.dll.pdb returned 404.
+- https://chromium-browser-symsrv.commondatastorage.googleapis.com/browser.dll.pdb/5881CBC31AEA815B4C4C44205044422E1/browser.dll.pdb did not connect from current environment.
+- https://symbols.mozilla.org/browser.dll.pdb/5881CBC31AEA815B4C4C44205044422E1/browser.dll.pdb returned 404.
+- https://symbols.yandex.net did not resolve from current environment.
+
+Likely search strategy
+1. Use yandex-pdb-index.jsonl as the source of truth for all symbol probes.
+2. Probe candidate URLs with HEAD and ranged GET, because some symbol servers do not support HEAD correctly.
+3. Search payload strings for symbol server, crash upload, update, and debug endpoints.
+4. Search GitHub and public web for exact GUIDAge strings and PDB names.
+5. Check Yandex crashpad endpoints and symbol upload/download conventions.
+6. Try both PDB and compressed pd_ forms.
+7. Try case variants for PDB names only if endpoint behavior suggests case sensitivity.
+
+Why this matters
+- If full browser.dll.pdb is found, the project changes from months of hard reconstruction to a much more tractable source mapping and patch extraction job.
+- Even private module PDBs like cspeechkit/textclassifier would significantly improve naming and subsystem boundaries.

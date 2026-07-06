@@ -1,0 +1,54 @@
+Acquisition Next Actions
+
+Completed in this pass
+- Harvested public package indexes into .workflows/metadata/public-artifact-index.jsonl.
+- Extracted Yandex source-path strings into .workflows/metadata/yandex-source-paths.jsonl.
+- Checked GitHub code search for exact public sample versions, LastChange hash, PDB strings, and selected internal source paths. No hits returned.
+- Checked direct CDN guesses for Windows 25.2.4.955 and 25.12.1.1134 without build suffix. They returned 404 after CDN redirect.
+
+Public artifact index summary
+- Rows: 170.
+- Sources include official Yandex DEB/RPM stable/beta indexes and Etersoft historical DEB/RPM stable/beta mirrors.
+- Use public-artifact-index.jsonl for selecting historical Linux builds by version/channel/date.
+
+Source-path corpus summary
+- File: .workflows/metadata/yandex-source-paths.jsonl.
+- Rows: 6557.
+- Unique normalized paths: 5434.
+- Main emitting module: Browser-bin/25.6.0.2372/browser.dll, 3833 rows.
+- Top components by row count: third_party, net, components, chrome, yandex, crypto, ui, services, base, device, content, mojo.
+- Direct Yandex component rows include yandex/, components/yandex/, chrome/browser/yandex/, chrome/browser/ui/views/yandex/, third_party/blink/renderer/core/yandex/, net/yandex/, services/yandex/.
+
+Windows historical payload issue
+- Yandex Windows CDN directories use a build suffix, for example current build path: 25_6_0_2372_82987.
+- Direct paths without suffix for 25_2_4_955 and 25_12_1_1134 returned 404.
+- Need to discover suffixes for historical Windows versions before direct CDN download.
+
+Highest-value acquisition targets
+1. Windows 25.2.4.955
+- Public sample SHA256: 66e95997fb0610182181e138e995b27334e6294c27bd547940fc680f3e08b1f8.
+- ProductChromiumVersion: 132.0.6834.210.
+- LastChange: ff102d7073a0b4af5e2b046265a6da8ef562a423.
+- PDB Path: browser.exe.pdb.
+- Need: direct Yandex CDN build directory or allowed acquisition source.
+
+2. Windows 25.12.1.1134
+- Public sample SHA256: 5f71231516481b8de1cb58c10879b8ef9bb919c788796feea40ca0c4fc96cd99.
+- Public evidence: browser.exe.pdb, Yandex Dev/Canary strings.
+- Need: ProductChromiumVersion, LastChange, direct Yandex CDN build directory or allowed acquisition source.
+
+3. Linux builds near Windows targets
+- 25.2.x from Etersoft and official historical mirrors.
+- 25.12.x from Etersoft.
+- Need: extract Linux Build ID, .gnu_debuglink, source path strings, Chromium version strings, and cross-platform Yandex names.
+
+Search tasks for agents
+- Search web for exact strings: 25_2_4_955, 25_12_1_1134, ff102d7073a0b4af5e2b046265a6da8ef562a423, 66e95997fb0610182181e138e995b27334e6294c27bd547940fc680f3e08b1f8, 5f71231516481b8de1cb58c10879b8ef9bb919c788796feea40ca0c4fc96cd99.
+- Search public pages for CDN paths containing browser/yandex/25_2_4_955_* or browser/yandex/25_12_1_1134_*.
+- Search package indexes for ALT Linux debuginfo and ffmpeg-plugin-yandex-browser-debuginfo through mirrors not protected by Anubis.
+- Search public symbol endpoints using yandex-pdb-index.jsonl and future PDB identities from acquired historical Windows payloads.
+
+Reverse tasks unlocked by source-path corpus
+- Build a reconstructed directory skeleton from yandex-source-paths.jsonl.
+- Prioritize source paths under chrome/browser/yandex, chrome/browser/ui/views/yandex, components/yandex, yandex/ui/custo, third_party/blink/renderer/core/yandex, net/yandex, services/yandex.
+- Map these paths against Chromium snapshot to classify: new Yandex-only path, modified Chromium path, generated/resource path, third-party upstream path.

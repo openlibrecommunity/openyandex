@@ -1,0 +1,116 @@
+ADMX Policy Analysis
+
+Input
+- Package: artifacts/binaries/policies/admx-yandex-browser-132.0-alt1.noarch.rpm.
+- SHA256: b2e0aeeeec1bd661978b960f25413e2c36dcef9eb7d5ebdea3bc2227d074ada6.
+- Source URL: https://download.basealt.ru/pub/distributions/ALTLinux/p11/branch/noarch/RPMS.classic/admx-yandex-browser-132.0-alt1.noarch.rpm.
+- Listing evidence: p11 noarch RPMS.classic index shows admx-yandex-browser-132.0-alt1.noarch.rpm, 01-Aug-2025, 137654 bytes.
+
+Extraction
+- Extracted RPM with 7z into artifacts/binaries/policies/admx-yandex-browser-132.0-alt1.extract/.
+- Extracted CPIO with bsdtar into artifacts/binaries/policies/admx-yandex-browser-132.0-alt1.files/.
+
+Contents
+- usr/share/PolicyDefinitions/YandexBrowser.admx: 257846 bytes.
+- usr/share/PolicyDefinitions/en-US/YandexBrowser.adml: 475240 bytes.
+- usr/share/PolicyDefinitions/ru-RU/YandexBrowser.adml: 706600 bytes.
+
+Generated metadata
+- .workflows/metadata/yandex-policies.jsonl.
+- Rows: 1210.
+- Categories: 47.
+- Policies: 428.
+- Localized strings selected: 734.
+- .workflows/metadata/yandex-policy-crossrefs.jsonl.
+- Cross-reference rows: 428.
+
+Registry surface
+- Main mandatory key: Software\Policies\YandexBrowser, 380 policies.
+- Recommended key: Software\Policies\YandexBrowser\Recommended, 48 policies.
+
+Top policy categories
+- ContentSettings: 56.
+- Behavior: 42.
+- Safety: 35.
+- Interface: 27.
+- Other: 27.
+- DeprecatedPolicies: 17.
+- PersonalData: 16.
+- ExtensionsAndWebApplications: 13.
+- DefaultSearchProvider: 12.
+- DefaultSearchProvider_recommended: 12.
+- BrowserSwitcher: 12.
+- Smartbox: 11.
+- DataExchangeWithYandex: 10.
+- HTTPAuthentication: 10.
+- Import: 10.
+- Translator: 9.
+
+High-value Yandex-specific policy names
+- YandexOowVideoDisable.
+- YandexAutoLaunchMode.
+- YandexBackgroundModeDisableRestart.
+- YandexClipboardAccessByPolicyEnabled.
+- YandexClipboardMaxImageSize.
+- YandexClipboardMaxTextSize.
+- YandexCopyAllowlist.
+- YandexCopyBlocklist.
+- YandexDownloadRestrictionsEnabled.
+- YandexDownloadRestrictionsAllowedTypes.
+- YandexDownloadRestrictionsAllowedUrls.
+- YandexDownloadRestrictionsBlockedTypes.
+- YandexDownloadRestrictionsBlockedUrls.
+- YandexPasteExt.
+- YandexWatermark.
+- YandexWatermarkSettings.
+- YandexContentFiltering.
+- YandexCMURLAllowlistIfNotEnrolled.
+- YandexCMURLBlocklistIfNotEnrolled.
+- YandexCloudEnrollment.
+
+Local cross-reference results
+- Policies observed in current Yandex payload strings/resources: 30.
+- Policies with exact Chromium name hits: 13.
+- Policies with broader Chromium evidence hits from the first partial pass: 167.
+- Policies without local cross-reference yet: 218.
+
+Notable policy names observed in current payload strings/resources
+- YandexNoRefererSettingAllowlist: browser.dll.
+- YandexCustomHeader: browser.dll.
+- YandexExtCorpBrowserHeader: browser.dll.
+- MaxConnectionsPerProxy: browser.dll.
+- BlockThirdPartyCookies: browser.dll.
+- Integrity: browser.dll and locales.
+- YandexAdblock: locales.
+- YandexAntiTracking: locales.
+- YandexDevicePosture: locales.
+- YandexDevicePostureRules: locales.
+- BrowserSwitcherEnabled and related BrowserSwitcher policies: locales.
+- YandexContentFiltering: policy corpus, useful for safety/content filtering mapping.
+
+Usefulness assessment
+- This is highly useful for OpenYandex source reconstruction.
+- It exposes official enterprise policy names, categories, registry keys, recommended/mandatory policy split, localized descriptions, and Yandex-specific feature surfaces.
+- These policy names are likely mirrored in Chromium/Yandex C++ policy registration, pref mapping, generated policy templates, and enterprise management code.
+- Unlike FFmpeg debuginfo, this directly maps to browser integration surfaces: content settings, safety, smartbox, browser switcher, data exchange with Yandex, translator, cloud management, clipboard/DLP-like controls, download restrictions, and watermarking.
+
+Source mapping targets
+- Chromium files likely relevant:
+  - chrome/browser/policy/.
+  - chrome/browser/prefs/browser_prefs.cc.
+  - components/policy/.
+  - components/prefs/.
+  - chrome/common/pref_names.*.
+  - chrome/common/chrome_features.*.
+- Yandex paths likely relevant from local source-path corpus:
+  - chrome/browser/yandex/.
+  - chrome/browser/ui/views/yandex/.
+  - components/yandex/.
+  - services/yandex/.
+  - yandex/ui/custo/.
+
+Next actions
+1. Cross-reference all ADMX policy names against yandex-strings.jsonl and yandex-source-paths.jsonl.
+2. Build policy_to_source_mapping_hypothesis JSONL rows.
+3. Search Chromium snapshot for matching upstream policy names to classify Yandex-only vs Chromium-inherited.
+4. Prioritize Yandex-only policy names for Ghidra/string xref analysis in browser.dll.

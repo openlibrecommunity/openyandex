@@ -1,0 +1,56 @@
+OpenYandex ADMX policy classification
+
+Date: 2026-07-06
+
+Scope
+- Target Yandex ADMX: artifacts/binaries/policies/admx-yandex-browser-132.0-alt1.files/usr/share/PolicyDefinitions/YandexBrowser.admx
+- Target Chromium baseline: chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
+- Chromium policy list source: components/policy/resources/templates/policies.yaml
+- Yandex ADMX corpus source: .workflows/metadata/yandex-policies.jsonl
+
+Generated artifacts
+- .workflows/metadata/chromium-policies.jsonl
+- .workflows/metadata/yandex-policy-classification.jsonl
+
+Counts
+- Chromium upstream policy names extracted: 1359
+- Yandex ADMX policy records classified: 428
+- Unique Yandex ADMX base policy names, after removing _recommended suffix: 380
+- Chromium-inherited ADMX records: 253
+- Clearly Yandex-only ADMX records: 98
+- Not present in Chromium exact snapshot, not Yandex-prefixed: 77
+
+Unique base-name counts
+- Chromium-inherited: 212
+- Clearly Yandex-only: 98
+- Not present in Chromium exact snapshot, not Yandex-prefixed: 70
+
+Classification method
+- A Yandex ADMX policy is chromium_inherited when its ADMX name exactly matches a Chromium policy name from the exact 136.0.7103.156 source snapshot, after removing a trailing _recommended suffix.
+- A policy is yandex_only when the normalized name is not present in Chromium and is Yandex/Ya-prefixed or otherwise contains Yandex.
+- A policy is not_in_chromium_admx when the normalized name is not present in Chromium and is not Yandex-prefixed. This is not automatically proprietary: some of these may be renamed, removed, deprecated, downstream-renamed, or enterprise-only variants.
+
+High-signal Yandex-only policy families
+- Enterprise DLP: YandexClipboardAccessByPolicyEnabled, YandexCopyAllowlist, YandexCopyBlocklist, YandexPasteAllowlist, YandexPasteBlocklist, YandexClipboardMaxTextSize, YandexClipboardMaxImageSize, YandexWatermark, YandexWatermarkSettings.
+- Download restrictions: YandexDownloadRestrictionsEnabled, YandexDownloadRestrictionsAllowedUrls, YandexDownloadRestrictionsBlockedUrls, YandexDownloadRestrictionsAllowedTypes, YandexDownloadRestrictionsBlockedTypes.
+- Cloud/management: YandexCloudEnrollment, YandexCMURLAllowlistIfNotEnrolled, YandexCMURLBlocklistIfNotEnrolled.
+- Network/privacy: YandexNoRefererSettingAllowlist, YandexNoRefererSettingAllowlistExt, YandexCustomHeader, YandexExtCorpBrowserHeader.
+- UI/behavior: YandexAutoLaunchMode, YandexBackgroundModeDisableRestart, YandexOowVideoDisable, YandexUserFeedbackMode, YandexUserFeedbackPath.
+- Smartbox/search/Yandex services: YandexContentFiltering and multiple Yandex-branded Smartbox/translator/service policies in the classification corpus.
+
+Not-in-Chromium ADMX families worth triage
+- File/data movement controls: DefaultPageSaveSettings, PageSaveAllowedForUrls, PageSaveBlockedForUrls, DefaultUploadSetting, UploadAllowedForUrls, UploadBlockedForUrls, UploadAllowedFromLocations, UploadBlockedFromLocations.
+- Drag/drop DLP: DisableInformationDragAndDrop, DisableInformationDragAllowedUrls, DisableInformationDragBlockedUrls, DisableInformationDropAllowedUrls, DisableInformationDropBlockedUrls.
+- Private network/access policy: PrivateNetworkAccessRespectPreflightResultsEnabled and InsecurePrivateNetworkRequestsAllowedForUrls.
+- Yandex operational behavior without Yandex prefix: BackgroundUpdateAllowed, CrashesReporting, StatisticsReporting, UpdateAllowed, NtpContentDisabled, NtpAdsDisabled, DnscryptDisabled, TurboSettings.
+- Extension/webapp store controls: DefaultWebAppsPolicy, DefaultWebAppsPlainTextPolicy, WebAppStorePolicy, WebAppStorePlainTextPolicy.
+
+Use for overlay recovery
+- Start policy overlay reconstruction from yandex_only plus not_in_chromium_admx records, not from inherited Chromium policies.
+- Map these names to browser.dll strings, source-path corpus entries, and ADMX registry keys.
+- Treat not_in_chromium_admx as a triage queue: verify whether each policy is a Yandex implementation, a Chromium policy renamed by Yandex, or a removed/deprecated upstream policy absent from Chromium 136.
+
+Immediate next queries
+- Search .workflows/metadata/yandex-strings.jsonl for the 98 yandex_only policy names.
+- Search .workflows/metadata/yandex-source-paths.jsonl for matching feature roots: clipboard, watermark, download_restrictions, cloud_management, smartbox, translate, no_referer, content_filtering.
+- Build a policy-priority JSONL that joins classification, ADMX text, registry keys, browser.dll string hits, and source-path hints.
