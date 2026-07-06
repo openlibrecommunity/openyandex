@@ -1,0 +1,91 @@
+Active Stage Static Pass 1
+
+Date: 2026-07-06
+
+Scope
+- Static-only first pass for active RE.
+- No PE execution performed.
+- No dynamic unpacking/debugging performed.
+
+Subagent research completed
+- Policy seed research for targeted browser.dll analysis.
+- Widget ELF triage queue from metadata only.
+- PDB/symbol acquisition leads from existing metadata and notes only.
+
+Generated artifacts
+- .workflows/tools/static-pe-triage.py
+- .workflows/tools/summarize-active-pe-triage.py
+- .workflows/metadata/active-pe-triage.jsonl
+- .workflows/active-stage/exports/active-pe-triage-summary.txt
+
+Important operational note
+- FLOSS timed out on cspeechkit.dll during the first attempt. Batch static triage now skips capa and FLOSS by default.
+- Heavy tools should be run opt-in per module, not across a whole batch.
+- Recommended order for heavy tools: smallest or most promising module first, with explicit timeout and expected output path.
+
+PE quick triage results
+- cspeechkit.dll
+  - sha256: 3b56d1b3234fe503e2ccd669a75c99dcc1867f9db2d0be3efbe9bf85e43f1a37
+  - size: 10143832
+  - string categories: yandex, speech, speechkit, alice, update, service, policy, http/https, pdb, build_root.
+  - DIE categories: compiler, microsoft.
+- service_update.exe
+  - sha256: 9275e756b2667f6321836e4e9af485bad7fa3096afe0db1e2316c3cd0667e77c
+  - size: 3376728
+  - string categories: yandex, speech, speechkit, passport, update, service, policy, http/https, pdb.
+  - DIE categories: compiler, microsoft.
+- speechkit_action_lib.dll
+  - sha256: c22b1cfffe28c21336518796b71f02ce456ba174e83716cfdebb2d33569f34a8
+  - size: 2711448
+  - exports: ActionLibInitialize, ActionLibUninitialize, ExecuteDirective, ProcessDirective.
+  - string categories: yandex, speech, speechkit, alice, update, service, policy, http/https, pdb, BuildAgent, TeamCity.
+  - DIE categories: compiler, microsoft.
+- textclassifier.dll
+  - sha256: fea916657e8557ef4ef0aed1e8ca7740f4d41e69e9204dd5a05ed37b56c9d369
+  - size: 7404120
+  - string categories: yandex, update, policy, http/https, pdb, build_root.
+  - DIE categories: compiler, microsoft.
+
+Policy/browser.dll seeds from metadata research
+- Highest-value direct browser.dll strings:
+  - network::mojom::NetworkService::SetYandexCustomHeader
+  - network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+  - network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+- High-value policy roots:
+  - YandexAntiTracking
+  - YandexDevicePosture
+  - YandexDevicePostureRules
+  - YandexBrowserEnforcement
+  - YandexExternalDLPConfig
+  - YandexClipboardAccessByPolicyEnabled
+  - YandexPasteExt
+  - YandexDownloadRestrictionsEnabled
+  - YandexCMURLAllowlistIfNotEnrolled
+
+Widget ELF queue from metadata research
+- First five widgets for later static pass:
+  - neuroedit_bubble.so
+  - neuro_question_bubble.so
+  - coupons_bubble.so
+  - flutter_components_demo.so
+  - suggest.so
+- Rationale: AI/neuro text handling, commerce/page parsing, and search/suggest input surfaces are higher-value than generic UI containers.
+
+PDB/symbol queue
+- P0:
+  - browser.dll.pdb / 5881CBC31AEA815B4C4C44205044422E1
+  - browser.exe.pdb / 667BC9756C38438F4C4C44205044422E1
+  - Yandex.exe.pdb / 9E5DBA162D5AA0864C4C44205044422E1
+  - Alice.exe.pdb / 138E34ABFB6460A84C4C44205044422E1
+- P1:
+  - browser_elf.dll.pdb / F7F4A9CB2574C5854C4C44205044422E1
+  - browser_wer.dll.pdb / 7124DA22C3C5282D4C4C44205044422E1
+  - service_update.exe.pdb / E42043EDF87584334C4C44205044422E1
+- Likely private overall; D3DCompiler_47.pdb is the best Microsoft public-symbol candidate.
+
+Next actions
+1. Do one Ghidra headless import at a time, starting with speechkit_action_lib.dll because it has four clear exports and is smaller than cspeechkit.dll.
+2. Run browser.dll targeted string/xref pass for NetworkService SetYandex* strings before full browser.dll analysis.
+3. Run widget ELF quick static pass for the first five widgets, using readelf/rz-bin/strings only.
+4. Run PDB URL probing as a separate network task with HEAD plus small ranged GET, logging status codes only.
+5. Keep FLOSS/capa opt-in; do not batch-run them across large C++ modules.
