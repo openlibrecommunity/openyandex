@@ -4,7 +4,7 @@ Goal
 Recover a source-level, reproducible open patcher that transforms matching Chromium into a Yandex Browser-like tree/build, with names, structure, resources, and behavior reconstructed as far as evidence allows.
 
 Non-goal
-This is not only a report of differences. Reports are intermediate evidence. The deliverable is a patchset reconstruction pipeline plus machine-readable metadata that lets agents and humans continue reverse engineering deterministically.
+This is not only a report of differences. Reports are intermediate evidence. The deliverable is a patchset reconstruction pipeline plus machine-readable metadata that lets future reconstruction work continue deterministically.
 
 Primary target
 - Platform: Windows.
@@ -14,19 +14,19 @@ Primary target
 
 Operating model
 - Build a metadata corpus first: version facts, hashes, PE sections, imports/exports, resources, strings, symbols, paths, module inventory, decompiler outputs, Ghidra project facts, and confidence-scored hypotheses.
-- Feed that corpus to an agent-swarm instead of asking agents to rediscover context from chat.
-- Use Agno/agent platform ideas for long-running agents: stored sessions, traces, task queues, human approval for destructive actions, reproducible tools, and role-based specialist agents.
-- Delegate full reverse engineering and patch reconstruction tasks to specialist agents only after the corpus schema and artifact layout are stable.
+- Keep the corpus machine-readable so future tools can consume it without rediscovering context from chat.
+- Keep long-running reconstruction work reproducible: stored commands, traces, human approval for destructive actions, and deterministic artifact paths.
+- Attempt full reverse engineering and patch reconstruction only after the corpus schema and artifact layout are stable.
 
-Desired swarm roles
-- Acquisition agent: downloads and verifies installers, full payloads, Chrome/Chromium baselines, symbols, debug packages.
-- Metadata agent: extracts normalized facts into JSONL/SQLite/Parquet without interpreting too much.
-- Diff agent: compares Yandex vs matching Chromium modules/resources/strings/configs.
-- Symbol agent: resolves PDB/Breakpad/Crashpad/DIA/exports/RTTI/vtables and recovers names.
-- Ghidra agent: imports binaries, runs analysis, exports functions, callgraphs, types, strings, xrefs, decompiler text.
-- Naming agent: proposes original-like names with evidence and confidence.
-- Patch agent: maps binary/resource differences back onto Chromium source files and generates candidate patches.
-- Validator agent: builds/tests/applies patches and reports mismatches.
+Desired workstreams
+- Acquisition: downloads and verifies installers, full payloads, Chrome/Chromium baselines, symbols, debug packages.
+- Metadata: extracts normalized facts into JSONL/SQLite/Parquet without interpreting too much.
+- Diffing: compares Yandex vs matching Chromium modules/resources/strings/configs.
+- Symbols: resolves PDB/Breakpad/Crashpad/DIA/exports/RTTI/vtables and recovers names.
+- Ghidra: imports binaries, runs analysis, exports functions, callgraphs, types, strings, xrefs, decompiler text.
+- Naming: proposes original-like names with evidence and confidence.
+- Patch mapping: maps binary/resource differences back onto Chromium source files and generates candidate patches.
+- Validation: builds/tests/applies patches and reports mismatches.
 
 Metadata corpus requirements
 - Every fact must include source artifact, extractor version/command, timestamp, hash, and confidence.
@@ -76,4 +76,4 @@ Immediate next steps
 4. Identify exact Chromium base commit/build.
 5. Acquire matching Chromium/Chrome Windows baseline.
 6. Run first metadata extraction pass.
-7. Prepare Agno/agent-swarm task specs using only the metadata corpus as input.
+7. Prepare reconstruction task specs using only the metadata corpus as input.

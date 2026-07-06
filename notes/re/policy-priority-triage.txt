@@ -1,0 +1,47 @@
+Policy Priority Triage
+
+Date: 2026-07-06
+
+Purpose
+- Build a practical RE queue from ADMX policies that are not exact Chromium-inherited policies.
+- Keep the queue machine-readable so later Ghidra/string/source mapping work can consume it directly.
+
+Generated artifacts
+- .workflows/tools/build-policy-priority.py
+- .workflows/metadata/policy-priority.jsonl
+
+Inputs
+- .workflows/metadata/yandex-policy-classification.jsonl
+- .workflows/metadata/yandex-policy-crossrefs.jsonl
+- .workflows/metadata/yandex-strings.jsonl
+- .workflows/metadata/yandex-source-paths.jsonl
+
+Counts
+- Priority rows: 175.
+- yandex_only rows: 98.
+- not_in_chromium_admx rows: 77.
+
+Scoring method
+- Start from non-upstream policy classification: yandex_only scores above not_in_chromium_admx.
+- Add weight for high-value families: clipboard DLP, download restrictions, watermark DLP, drag/drop DLP, upload/page-save DLP, cloud management, network/privacy, content filtering.
+- Add weight for exact policy-name string hits and existing crossref hits.
+- Add limited weight for source-path hints. Generic third_party paths are ignored unless the path is Yandex-specific.
+
+Current top queue
+- YandexAntiTracking: observed in payload strings, network/privacy family.
+- YandexAdblock: observed in payload strings, Yandex-only service surface.
+- YandexDevicePosture: observed in payload strings, enterprise/safety surface.
+- YandexClipboardAccessByPolicyEnabled: clipboard DLP control root.
+- YandexCMURLAllowlistIfNotEnrolled and YandexCMURLBlocklistIfNotEnrolled: cloud management enrollment boundary.
+- DefaultPageSaveSettings: not in exact Chromium ADMX, page-save DLP root.
+
+Important caveats
+- A high priority score is a triage hint, not proof of implementation location.
+- Source-path hints can still be noisy because they are substring-family matches over binary path strings.
+- not_in_chromium_admx rows need manual classification before treating them as Yandex-original code.
+
+Next actions
+1. For the top 20 policy_priority rows, run targeted browser.dll string xrefs in Ghidra or another disassembler.
+2. Split policies into feature clusters: anti_tracking/adblock, clipboard_dlp, cloud_management, device_posture, page_save/upload_dlp.
+3. Create source_mapping_hypothesis rows only when a policy has at least two independent evidence types: policy name, string hit, source path, import/export, or decompiler xref.
+4. Prefer Yandex-only policy roots before inherited Chromium policy wiring.

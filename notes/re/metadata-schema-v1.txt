@@ -1,6 +1,6 @@
 Metadata Schema V1
 
-This is the initial schema sketch for swarm input. It is intentionally simple and append-only. JSONL is the raw transport format; SQLite can be generated from JSONL for joins.
+This is the initial schema sketch for reconstruction input. It is intentionally simple and append-only. JSONL is the raw transport format; SQLite can be generated from JSONL for joins.
 
 Common row envelope
 - schema: string.
