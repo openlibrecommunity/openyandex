@@ -5,6 +5,8 @@ Scope
 - This runbook avoids executing Windows samples on the host.
 - Heavy outputs must stay under .workflows/active-stage/ or artifacts/ ignored dirs.
 - Current status: active-ready. Static triage, first Ghidra project, browser.dll seed pack, widget queue, and PDB probe are prepared.
+- Product goal: full Yandex-like Chromium fork, not minimal overlay/stubs.
+- Main method: BinDiff/all-changes map first, user-visible keep/drop triage second, direct Chromium edits third.
 
 Baseline Inputs
 - Payload root: artifacts/binaries/yandex-browser-25.6.0.2372/payload/
@@ -26,6 +28,41 @@ Preparation Commands
    python3 .workflows/tools/build-active-ready-pack.py
 5. Review active-ready index:
    sed -n '1,260p' .workflows/active-stage/active-ready-index.txt
+6. Build patch map v1:
+   python3 .workflows/tools/build-patch-map-v1.py
+7. Review patch map and subagent backlog:
+   sed -n '1,260p' .workflows/active-stage/patch-map-v1.txt
+   sed -n '1,260p' .workflows/active-stage/subagent-backlog.txt
+
+BinDiff-first Patch Map Workflow
+- First objective is a complete change map, not implementation.
+- Use BinDiff/Ghidra/rizin/source-path/string/resource evidence to identify everything Yandex changed.
+- Split evidence into patch-map families.
+- Triage each family:
+  - keep: user/admin/network/product-visible behavior.
+  - drop: pure third-party/runtime/media/vendor rebuild with no kept feature impact.
+  - defer: useful but not first-wave.
+  - unknown: needs more evidence.
+- Assign subagents by logical family from .workflows/active-stage/subagent-backlog.txt.
+- Implementation starts only after a family is mapped enough to name Chromium touch points.
+
+User-visible Keep Scope
+- UI, UX, branding, NTP, smartbox, settings, toolbar, menus, bubbles, widgets.
+- Telemetry, metrics, tracking, experiments, ABT, logging.
+- GOST, crypto, certificates, TLS/security behavior.
+- AI: Alice, SpeechKit, YaGPT, neuro widgets, OCR/text actions.
+- Privacy: AntiTracking, Adblock, NoReferer, custom headers.
+- Enterprise: policies, DLP, device posture, browser enforcement, cloud management.
+- Account: Passport, Yandex ID, sync/account UX.
+- Update/onboarding/service behavior when product-visible.
+
+Drop/Defer Scope
+- Video/media engine changes unless they support a kept feature.
+- FFmpeg/media stack rebuilds without product-visible impact.
+- GPU/ANGLE/SwiftShader/vendor runtime rebuilds.
+- Pure third-party rebuilt libraries.
+- Crash/WER internals unless needed for telemetry/product behavior.
+- Compatibility glue without kept-feature impact.
 
 Static Triage Command Templates
 - Do not run these until active RE starts.
@@ -117,8 +154,11 @@ Current Machine Indexes
 - .workflows/metadata/active-widget-elf-triage.jsonl
 - .workflows/metadata/active-pdb-probes.jsonl
 - .workflows/metadata/browser-dll-seed-pack.jsonl
+- .workflows/metadata/patch-map-v1.jsonl
 - .workflows/active-stage/active-ready-index.json
 - .workflows/active-stage/active-ready-index.txt
+- .workflows/active-stage/patch-map-v1.txt
+- .workflows/active-stage/subagent-backlog.txt
 
 Dynamic Gate
 - If any unpacking/debugging requires executing PE code, stop.

@@ -4,6 +4,8 @@ Date: 2026-07-06
 
 Status
 - The project is now prepared for active static reconnaissance.
+- The project goal is a full Yandex-like Chromium fork, not a minimal overlay.
+- The next major objective is a BinDiff-driven all-changes map before implementation.
 - Static triage has been completed for the first standalone PE modules.
 - The first Ghidra project has been created and analyzed.
 - A Ghidra export script has been added and tested.
@@ -15,7 +17,10 @@ Primary readiness files
 - .workflows/active-stage/active-ready-index.txt
 - .workflows/active-stage/active-ready-index.json
 - .workflows/active-stage/browser-dll-seed-pack.txt
+- .workflows/active-stage/patch-map-v1.txt
+- .workflows/active-stage/subagent-backlog.txt
 - .workflows/metadata/browser-dll-seed-pack.jsonl
+- .workflows/metadata/patch-map-v1.jsonl
 - .workflows/active-stage/active-recon-commands.txt
 - .workflows/active-stage/runbook.txt
 
@@ -37,11 +42,13 @@ Ghidra ready state
 - Script: .workflows/active-stage/ghidra/scripts/ExportOpenYandexFacts.java
 
 Immediate active recon start
-1. Open speechkit_action_lib.dll in Ghidra and inspect ActionLibInitialize, ExecuteDirective, ProcessDirective.
-2. Use browser-dll-seed-pack for targeted browser.dll xrefs, starting with NetworkService SetYandex* strings.
-3. Cluster widget strings for neuro/suggest/coupon endpoints and JSON keys.
-4. Write source_mapping_hypothesis rows only after at least two independent evidence types agree.
-5. Keep dynamic execution disabled unless VM snapshot/network/capture plan is explicitly approved.
+1. Build BinDiff/all-changes evidence for browser.dll versus the matching Chromium build where possible.
+2. Feed BinDiff chunks into patch-map-v1 families and subagent slices.
+3. Use browser-dll-seed-pack for targeted browser.dll xrefs, starting with NetworkService SetYandex* strings.
+4. Open speechkit_action_lib.dll in Ghidra and inspect ActionLibInitialize, ExecuteDirective, ProcessDirective as the first AI/SpeechKit slice.
+5. Cluster widget strings for neuro/suggest/coupon endpoints and JSON keys.
+6. Write source_mapping_hypothesis rows only after at least two independent evidence types agree.
+7. Keep dynamic execution disabled unless VM snapshot/network/capture plan is explicitly approved.
 
 Known negative result
 - Public PDB probe for P0/P1 identities found no hits across tested Yandex-like, Chromium, and Microsoft symbol URLs.

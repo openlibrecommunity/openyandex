@@ -1,0 +1,77 @@
+Subagent Backlog
+
+network_yandex_headers (P0, keep)
+- Map NetworkService mojom additions
+- Map policy-to-network propagation
+- Find Chromium NetworkService insertion points
+
+enterprise_policy_and_prefs (P0, keep)
+- Classify policy handlers
+- Map prefs and registry values
+- Separate inherited vs Yandex-only
+
+telemetry_metrics_abt (P0, keep)
+- Map ABT bindings
+- Map metric/event names
+- Decide telemetry endpoints and privacy surface
+
+gost_crypto_security (P0, keep)
+- Search GOST/cert strings
+- Map TLS/cert verification hooks
+- Identify policy controls
+
+ui_branding_ntp_smartbox (P0, keep)
+- NTP resource map
+- Smartbox/omnibox diffs
+- Views/yandex source-path clusters
+- Branding resources
+
+ai_alice_speechkit_yagpt (P0, keep)
+- Reverse speechkit_action_lib exports
+- Map cspeechkit C API
+- Cluster neuro widget endpoints
+- Find browser integration points
+
+privacy_antitracking_adblock (P0, keep)
+- Map policies to enforcement
+- Find rule resource files
+- Compare to Chromium subresource_filter
+
+dlp_clipboard_drag_download_watermark (P0, keep)
+- Clipboard policy handlers
+- Download URL/type restrictions
+- Drag/drop JS integration
+- Watermark settings
+
+device_posture_browser_enforcement (P0, keep)
+- Map posture rule format
+- Map enforcement headers
+- Find enterprise controller hooks
+
+passport_yandex_id_account (P1, keep)
+- Map account strings
+- Find signin/profile hooks
+- Separate sync vs passport UX
+
+widgets_flutter_bubbles (P1, keep)
+- Cluster all widget strings
+- Map embedder/loader
+- Decide native reimplementation vs bridge
+
+updater_service_onboarding (P1, keep)
+- Separate updater service from visible onboarding
+- Map first-run/update UI
+- Decide service implementation scope
+
+textclassifier_ocr_cv (P1, keep)
+- Map exported API
+- Find browser callers
+- Decide bridge vs reimplementation
+
+media_video_engine (P3, defer)
+- Only map if tied to visible kept feature
+- Do not spend active cycle here first
+
+crash_wer_internals (P3, defer)
+- Only keep telemetry-visible crash reporting pieces
+- Drop Windows WER internals if not needed

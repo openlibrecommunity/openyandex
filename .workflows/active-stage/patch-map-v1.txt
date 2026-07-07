@@ -1,0 +1,97 @@
+Patch Map v1
+
+P0 keep network_yandex_headers status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: services/network, services/network/public/mojom, net, chrome/browser/policy
+- yandex: net/yandex, services/yandex
+- next: Map NetworkService mojom additions; Map policy-to-network propagation; Find Chromium NetworkService insertion points
+
+P0 keep enterprise_policy_and_prefs status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser/policy, components/policy, chrome/common/pref_names*, tools/metrics/histograms
+- yandex: components/yandex, chrome/browser/yandex
+- next: Classify policy handlers; Map prefs and registry values; Separate inherited vs Yandex-only
+
+P0 keep telemetry_metrics_abt status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: components/metrics, chrome/browser/metrics, components/variations, chrome/browser/enterprise
+- yandex: browser/experiments/abt, components/yandex
+- next: Map ABT bindings; Map metric/event names; Decide telemetry endpoints and privacy surface
+
+P0 keep gost_crypto_security status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: net/cert, net/ssl, crypto, components/security_interstitials, chrome/browser/ssl
+- yandex: net/yandex, components/yandex
+- next: Search GOST/cert strings; Map TLS/cert verification hooks; Identify policy controls
+
+P0 keep ui_branding_ntp_smartbox status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser/ui, chrome/browser/ui/views, chrome/browser/resources, components/omnibox, chrome/browser/search
+- yandex: chrome/browser/ui/views/yandex, ntp, ui_config, web_app_config
+- next: NTP resource map; Smartbox/omnibox diffs; Views/yandex source-path clusters; Branding resources
+
+P0 keep ai_alice_speechkit_yagpt status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser, components, services, ui/views
+- yandex: speechkit, Alice.exe, cspeechkit.dll, speechkit_action_lib.dll, widgets/neuro*
+- next: Reverse speechkit_action_lib exports; Map cspeechkit C API; Cluster neuro widget endpoints; Find browser integration points
+
+P0 keep privacy_antitracking_adblock status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: components/content_settings, chrome/browser/subresource_filter, services/network, extensions, chrome/browser/privacy
+- yandex: components/yandex, chrome/browser/yandex
+- next: Map policies to enforcement; Find rule resource files; Compare to Chromium subresource_filter
+
+P0 keep dlp_clipboard_drag_download_watermark status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser/download, content/browser, chrome/browser/ui, components/policy, ui/base/clipboard
+- yandex: components/yandex, yandex/common/drag_and_drop.js
+- next: Clipboard policy handlers; Download URL/type restrictions; Drag/drop JS integration; Watermark settings
+
+P0 keep device_posture_browser_enforcement status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser/enterprise, components/enterprise, services/network, components/policy
+- yandex: components/yandex, chrome/browser/yandex
+- next: Map posture rule format; Map enforcement headers; Find enterprise controller hooks
+
+P1 keep passport_yandex_id_account status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/browser/signin, components/signin, chrome/browser/profiles, chrome/browser/sync
+- yandex: PassportO2TS, Yandex ID, components/yandex
+- next: Map account strings; Find signin/profile hooks; Separate sync vs passport UX
+
+P1 keep widgets_flutter_bubbles status=seed user_visible=True
+- mode: binary_module_bridge
+- chromium: chrome/browser/ui/views, chrome/browser/resources, components
+- yandex: widgets/*.so, libdart_precompiled_runtime_product.dll
+- next: Cluster all widget strings; Map embedder/loader; Decide native reimplementation vs bridge
+
+P1 keep updater_service_onboarding status=seed user_visible=True
+- mode: direct_chromium_edit
+- chromium: chrome/updater, chrome/browser/first_run, chrome/installer, chrome/browser/ui
+- yandex: service_update.exe, Browser-bin/service_update.exe
+- next: Separate updater service from visible onboarding; Map first-run/update UI; Decide service implementation scope
+
+P1 keep textclassifier_ocr_cv status=seed user_visible=True
+- mode: binary_module_bridge
+- chromium: components, services, chrome/browser/ui
+- yandex: textclassifier.dll, cv/imageproc/ocr
+- next: Map exported API; Find browser callers; Decide bridge vs reimplementation
+
+P3 defer media_video_engine status=seed user_visible=False
+- mode: research_only
+- chromium: media, third_party/ffmpeg
+- yandex: ffmpeg-plugin-yandex-browser
+- next: Only map if tied to visible kept feature; Do not spend active cycle here first
+
+P3 drop gpu_angle_swiftshader_runtime status=dropped user_visible=False
+- mode: drop
+- chromium: gpu, third_party/angle, third_party/swiftshader
+- yandex: libEGL.dll, libGLESv2.dll, vk_swiftshader.dll, vulkan-1.dll
+- next: Ignore unless BinDiff proves kept feature dependency
+
+P3 defer crash_wer_internals status=seed user_visible=False
+- mode: research_only
+- chromium: chrome/browser/crash_upload, components/crash, base
+- yandex: browser_wer.dll, eventlog_provider.dll
+- next: Only keep telemetry-visible crash reporting pieces; Drop Windows WER internals if not needed

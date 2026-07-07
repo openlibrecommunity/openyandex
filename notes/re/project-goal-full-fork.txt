@@ -1,0 +1,73 @@
+Project Goal: Full Yandex-like Chromium Fork
+
+Date: 2026-07-06
+
+Goal
+- Build a Yandex Browser-like Chromium fork on top of the matching Chromium snapshot.
+- The work is not a minimal overlay and not a set of empty stubs.
+- The first major deliverable is a complete patch/change map from binary/resource/source evidence.
+- After the map exists, keep or drop changes based on product relevance, then implement directly inside the Chromium tree.
+
+Base
+- Chromium version: 136.0.7103.156.
+- Chromium commit: 465616851cd99c308e1ce42d0fd818c04c094830.
+- Yandex Browser target: Windows 25.6.0.2372.
+
+Primary method
+1. Build an all-changes map from BinDiff-style evidence, strings, source paths, resources, policies, PDB records, Ghidra facts, and package artifacts.
+2. Split the all-changes map into logical families.
+3. Assign families to subagents for evidence collection and implementation planning.
+4. Triage each family as keep, drop, defer, or unknown.
+5. Implement kept families directly in the Chromium source tree.
+
+Scope rule
+- Keep changes that affect what the user, admin, network, policy engine, or product behavior can observe.
+- Drop or defer pure bundled dependency rebuilds and low-level runtime changes unless they affect a kept feature.
+
+Keep scope
+- UI, UX, branding, NTP, smartbox, onboarding, settings, toolbar, menus, bubbles, widgets.
+- Telemetry, metrics, tracking, experiments, ABT, logging, event pipelines.
+- GOST, crypto, certificates, TLS/security policy, enterprise compliance.
+- AI features: Alice, SpeechKit, YaGPT, neuro widgets, text actions, translation, OCR/text classifier where user-visible.
+- Privacy and tracking controls: AntiTracking, Adblock, NoReferer, custom headers, request policy.
+- Enterprise policies: ADMX, policy handlers, prefs, cloud management, enforcement.
+- DLP and corporate controls: clipboard, paste/copy, drag/drop, downloads, upload/page-save, watermark.
+- Account and identity: Passport, Yandex ID, sync/account UX if present.
+- Update/onboarding/service behavior when visible or product-defining.
+
+Drop/defer scope
+- Modified video/media engine unless tied to a kept product feature.
+- FFmpeg/media-stack differences that are just rebuild/bundle differences.
+- GPU/ANGLE/SwiftShader/vendor runtime differences that are just bundled dependency differences.
+- Pure third-party rebuilt libraries.
+- Crash/WER internals unless needed for visible telemetry/product behavior.
+- Compatibility glue that does not affect kept features.
+
+Implementation target
+- Direct Chromium tree edits, not only patch files.
+- Expected directories include:
+  - chrome/browser/yandex/
+  - chrome/browser/ui/views/yandex/
+  - components/yandex/
+  - services/yandex/
+  - net/yandex/
+  - third_party/blink/renderer/core/yandex/
+  - chrome/browser/policy/
+  - services/network/public/mojom/
+
+Evidence rule
+- Every kept feature family must link to evidence.
+- Acceptable evidence types:
+  - BinDiff match/diff result.
+  - browser.dll string/xref.
+  - extracted source path.
+  - ADMX policy name/text.
+  - resource/config/pak entry.
+  - PDB RSDS path/name/GUIDAge.
+  - Ghidra function/export/import/xref.
+  - package/debug info.
+
+Non-goals
+- No 1:1 recovery of every bundled third-party binary.
+- No minimal toy/stub browser.
+- No host execution of Windows payloads.

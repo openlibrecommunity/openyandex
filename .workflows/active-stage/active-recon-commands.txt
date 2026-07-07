@@ -3,11 +3,15 @@ Active Recon Commands
 Regenerate readiness pack:
 python3 .workflows/tools/build-active-ready-pack.py
 
+Regenerate patch map:
+python3 .workflows/tools/build-patch-map-v1.py
+
 Validate JSONL:
 python3 - <<'PY'
 import json
 for p in [
     '.workflows/metadata/browser-dll-seed-pack.jsonl',
+    '.workflows/metadata/patch-map-v1.jsonl',
     '.workflows/metadata/active-pe-triage.jsonl',
     '.workflows/metadata/active-widget-elf-triage.jsonl',
     '.workflows/metadata/active-pdb-probes.jsonl',

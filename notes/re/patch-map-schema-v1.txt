@@ -1,0 +1,43 @@
+Patch Map Schema v1
+
+Purpose
+- Track all discovered Yandex changes as logical patch families before implementation.
+- The map is BinDiff-driven when possible, but accepts any repeatable evidence source.
+
+Primary file
+- .workflows/metadata/patch-map-v1.jsonl
+
+Schema
+- schema: patch_map_family
+- schema_version: 1
+- family: stable snake_case family name.
+- priority: P0, P1, P2, P3.
+- decision: keep, drop, defer, unknown.
+- user_visible: true or false.
+- implementation_mode: direct_chromium_edit, binary_module_bridge, resource_overlay, research_only, drop.
+- status: seed, mapped, assigned, implementing, implemented, blocked, dropped.
+- target_chromium_areas: likely Chromium directories/files.
+- yandex_areas: Yandex source-path roots or binary modules.
+- evidence: list of evidence objects.
+- subagent_slices: suggested subagent work packages.
+- implementation_notes: concise implementation direction.
+- blockers: known blockers.
+
+Evidence object
+- kind: bindiff, browser_string, source_path, policy, resource, pdb, ghidra, package, note.
+- value: evidence value.
+- artifact: source artifact path if known.
+- offset: optional binary offset.
+- confidence: high, medium, low.
+
+Decision rules
+- keep: user/product/admin/network-visible and in desired fork scope.
+- drop: pure dependency/runtime/media/vendor rebuild with no kept feature impact.
+- defer: useful but not needed for first implementation wave.
+- unknown: needs BinDiff/subagent research.
+
+Subagent workflow
+1. Assign one family or tightly related cluster.
+2. Collect evidence only; do not implement until family is mapped.
+3. Return likely Chromium touch points, required files, risks, and missing data.
+4. Promote status from seed to mapped when at least two evidence types agree.
