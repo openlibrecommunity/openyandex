@@ -6,8 +6,45 @@ rizin-imports-updater_service_onboarding
 - kind: yandex_only_imports
 - title: Yandex-only imports: updater_service_onboarding
 - status: assigned
-- evidence count: 1
+- evidence count: 38
+  - rizin_import: ADVAPI32.dll::ChangeServiceConfig2W
+  - rizin_import: ADVAPI32.dll::ChangeServiceConfigW
+  - rizin_import: ADVAPI32.dll::ControlService
+  - rizin_import: ADVAPI32.dll::CreateServiceW
+  - rizin_import: ADVAPI32.dll::DeleteService
+  - rizin_import: ADVAPI32.dll::QueryServiceConfigW
+  - rizin_import: ADVAPI32.dll::QueryServiceStatusEx
+  - rizin_import: ADVAPI32.dll::RegisterServiceCtrlHandlerExW
+  - rizin_import: ADVAPI32.dll::SetServiceStatus
+  - rizin_import: ADVAPI32.dll::StartServiceCtrlDispatcherW
+  - rizin_import: ADVAPI32.dll::StartServiceW
   - rizin_import: CRYPT32.dll::CryptMsgUpdate
+  - rizin_import: KERNEL32.dll::CreateSymbolicLinkW
+  - rizin_import: KERNEL32.dll::GetCompressedFileSizeW
+  - rizin_import: KERNEL32.dll::SetFileAttributesA
+  - rizin_import: MPR.dll::WNetGetUniversalNameW
+  - rizin_import: WINHTTP.dll::WinHttpConnect
+  - rizin_import: WINHTTP.dll::WinHttpOpenRequest
+  - rizin_import: WINHTTP.dll::WinHttpQueryHeaders
+  - rizin_import: WINHTTP.dll::WinHttpReadData
+  - rizin_import: WINHTTP.dll::WinHttpReceiveResponse
+  - rizin_import: WINHTTP.dll::WinHttpSendRequest
+  - rizin_import: WINHTTP.dll::WinHttpSetOption
+  - rizin_import: WININET.dll::HttpQueryInfoA
+  - rizin_import: WININET.dll::HttpQueryInfoW
+  - rizin_import: WININET.dll::InternetCloseHandle
+  - rizin_import: WININET.dll::InternetOpenUrlW
+  - rizin_import: WININET.dll::InternetOpenW
+  - rizin_import: WININET.dll::InternetReadFile
+  - rizin_import: WININET.dll::InternetSetCookieExA
+  - rizin_import: WININET.dll::InternetSetFilePointer
+  - rizin_import: WININET.dll::InternetSetOptionW
+  - rizin_import: WININET.dll::InternetSetStatusCallbackW
+  - rizin_import: WTSAPI32.dll::WTSQueryUserToken
+  - rizin_import: api-ms-win-core-path-l1-1-0.dll::PathCchCombineEx
+  - rizin_import: api-ms-win-core-path-l1-1-0.dll::PathCchRemoveFileSpec
+  - rizin_import: browser_elf.dll::GetInstallDetailsPayload
+  - rizin_import: sfc.dll::SfcIsFileProtected
 
 source-path-cluster-updater_service_onboarding
 - kind: source_path_cluster

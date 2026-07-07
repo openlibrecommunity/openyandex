@@ -1,0 +1,18 @@
+Family Packet: crash_wer_internals
+
+Diff chunks: 1
+
+rizin-imports-crash_wer_internals
+- kind: yandex_only_imports
+- title: Yandex-only imports: crash_wer_internals
+- status: assigned
+- evidence count: 4
+  - rizin_import: browser_elf.dll::DumpHungProcessWithPtype_ExportThunk
+  - rizin_import: browser_elf.dll::InjectDumpForHungInput_ExportThunk
+  - rizin_import: browser_elf.dll::IsExtensionPointDisableSet
+  - rizin_import: browser_elf.dll::IsThirdPartyInitialized
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

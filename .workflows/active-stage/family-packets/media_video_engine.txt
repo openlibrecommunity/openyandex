@@ -1,0 +1,39 @@
+Family Packet: media_video_engine
+
+Diff chunks: 2
+
+rizin-imports-media_video_engine
+- kind: yandex_only_imports
+- title: Yandex-only imports: media_video_engine
+- status: assigned
+- evidence count: 5
+  - rizin_import: MF.dll::MFGetService
+  - rizin_import: MFPlat.DLL::MFInvokeCallback
+  - rizin_import: MFReadWrite.dll::MFCreateSourceReaderFromByteStream
+  - rizin_import: d3d9.dll::Direct3DCreate9Ex
+  - rizin_import: dxva2.dll::DXVA2CreateDirect3DDeviceManager9
+
+source-path-cluster-media_video_engine
+- kind: source_path_cluster
+- title: Source path cluster: media_video_engine
+- status: assigned
+- evidence count: 14
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Blit9.c | offset=6153734, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Buffer9.c | offset=6156789, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Context9.c | offset=6157072, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Fence9.c | offset=6157822, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Framebuffer9.c | offset=6157973, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Image9.c | offset=6158500, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/IndexBuffer9.c | offset=6159721, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Query9.c | offset=6160044, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/Renderer9.c | offset=6160923, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/ShaderCache.h | offset=6162567, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/SwapChain9.c | offset=6163166, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/TextureStorage9.c | offset=6163293, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/VertexBuffer9.c | offset=6163875, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+  - source_path: third_party/angle/src/libANGLE/renderer/d3d/d3d9/VertexDeclarationCache.c | offset=6164265, artifact=Browser-bin/25.6.0.2372/libGLESv2.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

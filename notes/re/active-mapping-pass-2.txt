@@ -1,0 +1,61 @@
+Active Mapping Pass 2
+
+Date: 2026-07-07
+
+Scope
+- Reviewed first family packets with subagents.
+- Promoted first chunks to mapped_keep_candidate.
+- Split rizin Yandex-only import bucket into meaningful family buckets.
+
+Generated/updated outputs
+- .workflows/metadata/diff-chunks-v1.jsonl
+- .workflows/metadata/chunk-review-v1.jsonl
+- .workflows/active-stage/diff-chunks-v1.txt
+- .workflows/active-stage/chunk-review-v1.txt
+- .workflows/active-stage/family-packets/
+
+Chunk counts after rebucketing
+- Total chunks: 29.
+- mapped_keep_candidate: 13.
+- mapped_keep_candidate_alias: 3.
+- mapped_keep_candidate_requires_xref: 1.
+- assigned_needs_review: 11.
+- needs_manual_assignment: 1.
+
+Yandex-only import buckets
+- ai_alice_speechkit_yagpt: 220 imports.
+- gost_crypto_security: 25 imports.
+- ui_branding_ntp_smartbox: 21 imports.
+- telemetry_metrics_abt: 13 imports.
+- updater_service_onboarding: 10 imports.
+- passport_yandex_id_account: 6 imports.
+- media_video_engine: 5 imports.
+- dlp_clipboard_drag_download_watermark: 1 import.
+- unknown: 95 imports, still needs manual bucketing.
+
+Promoted high-confidence chunks
+- rizin-imports-ai_alice_speechkit_yagpt -> mapped_keep_candidate.
+- source-path-cluster-ai_alice_speechkit_yagpt -> mapped_keep_candidate.
+- rizin-yandex-only-exports -> mapped_keep_candidate.
+- source-path-cluster-widgets_flutter_bubbles -> mapped_keep_candidate.
+- browser-seed-network-mojom-networkservice-setyandexcustomheader -> mapped_keep_candidate.
+- browser-seed-network-mojom-networkservice-setyandexnoreferersettingallowlist -> mapped_keep_candidate.
+- browser-seed-network-mojom-networkservice-setyandexextcorpbrowserheader -> mapped_keep_candidate.
+- source-path-cluster-device_posture_browser_enforcement -> mapped_keep_candidate.
+- source-path-cluster-enterprise_policy_and_prefs -> mapped_keep_candidate.
+- source-path-cluster-passport_yandex_id_account -> mapped_keep_candidate.
+- source-path-cluster-telemetry_metrics_abt -> mapped_keep_candidate.
+
+Important family conclusions
+- AI/SpeechKit is now a concrete mapped surface: browser.dll imports CSPEECHKIT and Dart runtime APIs; source paths identify SpeechKit service host, language classifier, audio source fetcher, neuro question, neuroedit, and speech recognition logging.
+- Network headers are concrete: browser.dll contains NetworkService mojom method strings for SetYandexCustomHeader, SetYandexNoRefererSettingAllowlist, and SetYandexExtCorpBrowserHeader at known offsets.
+- Widgets are concrete: browser.dll exports FlutterEngine embedder API and widgets are Dart AOT snapshot-style ELF modules.
+- Device posture/browser enforcement has clean Yandex source-path anchors including device_posture_rules_manager, browser_enforcement_service/fetcher, and net/http/browser_enforcement_state.
+- Policy/prefs is foundational and mapped as candidate through ADMX corpus and policy source-path cluster.
+
+Next active tasks
+1. Validate AI/SpeechKit chunks in Ghidra by xrefing YSK_setApiKey, YSK_setUUID, YSKVoiceDialogSettings_* and speechkit_service_host_controller source-path strings.
+2. Validate NetworkService chunks by xrefing SetYandexCustomHeader, SetYandexNoRefererSettingAllowlist, SetYandexExtCorpBrowserHeader strings.
+3. Validate Flutter/widgets chunks by xrefing FlutterEngineCreateAOTData, FlutterEngineRun, FlutterEngineSendPlatformMessage, widget filename strings, and platform channel names.
+4. Continue splitting the remaining rizin-imports-unknown bucket.
+5. Promote validated chunks from mapped_keep_candidate to mapped_keep once xref/caller evidence is recorded.

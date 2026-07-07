@@ -6,8 +6,43 @@ rizin-imports-ui_branding_ntp_smartbox
 - kind: yandex_only_imports
 - title: Yandex-only imports: ui_branding_ntp_smartbox
 - status: assigned
-- evidence count: 1
+- evidence count: 36
+  - rizin_import: GDI32.dll::PtInRegion
+  - rizin_import: GDI32.dll::RemoveFontMemResourceEx
+  - rizin_import: KERNEL32.dll::EnumDateFormatsExEx
+  - rizin_import: KERNEL32.dll::EnumResourceLanguagesW
+  - rizin_import: KERNEL32.dll::FindResourceExW
+  - rizin_import: KERNEL32.dll::GetThreadLocale
+  - rizin_import: OLEACC.dll::AccessibleObjectFromEvent
   - rizin_import: POWRPROF.dll::CallNtPowerInformation
+  - rizin_import: PROPSYS.dll::PropVariantToInt32
+  - rizin_import: PROPSYS.dll::PropVariantToInt64
+  - rizin_import: SHELL32.dll::SHBindToParent
+  - rizin_import: SHELL32.dll::SHGetImageList
+  - rizin_import: SHELL32.dll::SHOpenWithDialog
+  - rizin_import: SHELL32.dll::SHParseDisplayName
+  - rizin_import: SHLWAPI.dll::PathIsRelativeW
+  - rizin_import: SHLWAPI.dll::UrlEscapeW
+  - rizin_import: USER32.dll::BeginDeferWindowPos
+  - rizin_import: USER32.dll::DeferWindowPos
+  - rizin_import: USER32.dll::EndDeferWindowPos
+  - rizin_import: USER32.dll::GetKeyboardLayoutNameW
+  - rizin_import: USER32.dll::GetMessageW
+  - rizin_import: USER32.dll::GetShellWindow
+  - rizin_import: USER32.dll::GetTopWindow
+  - rizin_import: USER32.dll::IsHungAppWindow
+  - rizin_import: USER32.dll::PostThreadMessageA
+  - rizin_import: USER32.dll::PrivateExtractIconsW
+  - rizin_import: USER32.dll::SendMessageA
+  - rizin_import: USER32.dll::ToUnicode
+  - rizin_import: USER32.dll::VkKeyScanExW
+  - rizin_import: ole32.dll::CoAllowSetForegroundWindow
+  - rizin_import: ole32.dll::CoDisconnectObject
+  - rizin_import: ole32.dll::CoUnmarshalInterface
+  - rizin_import: ole32.dll::IIDFromString
+  - rizin_import: ole32.dll::OleSetContainedObject
+  - rizin_import: ole32.dll::StgOpenStorageEx
+  - rizin_import: ole32.dll::StringFromGUID2
 
 source-path-cluster-ui_branding_ntp_smartbox
 - kind: source_path_cluster

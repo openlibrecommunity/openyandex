@@ -28,7 +28,20 @@ FAMILY_RULES = [
     ("gost_crypto_security", ["gost", "cryptopro", "cades", "ocsp", "crl", "certificate", "ssl", "tls"]),
     ("widgets_flutter_bubbles", ["widgets/", "_bubble.so", "flutter", "dart"]),
     ("updater_service_onboarding", ["service_update", "update", "updater", "background-update", "broupdater"]),
+    ("updater_service_onboarding", ["createservice", "deleteservice", "controlservice", "startservice", "queryservice", "registerservicectrl", "wtsqueryusertoken", "createprocessasuser"]),
+    ("updater_service_onboarding", ["changeserviceconfig", "setservicestatus", "winhttp", "wininet", "internetopen", "internetreadfile", "internetsetoption", "internetsetstatuscallback", "httpqueryinfo", "createsymboliclink", "getcompressedfilesize", "setfileattributes", "pathcch", "getinstalldetails", "wnetgetuniversalname", "sfcisfileprotected"]),
     ("textclassifier_ocr_cv", ["textclassifier", "opencv", "ocr", "cv::"]),
+    ("passport_yandex_id_account", ["credread", "credwrite", "creddelete", "credential", "uuid", "rpcrt4"]),
+    ("passport_yandex_id_account", ["credfree", "internetsetcookie"]),
+    ("telemetry_metrics_abt", ["crashpad", "crash", "dumpprocess", "setuploadconsent", "eventlog", "pdh", "rtmonitoring"]),
+    ("telemetry_metrics_abt", ["getsystemtimes", "queryunbiasedinterrupttime", "k32getmodulefilename", "k32getprocessimagefilename", "isprocessinjob", "getexitcodethread", "setprocessaffinitymask", "powerdetermineplatformrole", "powergetactivescheme", "powerreadacvalue", "powerreaddcvalue"]),
+    ("gost_crypto_security", ["crypt", "cert", "bcrypt", "ncrypt", "systemfunction036", "wintrust"]),
+    ("ui_branding_ntp_smartbox", ["user32", "gdi32", "shell32", "oleacc", "privateextracticons", "shgetimagelist", "accessibleobject"]),
+    ("ui_branding_ntp_smartbox", ["enumdateformats", "enumresourcelanguages", "findresource", "getthreadlocale", "propvariantto", "pathisrelative", "urlescape", "coallowsetforegroundwindow", "codisconnectobject", "counmarshalinterface", "iidfromstring", "olesetcontainedobject", "stgopenstorage", "stringfromguid"]),
+    ("media_video_engine", ["mf.dll", "mfplat", "mfreadwrite", "d3d9", "dxva2", "direct3d"]),
+    ("enterprise_policy_and_prefs", ["regopenkey", "regenumvalue", "regrenamekey", "ntopenkey", "ntqueryvaluekey", "securitydescriptor"]),
+    ("device_posture_browser_enforcement", ["wellknownsid", "lookupaccountsid", "duplicatetoken", "netuserenum", "cm_get_device_interface", "if_nametoindex", "gethostname"]),
+    ("crash_wer_internals", ["dumphungprocess", "injectdump", "extensionpointdisable", "thirdpartyinitialized"]),
 ]
 
 

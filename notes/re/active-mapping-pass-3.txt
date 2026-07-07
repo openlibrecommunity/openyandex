@@ -1,0 +1,77 @@
+Active Mapping Pass 3
+
+Date: 2026-07-07
+
+Scope
+- Continued autonomous active mapping.
+- Added targeted Ghidra xref exporters.
+- Rebucketing reduced unknown Yandex-only imports.
+- Ran targeted xref exports against Yandex browser.dll.
+
+New scripts
+- .workflows/active-stage/ghidra/scripts/ExportTargetedXrefs.java
+- .workflows/active-stage/ghidra/scripts/ExportTargetedStringXrefs.java
+- .workflows/tools/build-xref-promotion-v1.py
+
+Generated outputs
+- .workflows/active-stage/exports/yandex_browser_dll.targeted-xrefs.jsonl
+- .workflows/active-stage/exports/yandex_browser_dll.targeted-string-xrefs.jsonl
+- .workflows/metadata/xref-promotion-v1.jsonl
+- .workflows/active-stage/xref-promotion-v1.txt
+
+Rebucketing result
+- Unknown Yandex-only imports reduced from 95 to 20.
+- New import bucket distribution:
+  - ai_alice_speechkit_yagpt: 220
+  - updater_service_onboarding: 38
+  - ui_branding_ntp_smartbox: 36
+  - gost_crypto_security: 25
+  - telemetry_metrics_abt: 24
+  - device_posture_browser_enforcement: 9
+  - passport_yandex_id_account: 7
+  - enterprise_policy_and_prefs: 7
+  - media_video_engine: 5
+  - crash_wer_internals: 4
+  - dlp_clipboard_drag_download_watermark: 1
+  - unknown: 20
+
+Subagent review decisions
+- GOST:
+  - source-path-cluster-gost_crypto_security should become mapped_keep_candidate_requires_xref because net/cert/cert_verify_proc_tlsgost.cc is real evidence.
+  - rizin-imports-gost_crypto_security should stay defer_requires_xref because CryptoAPI imports are generic unless tied to GOST OIDs/providers.
+- UI/NTP/smartbox:
+  - source-path-cluster-ui_branding_ntp_smartbox is promotable but split-required.
+  - subclusters: NTP web app, NTP smartbox web component, native smartbox/titlebar, branding/Yandex ID assets, Yandex Views helpers, toolbar/frame/bubbles, settings/search.
+  - rizin UI import bucket requires xrefs.
+- Updater:
+  - rizin-imports-updater_service_onboarding should become mapped_keep_candidate_requires_xref.
+  - source-path cluster must be split into visible update/onboarding, browser-to-service bridge, service internals, component updater.
+- Textclassifier:
+  - current source-path chunk is misassigned Zoho launcher image evidence.
+  - textclassifier.dll itself is real OCR/CV evidence, but family status should be needs_caller_proof until browser.dll loader/caller is found.
+
+Targeted Ghidra xref result
+- yandex_browser_dll.targeted-xrefs.jsonl rows: 140.
+- target_symbol_hit: 65.
+- target_xref: 75.
+- Hits were strong for imported symbols and Flutter exports:
+  - YSKVoiceDialogSettings*: 41 rows.
+  - YSKPhraseSpotterSettings*: 21 rows.
+  - YSKRecognizerSettings*: 15 rows.
+  - YSK_setApiKey / YSK_setUUID / YSK_setPlatformInfo: 5 rows each.
+  - FlutterEngineRun: 18 rows.
+  - FlutterEngineSendPlatformMessage: 9 rows.
+  - FlutterEngineCreateAOTData: 4 rows.
+- Ghidra returned DATA refs to import table entries, not caller-level code refs for CSPEECHKIT imports.
+- String xref export returned zero rows because the target strings are not defined as Ghidra Data strings in the partial project.
+
+Promotion impact
+- AI/SpeechKit and Flutter/widgets remain mapped_keep_candidate with stronger import/export anchor evidence.
+- They are not yet promoted to final mapped_keep because caller-level xrefs are still missing.
+- Network chunks still rely on static string offsets/source metadata; Ghidra string xrefs did not recover data references in this partial project.
+
+Next technical action
+1. Add raw-offset based xref recovery for known browser.dll string offsets using Ghidra addresses or rizin seek/xrefs.
+2. For CSPEECHKIT imports, recover delay-load thunk callers instead of import table DATA refs.
+3. For Flutter exports, inspect callers of exported functions and large functions around FlutterEngineRun/CreateAOTData.
+4. Split UI/updater/GOST/textclassifier chunks according to subagent recommendations.

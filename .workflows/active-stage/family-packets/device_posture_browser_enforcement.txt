@@ -1,6 +1,21 @@
 Family Packet: device_posture_browser_enforcement
 
-Diff chunks: 1
+Diff chunks: 2
+
+rizin-imports-device_posture_browser_enforcement
+- kind: yandex_only_imports
+- title: Yandex-only imports: device_posture_browser_enforcement
+- status: assigned
+- evidence count: 9
+  - rizin_import: ADVAPI32.dll::CreateWellKnownSid
+  - rizin_import: ADVAPI32.dll::DuplicateToken
+  - rizin_import: ADVAPI32.dll::IsWellKnownSid
+  - rizin_import: ADVAPI32.dll::LookupAccountSidW
+  - rizin_import: CFGMGR32.dll::CM_Get_Device_Interface_ListW
+  - rizin_import: CFGMGR32.dll::CM_Get_Device_Interface_List_SizeW
+  - rizin_import: IPHLPAPI.DLL::if_nametoindex
+  - rizin_import: NETAPI32.dll::NetUserEnum
+  - rizin_import: WS2_32.dll::GetHostNameW
 
 source-path-cluster-device_posture_browser_enforcement
 - kind: source_path_cluster

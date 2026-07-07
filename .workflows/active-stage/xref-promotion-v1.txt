@@ -1,0 +1,26 @@
+Xref Promotion v1
+
+browser-seed-yandex-common-drag-and-drop-js | mapped_keep_candidate_xref_seen | symbols=2 | xrefs=1
+- addclipboardformatlistener: symbols=2 xrefs=1 top=[]
+rizin-imports-ai_alice_speechkit_yagpt | mapped_keep_xref_backed_candidate | symbols=54 | xrefs=43
+- yskphrasespottersettings: symbols=12 xrefs=9 top=[('FUN_17042cc0', 1), ('FUN_17042cf0', 1), ('FUN_17042d30', 1)]
+- yskrecognition_getbestresulttext: symbols=3 xrefs=2 top=[('FUN_17042620', 1)]
+- yskrecognizersettings: symbols=9 xrefs=6 top=[]
+- yskvoicedialogsettings: symbols=21 xrefs=20 top=[('FUN_17042cf0', 1), ('FUN_17042d30', 1), ('FUN_17042cc0', 1), ('FUN_17042c80', 1), ('FUN_17042ca0', 1)]
+- ysk_setapikey: symbols=3 xrefs=2 top=[]
+- ysk_setplatforminfo: symbols=3 xrefs=2 top=[]
+- ysk_setuuid: symbols=3 xrefs=2 top=[]
+rizin-yandex-only-exports | mapped_keep_xref_backed_candidate | symbols=9 | xrefs=31
+- flutterenginecreateaotdata: symbols=1 xrefs=3 top=[]
+- flutterenginerun: symbols=4 xrefs=14 top=[('FlutterEngineRun', 1), ('FUN_17a63a00', 1)]
+- flutterengineinitialize: symbols=1 xrefs=4 top=[('FlutterEngineRun', 1)]
+- flutterengineshutdown: symbols=1 xrefs=3 top=[]
+- flutterenginesendplatformmessage: symbols=2 xrefs=7 top=[('FlutterEngineSendKeyEvent', 1)]
+source-path-cluster-dlp_clipboard_drag_download_watermark | mapped_keep_candidate_xref_seen | symbols=2 | xrefs=1
+- addclipboardformatlistener: symbols=2 xrefs=1 top=[]
+source-path-cluster-widgets_flutter_bubbles | mapped_keep_xref_backed_candidate | symbols=9 | xrefs=31
+- flutterenginecreateaotdata: symbols=1 xrefs=3 top=[]
+- flutterenginerun: symbols=4 xrefs=14 top=[('FlutterEngineRun', 1), ('FUN_17a63a00', 1)]
+- flutterengineinitialize: symbols=1 xrefs=4 top=[('FlutterEngineRun', 1)]
+- flutterengineshutdown: symbols=1 xrefs=3 top=[]
+- flutterenginesendplatformmessage: symbols=2 xrefs=7 top=[('FlutterEngineSendKeyEvent', 1)]

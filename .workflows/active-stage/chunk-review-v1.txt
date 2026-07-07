@@ -1,0 +1,72 @@
+Chunk Review v1
+
+- assigned_needs_review: 14
+- mapped_keep_candidate: 13
+- mapped_keep_candidate_alias: 3
+- mapped_keep_candidate_requires_xref: 1
+- needs_manual_assignment: 1
+
+rizin-imports-updater_service_onboarding | updater_service_onboarding | assigned_needs_review | medium | evidence=38
+- No promotion decision yet.
+rizin-imports-telemetry_metrics_abt | telemetry_metrics_abt | mapped_keep_candidate_requires_xref | medium | evidence=24
+- Crashpad metrics export thunk; needs caller xref.
+rizin-imports-device_posture_browser_enforcement | device_posture_browser_enforcement | assigned_needs_review | medium | evidence=9
+- No promotion decision yet.
+rizin-imports-passport_yandex_id_account | passport_yandex_id_account | assigned_needs_review | medium | evidence=7
+- No promotion decision yet.
+rizin-imports-gost_crypto_security | gost_crypto_security | assigned_needs_review | medium | evidence=25
+- No promotion decision yet.
+rizin-imports-enterprise_policy_and_prefs | enterprise_policy_and_prefs | assigned_needs_review | medium | evidence=7
+- No promotion decision yet.
+rizin-imports-ui_branding_ntp_smartbox | ui_branding_ntp_smartbox | assigned_needs_review | medium | evidence=36
+- No promotion decision yet.
+rizin-imports-dlp_clipboard_drag_download_watermark | dlp_clipboard_drag_download_watermark | assigned_needs_review | medium | evidence=1
+- No promotion decision yet.
+rizin-imports-unknown | unknown | needs_manual_assignment | medium | evidence=20
+- No promotion decision yet.
+rizin-imports-media_video_engine | media_video_engine | assigned_needs_review | medium | evidence=5
+- No promotion decision yet.
+rizin-imports-crash_wer_internals | crash_wer_internals | assigned_needs_review | medium | evidence=4
+- No promotion decision yet.
+rizin-imports-ai_alice_speechkit_yagpt | ai_alice_speechkit_yagpt | mapped_keep_candidate | high | evidence=220
+- Direct Yandex browser.dll imports from cspeechkit.dll and Dart runtime; confirmed by Ghidra/rizin and source-path cluster.
+rizin-yandex-only-exports | widgets_flutter_bubbles | mapped_keep_candidate | high | evidence=86
+- Yandex browser.dll exports full FlutterEngine embedder surface absent from Chrome baseline.
+browser-seed-network-mojom-networkservice-setyandexcustomheader | network_yandex_headers | mapped_keep_candidate | high | evidence=1
+- Direct browser.dll NetworkService mojom method string with policy evidence.
+browser-seed-network-mojom-networkservice-setyandexnoreferersettingallowlist | network_yandex_headers | mapped_keep_candidate | high | evidence=1
+- Direct browser.dll NetworkService mojom method string for no-referer allowlist with ADMX policy evidence.
+browser-seed-network-mojom-networkservice-setyandexextcorpbrowserheader | network_yandex_headers | mapped_keep_candidate | high | evidence=1
+- Direct browser.dll NetworkService mojom method string for enterprise header with ADMX policy evidence.
+browser-seed-yandexcustomheader | network_yandex_headers | mapped_keep_candidate_alias | high | evidence=1
+- Policy/plumbing alias of SetYandexCustomHeader.
+browser-seed-yandexnoreferersettingallowlist | network_yandex_headers | mapped_keep_candidate_alias | high | evidence=1
+- Policy/plumbing alias of SetYandexNoRefererSettingAllowlist.
+browser-seed-yandexextcorpbrowserheader | network_yandex_headers | mapped_keep_candidate_alias | high | evidence=1
+- Policy/plumbing alias of SetYandexExtCorpBrowserHeader.
+browser-seed-yandex-common-drag-and-drop-js | dlp_clipboard_drag_download_watermark | mapped_keep_candidate | high | evidence=1
+- Direct Yandex drag/drop JS source-path anchor for DLP.
+source-path-cluster-telemetry_metrics_abt | telemetry_metrics_abt | mapped_keep_candidate | medium-high | evidence=46
+- ABT/metrics/variations source-path cluster, dedicated abt-bindings evidence.
+source-path-cluster-dlp_clipboard_drag_download_watermark | dlp_clipboard_drag_download_watermark | mapped_keep_candidate | medium | evidence=13
+- DLP source-path cluster; requires pruning but contains drag/drop and enterprise DLP anchors.
+source-path-cluster-ui_branding_ntp_smartbox | ui_branding_ntp_smartbox | assigned_needs_review | medium | evidence=300
+- No promotion decision yet.
+source-path-cluster-gost_crypto_security | gost_crypto_security | assigned_needs_review | medium | evidence=300
+- No promotion decision yet.
+source-path-cluster-passport_yandex_id_account | passport_yandex_id_account | mapped_keep_candidate | high | evidence=35
+- Passport OAuth2 token service delegate and Yandex signin/sync/account source paths.
+source-path-cluster-enterprise_policy_and_prefs | enterprise_policy_and_prefs | mapped_keep_candidate | high | evidence=72
+- Policy infrastructure and Yandex corporate policy/prefs source-path cluster; foundational for other families.
+source-path-cluster-updater_service_onboarding | updater_service_onboarding | assigned_needs_review | medium | evidence=41
+- No promotion decision yet.
+source-path-cluster-widgets_flutter_bubbles | widgets_flutter_bubbles | mapped_keep_candidate | medium-high | evidence=224
+- Flutter embedder/runtime/source paths in browser.dll plus widget ELF AOT snapshots.
+source-path-cluster-ai_alice_speechkit_yagpt | ai_alice_speechkit_yagpt | mapped_keep_candidate | medium-high | evidence=36
+- Strong C++ source-path subset for SpeechKit, neuro question, neuroedit, speech recognition, and Alice renderer/UI surfaces.
+source-path-cluster-device_posture_browser_enforcement | device_posture_browser_enforcement | mapped_keep_candidate | high | evidence=5
+- Clean source-path cluster for Yandex corporate device posture and browser enforcement services/state.
+source-path-cluster-media_video_engine | media_video_engine | assigned_needs_review | medium | evidence=14
+- No promotion decision yet.
+source-path-cluster-textclassifier_ocr_cv | textclassifier_ocr_cv | assigned_needs_review | medium | evidence=6
+- No promotion decision yet.

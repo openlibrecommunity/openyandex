@@ -1,12 +1,25 @@
 Family Packet: enterprise_policy_and_prefs
 
-Diff chunks: 1
+Diff chunks: 2
+
+rizin-imports-enterprise_policy_and_prefs
+- kind: yandex_only_imports
+- title: Yandex-only imports: enterprise_policy_and_prefs
+- status: assigned
+- evidence count: 7
+  - rizin_import: ADVAPI32.dll::RegEnumValueA
+  - rizin_import: ADVAPI32.dll::RegOpenKeyW
+  - rizin_import: ADVAPI32.dll::RegRenameKey
+  - rizin_import: ADVAPI32.dll::SetSecurityDescriptorControl
+  - rizin_import: ADVAPI32.dll::SetSecurityDescriptorOwner
+  - rizin_import: ntdll.dll::NtOpenKeyEx
+  - rizin_import: ntdll.dll::NtQueryValueKey
 
 source-path-cluster-enterprise_policy_and_prefs
 - kind: source_path_cluster
 - title: Source path cluster: enterprise_policy_and_prefs
 - status: assigned
-- evidence count: 73
+- evidence count: 72
   - source_path: components/policy/core/browser/configuration_policy_handler_list.cc | offset=199827853, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: components/policy/core/browser/configuration_policy_pref_store.cc | offset=199828016, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: components/policy/core/browser/policy_conversions_client.cc | offset=199828656, artifact=Browser-bin/25.6.0.2372/browser.dll
@@ -79,7 +92,6 @@ source-path-cluster-enterprise_policy_and_prefs
   - source_path: chrome/browser/yandex/prefetch/list_downloader.cc | offset=215027080, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: chrome/browser/enterprise/yandex/dlp_connectors_policy_handler.cc | offset=215035537, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: chrome/browser/ui/views/policy/enterprise_startup_dialog_view.h | offset=215036638, artifact=Browser-bin/25.6.0.2372/browser.dll
-  - source_path: crypto/ct/ct_policy.c | offset=8275636, artifact=Browser-bin/25.6.0.2372/cspeechkit.dll
 
 Next actions
 - Validate each chunk with targeted Ghidra xrefs where needed.

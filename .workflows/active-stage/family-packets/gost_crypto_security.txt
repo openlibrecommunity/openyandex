@@ -6,24 +6,45 @@ rizin-imports-gost_crypto_security
 - kind: yandex_only_imports
 - title: Yandex-only imports: gost_crypto_security
 - status: assigned
-- evidence count: 8
+- evidence count: 25
+  - rizin_import: ADVAPI32.dll::CryptAcquireContextA
+  - rizin_import: ADVAPI32.dll::CryptDestroyKey
+  - rizin_import: ADVAPI32.dll::CryptEnumProvidersA
+  - rizin_import: ADVAPI32.dll::CryptHashData
+  - rizin_import: ADVAPI32.dll::CryptVerifySignatureW
+  - rizin_import: ADVAPI32.dll::SystemFunction036
   - rizin_import: CRYPT32.dll::CertCreateCertificateContext
   - rizin_import: CRYPT32.dll::CertDuplicateCertificateChain
   - rizin_import: CRYPT32.dll::CertDuplicateCertificateContext
+  - rizin_import: CRYPT32.dll::CertFindExtension
   - rizin_import: CRYPT32.dll::CertFreeCertificateChain
   - rizin_import: CRYPT32.dll::CertGetCertificateChain
   - rizin_import: CRYPT32.dll::CertGetIssuerCertificateFromStore
+  - rizin_import: CRYPT32.dll::CertOpenSystemStoreA
   - rizin_import: CRYPT32.dll::CertSetCertificateContextProperty
   - rizin_import: CRYPT32.dll::CertVerifyCertificateChainPolicy
+  - rizin_import: CRYPT32.dll::CryptDecodeObject
+  - rizin_import: CRYPT32.dll::CryptDecodeObjectEx
+  - rizin_import: CRYPT32.dll::CryptImportPublicKeyInfo
+  - rizin_import: CRYPT32.dll::CryptInstallOIDFunctionAddress
+  - rizin_import: CRYPT32.dll::CryptMemFree
+  - rizin_import: CRYPT32.dll::CryptMsgControl
+  - rizin_import: CRYPT32.dll::CryptMsgGetAndVerifySigner
+  - rizin_import: CRYPT32.dll::CryptMsgOpenToDecode
+  - rizin_import: bcrypt.dll::BCryptGenRandom
 
 source-path-cluster-gost_crypto_security
 - kind: source_path_cluster
 - title: Source path cluster: gost_crypto_security
 - status: assigned
-- evidence count: 214
+- evidence count: 300
   - source_path: third_party/webrtc/rtc_base/openssl_digest.cc | offset=198710266, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/webrtc/pc/dtls_srtp_transport.cc | offset=198775714, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/webrtc/pc/dtls_transport.cc | offset=198780304, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: services/cert_verifier/cert_verifier_creation.cc | offset=199640472, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/openscreen/src/util/crypto/random_bytes.cc | offset=201946709, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/password_manager/core/browser/passman/encryptor/passman_encryptor_impl.cc | offset=202126589, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/openscreen/src/cast/streaming/impl/frame_crypto.cc | offset=202267690, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: components/enterprise/client_certificates/core/certificate_provisioning_service.cc | offset=202810192, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/boringssl/src/ssl/tls_method.cc | offset=205980956, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/boringssl/src/ssl/ssl_x509.cc | offset=205981080, artifact=Browser-bin/25.6.0.2372/browser.dll
@@ -97,10 +118,6 @@ source-path-cluster-gost_crypto_security
   - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/p256.cc.inc | offset=206002190, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/boringssl/src/crypto/fipsmodule/rsa/blinding.cc.inc | offset=206004880, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: net/cert/cert_verify_proc_tlsgost.cc | offset=206617198, artifact=Browser-bin/25.6.0.2372/browser.dll
-  - source_path: net/crl/d-trust_root_class_3_ca_2_2009.c | offset=206639249, artifact=Browser-bin/25.6.0.2372/browser.dll
-  - source_path: net/crl/d-trust_root_class_3_ca_2_ev_2009.c | offset=206640341, artifact=Browser-bin/25.6.0.2372/browser.dll
-  - source_path: net/AAACertificateServices.c | offset=206714354, artifact=Browser-bin/25.6.0.2372/browser.dll
-  - source_path: net/crl/d-trust_br_root_ca_1_2020.c | offset=206736620, artifact=Browser-bin/25.6.0.2372/browser.dll
 
 Next actions
 - Validate each chunk with targeted Ghidra xrefs where needed.

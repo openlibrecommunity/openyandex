@@ -6,14 +6,37 @@ rizin-imports-telemetry_metrics_abt
 - kind: yandex_only_imports
 - title: Yandex-only imports: telemetry_metrics_abt
 - status: assigned
-- evidence count: 1
+- evidence count: 24
+  - rizin_import: ADVAPI32.dll::CloseEventLog
+  - rizin_import: ADVAPI32.dll::OpenEventLogW
+  - rizin_import: ADVAPI32.dll::ReadEventLogW
+  - rizin_import: KERNEL32.dll::GetExitCodeThread
+  - rizin_import: KERNEL32.dll::GetSystemTimes
+  - rizin_import: KERNEL32.dll::IsProcessInJob
+  - rizin_import: KERNEL32.dll::K32GetModuleFileNameExA
+  - rizin_import: KERNEL32.dll::K32GetProcessImageFileNameW
+  - rizin_import: KERNEL32.dll::QueryUnbiasedInterruptTime
+  - rizin_import: KERNEL32.dll::SetProcessAffinityMask
+  - rizin_import: POWRPROF.dll::PowerDeterminePlatformRoleEx
+  - rizin_import: POWRPROF.dll::PowerGetActiveScheme
+  - rizin_import: POWRPROF.dll::PowerReadACValue
+  - rizin_import: POWRPROF.dll::PowerReadDCValue
   - rizin_import: browser_elf.dll::CanWriteCrashpadMetrics_ExportThunk
+  - rizin_import: browser_elf.dll::CrashForException_ExportThunk
+  - rizin_import: browser_elf.dll::DumpProcessWithoutCrash
+  - rizin_import: browser_elf.dll::GetCrashpadDatabasePath_ExportThunk
+  - rizin_import: browser_elf.dll::IsRTMonitoringEnabled_ExportThunk
+  - rizin_import: browser_elf.dll::SetCrashUploadLimitPerHour_ExportThunk
+  - rizin_import: browser_elf.dll::SetRTMonitoringEnabled_ExportThunk
+  - rizin_import: browser_elf.dll::SetUploadConsent_ExportThunk
+  - rizin_import: pdh.dll::PdhAddCounterW
+  - rizin_import: pdh.dll::PdhLookupPerfNameByIndexW
 
 source-path-cluster-telemetry_metrics_abt
 - kind: source_path_cluster
 - title: Source path cluster: telemetry_metrics_abt
 - status: assigned
-- evidence count: 44
+- evidence count: 46
   - source_path: base/metrics/statistics_recorder.cc | offset=3031729, artifact=Browser-bin/browser.exe
   - source_path: base/metrics/statistics_recorder.cc | offset=966873, artifact=Browser-bin/browser_proxy.exe
   - source_path: base/metrics/statistics_recorder.cc | offset=947541, artifact=Browser-bin/25.6.0.2372/brodef.dll
@@ -29,6 +52,8 @@ source-path-cluster-telemetry_metrics_abt
   - source_path: net/content/get/experiments/browser.proto | offset=206879733, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: third_party/webrtc/rtc_base/experiments/field_trial_parser.cc | offset=207055920, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: components/variations/service/variations_service.cc | offset=207705629, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/connectors/reporting/crash_reporting_context.cc | offset=209706120, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/cycle_crash_detector/profile_cycle_crash_detector.cc | offset=209809025, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: components/variations/abt_testid.cc | offset=209809841, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: chrome/browser/metrics/abt_helper.cc | offset=209811769, artifact=Browser-bin/25.6.0.2372/browser.dll
   - source_path: chrome/browser/yandex/abt/abt_service.cc | offset=209842860, artifact=Browser-bin/25.6.0.2372/browser.dll
