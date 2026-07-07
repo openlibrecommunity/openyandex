@@ -1,0 +1,36 @@
+Baseline Binary Blocker
+
+Date: 2026-07-06
+
+Observed local state
+- Chromium source snapshot exists:
+  - chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
+- No local Chromium/Chrome Windows baseline PE was found by workspace search.
+- No local BinDiff/Diaphora CLI was found.
+- Ghidra headless is available.
+- radare2/rizin are available.
+
+Why this blocks exhaustive BinDiff
+- Yandex browser.dll can only be exhaustively diffed against a comparable Chromium/Chrome binary.
+- Source-only Chromium is useful for implementation planning but not enough for function-level binary diff.
+- Without a comparable baseline binary, we can map evidence families but cannot prove every changed function.
+
+Required acquisition/build task
+1. Build or acquire Chromium/Chrome Windows x86 binary from commit 465616851cd99c308e1ce42d0fd818c04c094830 or closest official 136.0.7103.156.
+2. Preserve build metadata:
+   - commit/version
+   - target_cpu
+   - is_component_build
+   - symbol level
+   - GN args
+   - compiler/linker version if known
+3. Store under ignored artifacts path, for example:
+   - artifacts/binaries/chromium-baseline-136.0.7103.156-win-x86/
+4. Generate static metadata and Ghidra project.
+5. Generate function diff against Yandex browser.dll.
+
+Immediate fallback until baseline exists
+- Continue metadata-based family mapping.
+- Continue targeted Ghidra/xref work on Yandex binaries.
+- Continue resource/config inventory.
+- Do not claim exhaustive function coverage.

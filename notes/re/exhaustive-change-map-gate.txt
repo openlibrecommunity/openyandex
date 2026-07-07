@@ -1,0 +1,57 @@
+Exhaustive Change Map Gate
+
+Date: 2026-07-06
+
+Purpose
+- Prevent false completion claims.
+- The project must not claim that every Yandex change is known until a baseline binary diff exists and every family/chunk is assigned a terminal status.
+
+Hard requirement
+- Exhaustive means every observed binary/resource/source/policy delta is either:
+  - mapped_keep
+  - mapped_drop
+  - mapped_defer
+  - duplicate_of_existing_family
+  - not_yandex_delta_after_bindiff
+  - blocked_with_reason
+
+Current blocker
+- Matching Chromium source snapshot exists locally:
+  - chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
+- Matching Chromium Windows baseline binary is not present locally.
+- BinDiff/Diaphora CLI tooling is not present locally.
+- Therefore a true function-level exhaustive BinDiff over browser.dll cannot be completed yet.
+
+What is complete now
+- Metadata-driven patch-map families are seeded.
+- P0/P1 family evidence has been collected through metadata/source-path/string/policy/triage/Ghidra facts.
+- Drop/defer families have explicit promotion conditions.
+
+What is not complete now
+- Every changed function in browser.dll is not mapped.
+- Every Yandex-added function is not mapped.
+- Every modified Chromium function is not mapped.
+- Every resource/config delta is not mapped to source-level implementation.
+- Every policy is not mapped to handler/pref/enforcement code.
+
+Completion gate
+1. Acquire or build matching Chromium Windows baseline binaries.
+2. Generate Ghidra/BinExport/BinDiff or equivalent function-level diff for browser.dll versus baseline.
+3. Export unmatched/low-similarity functions, string xrefs, source-path xrefs, and callgraph neighborhoods.
+4. Assign every diff chunk to a patch-map family or create a new family.
+5. Mark each chunk keep/drop/defer/duplicate/not_yandex_delta/blocked.
+6. Only then can the project claim “all changes have been documented”.
+
+Baseline binary candidates
+- Preferred: Chromium/Chrome build from commit 465616851cd99c308e1ce42d0fd818c04c094830, Windows x86 if Yandex payload is x86.
+- Acceptable temporary baseline: nearest official Chrome/Chromium 136.0.7103.156 Windows x86 build, with explicit caveat about build config drift.
+- Not acceptable for final exhaustive claim: source tree only, metadata-only mapping, or comparing to unrelated Chrome version.
+
+Tooling candidates
+- BinDiff with BinExport from Ghidra/IDA.
+- Diaphora/IDA if BinDiff unavailable.
+- Ghidra BSim or custom normalized function hash/callgraph export as fallback, explicitly marked non-BinDiff.
+
+Rule for subagents
+- Subagent reports can promote a family from seed to metadata_mapped.
+- Subagent reports cannot mark exhaustive_complete without function-level diff coverage.

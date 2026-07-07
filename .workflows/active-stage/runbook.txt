@@ -36,6 +36,7 @@ Preparation Commands
 
 BinDiff-first Patch Map Workflow
 - First objective is a complete change map, not implementation.
+- Current exhaustive status: blocked, because matching Chromium Windows baseline binary and BinDiff/Diaphora CLI are not present locally.
 - Use BinDiff/Ghidra/rizin/source-path/string/resource evidence to identify everything Yandex changed.
 - Split evidence into patch-map families.
 - Triage each family:
@@ -45,6 +46,7 @@ BinDiff-first Patch Map Workflow
   - unknown: needs more evidence.
 - Assign subagents by logical family from .workflows/active-stage/subagent-backlog.txt.
 - Implementation starts only after a family is mapped enough to name Chromium touch points.
+- Do not claim “all changes are documented” until .workflows/active-stage/exhaustive-change-coverage.txt has no blocked rows and every BinDiff chunk is assigned.
 
 User-visible Keep Scope
 - UI, UX, branding, NTP, smartbox, settings, toolbar, menus, bubbles, widgets.
@@ -155,10 +157,12 @@ Current Machine Indexes
 - .workflows/metadata/active-pdb-probes.jsonl
 - .workflows/metadata/browser-dll-seed-pack.jsonl
 - .workflows/metadata/patch-map-v1.jsonl
+- .workflows/metadata/exhaustive-change-coverage.jsonl
 - .workflows/active-stage/active-ready-index.json
 - .workflows/active-stage/active-ready-index.txt
 - .workflows/active-stage/patch-map-v1.txt
 - .workflows/active-stage/subagent-backlog.txt
+- .workflows/active-stage/exhaustive-change-coverage.txt
 
 Dynamic Gate
 - If any unpacking/debugging requires executing PE code, stop.

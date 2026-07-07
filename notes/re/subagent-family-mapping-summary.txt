@@ -1,0 +1,75 @@
+Subagent Family Mapping Summary
+
+Date: 2026-07-06
+
+Scope
+- Metadata-based family mapping was run for all patch-map v1 families.
+- This is not exhaustive BinDiff coverage.
+- Subagent results can promote families to metadata_mapped but cannot close exhaustive coverage.
+
+Mapped families
+- network_yandex_headers
+  - Direct browser.dll strings exist for NetworkService SetYandexCustomHeader, SetYandexNoRefererSettingAllowlist, SetYandexExtCorpBrowserHeader.
+  - Strong policy evidence exists for YandexCustomHeader, YandexCustomHeaderExt, YandexNoReferer*, YandexExtCorpBrowserHeader.
+  - Needs BinDiff/xrefs for mojom ordinals, policy-to-network propagation, and request mutation code.
+- enterprise_policy_and_prefs
+  - 428 ADMX policies, 98 Yandex-only, 77 not in exact Chromium ADMX.
+  - 175 non-upstream triage rows.
+  - Needs policy-to-pref/handler mapping and xrefs for high-priority policies.
+- telemetry_metrics_abt
+  - abt-bindings.dll exists with PDB identity and ABT source-path anchors in browser.dll.
+  - browser.dll has chrome/browser/metrics/abt_helper.cc and chrome/browser/yandex/abt/abt_service.cc paths.
+  - Needs active triage for abt-bindings.dll and browser.dll ABT xrefs.
+- gost_crypto_security
+  - Scope is confirmed, but implementation evidence is weak.
+  - CryptoPro browser-switch UI clue exists, cert/TLS policies exist, but no strong GOST implementation mapping yet.
+  - Needs targeted browser.dll string/xref and BinDiff over net/cert/net/ssl/crypto.
+- ui_branding_ntp_smartbox
+  - Strong source-path/resource evidence under chrome/browser/ui/views/yandex, ntp, ui_config, web_app_config, ntp_smartbox assets.
+  - Smartbox policies are present.
+  - Needs NTP cache decoding, ui_config/yprt decoding, and BinDiff over views/omnibox/search.
+- ai_alice_speechkit_yagpt
+  - Strong evidence: speechkit_action_lib.dll Ghidra project, cspeechkit YSK exports, SpeechKit/Alice/neuro source paths, neuro widgets.
+  - Needs speechkit_action_lib export decompile, cspeechkit API header recovery, browser integration xrefs.
+- privacy_antitracking_adblock
+  - Strong policy/resource/source-path evidence: YandexAntiTracking, YandexAdblock, anti_tracking_service.cc, subresource_filter_component_tag.cc, protect/adblock icons.
+  - Needs rule parser, policy-to-pref mapping, enforcement path, and subresource filter delta.
+- dlp_clipboard_drag_download_watermark
+  - Strong ADMX evidence for clipboard, copy/paste, drag/drop, download restrictions, watermark, upload/page-save.
+  - Source path yandex/common/drag_and_drop.js exists.
+  - Needs runtime enforcement xrefs and policy-to-pref/handler map.
+- device_posture_browser_enforcement
+  - Strong ADMX/source-path evidence for YandexDevicePosture, YandexDevicePostureRules, YandexBrowserEnforcement, X-Ybe-* headers.
+  - Source paths include device_posture_rules_manager and browser_enforcement_service/fetcher/state.
+  - Needs posture parser, enforcement headers, network integration xrefs.
+- passport_yandex_id_account
+  - Strong PassportO2TS/source-path/string evidence around yandex passport OAuth2 token service delegate.
+  - YandexDisableID and login-domain policies exist.
+  - Needs IdentityManager factory wiring, policy enforcement, NTP/account UI bridge.
+- widgets_flutter_bubbles
+  - 20 ELF widgets exist; first five triaged.
+  - browser.dll imports Dart runtime and has Flutter embedder source paths.
+  - Needs full widget corpus triage and loader/embedder mapping.
+- updater_service_onboarding
+  - service_update.exe triaged; command strings, service APIs, update policies exist.
+  - Needs visible updater/onboarding split and browser caller map.
+- textclassifier_ocr_cv
+  - textclassifier.dll has 2336 OpenCV-style exports and OCR path evidence.
+  - Needs export clustering and browser caller proof before keeping as active implementation work.
+- media_video_engine
+  - Deferred. Linux FFmpeg debug symbols exist, but no kept-feature link yet.
+- gpu_angle_swiftshader_runtime
+  - Dropped for now. Runtime/vendor bundle drift unless proven tied to kept feature.
+- crash_wer_internals
+  - Deferred. Keep only telemetry-visible crash reporting pieces if proven needed.
+
+Global blockers
+- No matching Chromium Windows baseline binary is present.
+- No BinDiff/Diaphora CLI is present.
+- Therefore no exhaustive function-level coverage can be claimed.
+
+Next required work
+1. Acquire/build matching Chromium Windows baseline binary.
+2. Configure BinDiff/Diaphora or equivalent function-level diff.
+3. Generate diff chunks for browser.dll and assign every chunk to patch-map family or terminal status.
+4. Continue subagent work by family, but mark it metadata_mapped until BinDiff coverage exists.
