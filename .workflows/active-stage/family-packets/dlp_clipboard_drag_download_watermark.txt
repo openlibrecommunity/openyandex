@@ -1,0 +1,41 @@
+Family Packet: dlp_clipboard_drag_download_watermark
+
+Diff chunks: 3
+
+rizin-imports-dlp_clipboard_drag_download_watermark
+- kind: yandex_only_imports
+- title: Yandex-only imports: dlp_clipboard_drag_download_watermark
+- status: assigned
+- evidence count: 1
+  - rizin_import: KERNEL32.dll::CopyFileExW
+
+browser-seed-yandex-common-drag-and-drop-js
+- kind: browser_seed
+- title: yandex/common/drag_and_drop.js
+- status: assigned
+- evidence count: 1
+  - source_path: yandex/common/drag_and_drop.js | offset=201598530
+
+source-path-cluster-dlp_clipboard_drag_download_watermark
+- kind: source_path_cluster
+- title: Source path cluster: dlp_clipboard_drag_download_watermark
+- status: assigned
+- evidence count: 13
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc | offset=3056758, artifact=Browser-bin/browser.exe
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream.cc | offset=3065990, artifact=Browser-bin/browser.exe
+  - source_path: third_party/skia/src/gpu/graphite/task/CopyTask.c | offset=197275106, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/dawn/src/dawn/native/CopyTextureForBrowserHelper.c | offset=199054465, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/common/drag_and_drop.js | offset=201598530, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/ink/src/ink/types/internal/copy_on_write.h | offset=203447590, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc | offset=205928840, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream.cc | offset=205929346, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/installer/yandex/util/copy_tree_work_item.cc | offset=211360871, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: storage/browser/file_system/copy_or_move_operation_delegate.cc | offset=211680811, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/modules/audio_coding/codecs/red/audio_encoder_copy_red.cc | offset=212163200, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc | offset=2997921, artifact=Browser-bin/25.6.0.2372/service_update.exe
+  - source_path: third_party/protobuf/src/google/protobuf/io/zero_copy_stream.cc | offset=3059396, artifact=Browser-bin/25.6.0.2372/service_update.exe
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

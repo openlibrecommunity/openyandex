@@ -1,0 +1,108 @@
+Family Packet: gost_crypto_security
+
+Diff chunks: 2
+
+rizin-imports-gost_crypto_security
+- kind: yandex_only_imports
+- title: Yandex-only imports: gost_crypto_security
+- status: assigned
+- evidence count: 8
+  - rizin_import: CRYPT32.dll::CertCreateCertificateContext
+  - rizin_import: CRYPT32.dll::CertDuplicateCertificateChain
+  - rizin_import: CRYPT32.dll::CertDuplicateCertificateContext
+  - rizin_import: CRYPT32.dll::CertFreeCertificateChain
+  - rizin_import: CRYPT32.dll::CertGetCertificateChain
+  - rizin_import: CRYPT32.dll::CertGetIssuerCertificateFromStore
+  - rizin_import: CRYPT32.dll::CertSetCertificateContextProperty
+  - rizin_import: CRYPT32.dll::CertVerifyCertificateChainPolicy
+
+source-path-cluster-gost_crypto_security
+- kind: source_path_cluster
+- title: Source path cluster: gost_crypto_security
+- status: assigned
+- evidence count: 214
+  - source_path: third_party/webrtc/rtc_base/openssl_digest.cc | offset=198710266, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/pc/dtls_srtp_transport.cc | offset=198775714, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/pc/dtls_transport.cc | offset=198780304, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/enterprise/client_certificates/core/certificate_provisioning_service.cc | offset=202810192, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/tls_method.cc | offset=205980956, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/ssl_x509.cc | offset=205981080, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/ssl_versions.cc | offset=205981416, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/ssl_privkey.cc | offset=205981776, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/internal.h | offset=205982512, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/ssl/ssl_lib.cc | offset=205983144, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x_x509.cc | offset=205983780, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x_pubkey.cc | offset=205983984, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x_all.cc | offset=205984152, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x509name.cc | offset=205984205, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x509_vfy.cc | offset=205984520, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x509_obj.cc | offset=205986885, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/x509_cmp.cc | offset=205986941, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/v3_lib.cc | offset=205987124, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/x509/v3_conf.cc | offset=205987178, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/trust_token/trust_token.cc | offset=205987416, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/stack/stack.cc | offset=205987482, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/rsa/rsa_crypt.cc | offset=205987536, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/rsa/rsa_asn1.cc | offset=205987592, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/pkcs8/pkcs8_x509.cc | offset=205987676, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/pem/pem_pkey.cc | offset=205987990, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/pem/pem_lib.cc | offset=205988076, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/mem.cc | offset=205988340, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/hpke/hpke.cc | offset=205988432, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/evp/scrypt.cc | offset=205988598, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/evp/p_rsa_asn1.cc | offset=205988651, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/evp/p_ec_asn1.cc | offset=205988800, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/evp/evp_asn1.cc | offset=205988948, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/evp/evp.cc | offset=205989024, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/ecdsa/ecdsa_asn1.cc | offset=205990712, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/digest/digest_extra.cc | offset=205991060, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/bytestring/cbb.cc | offset=205993800, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/bio/pair.cc | offset=205993909, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/bio/bio_mem.cc | offset=205994052, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/bio/bio.cc | offset=205994208, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/asn1/asn1_lib.cc | offset=205994956, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/asn1/a_time.cc | offset=205995076, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/asn1/a_int.cc | offset=205995133, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/asn1/a_bitstr.cc | offset=205995186, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/add.cc.inc | offset=205996008, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc | offset=205996072, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/ctx.cc.inc | offset=205996135, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/div.cc.inc | offset=205996199, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/exponentiation.cc.inc | offset=205996263, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/gcd.cc.inc | offset=205996338, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/gcd_extra.cc.inc | offset=205996402, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/jacobi.cc.inc | offset=205996504, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/montgomery.cc.inc | offset=205996571, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/mul.cc.inc | offset=205996642, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/random.cc.inc | offset=205996706, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/shift.cc.inc | offset=205996805, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/bn/sqrt.cc.inc | offset=205996871, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/cipher/aead.cc.inc | offset=205996936, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/cipher/cipher.cc.inc | offset=205997005, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/digest/digest.cc.inc | offset=205997076, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/digestsign/digestsign.cc.inc | offset=205997147, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/ec.cc.inc | offset=205997226, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/ec_key.cc.inc | offset=205997307, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/felem.cc.inc | offset=205997406, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/oct.cc.inc | offset=205997472, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/scalar.cc.inc | offset=205997536, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/simple.cc.inc | offset=205997603, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ecdsa/ecdsa.cc.inc | offset=205997670, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/hkdf/hkdf.cc.inc | offset=205997739, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/rsa/padding.cc.inc | offset=205997838, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/rsa/rsa.cc.inc | offset=205998112, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/rsa/rsa_impl.cc.inc | offset=205998177, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc | offset=206000576, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/ec_montgomery.cc.inc | offset=206002116, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/ec/p256.cc.inc | offset=206002190, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/boringssl/src/crypto/fipsmodule/rsa/blinding.cc.inc | offset=206004880, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/cert/cert_verify_proc_tlsgost.cc | offset=206617198, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/crl/d-trust_root_class_3_ca_2_2009.c | offset=206639249, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/crl/d-trust_root_class_3_ca_2_ev_2009.c | offset=206640341, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/AAACertificateServices.c | offset=206714354, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/crl/d-trust_br_root_ca_1_2020.c | offset=206736620, artifact=Browser-bin/25.6.0.2372/browser.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

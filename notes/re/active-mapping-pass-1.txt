@@ -1,0 +1,56 @@
+Active Mapping Pass 1
+
+Date: 2026-07-07
+
+Scope
+- First assignable diff chunks from Ghidra+rizin/static metadata.
+- This is active mapping, not implementation yet.
+- Baseline remains approximate Chrome-for-Testing 136.0.7103.113.
+
+Generated scripts
+- .workflows/tools/build-diff-chunks-v1.py
+- .workflows/tools/build-family-packets.py
+
+Generated outputs
+- .workflows/metadata/diff-chunks-v1.jsonl
+- .workflows/active-stage/diff-chunks-v1.txt
+- .workflows/active-stage/family-packets/
+
+Chunk counts
+- Total chunks: 26.
+- Assigned families: 13 plus 1 unknown import bucket.
+- network_yandex_headers: 6 chunks.
+- dlp_clipboard_drag_download_watermark: 3 chunks.
+- ai_alice_speechkit_yagpt: 2 chunks.
+- widgets_flutter_bubbles: 2 chunks.
+- telemetry_metrics_abt: 2 chunks.
+- gost_crypto_security: 2 chunks.
+- updater_service_onboarding: 2 chunks.
+
+Important chunks
+- rizin-imports-ai_alice_speechkit_yagpt
+  - 220 Yandex-only imports assigned to AI/SpeechKit.
+  - Includes CSPEECHKIT/Dart/Flutter-related import surface.
+- rizin-yandex-only-exports
+  - 86 Yandex-only browser.dll exports assigned to widgets_flutter_bubbles.
+  - Includes FlutterEngine export surface.
+- browser-seed-network-mojom-networkservice-setyandexcustomheader
+- browser-seed-network-mojom-networkservice-setyandexnoreferersettingallowlist
+- browser-seed-network-mojom-networkservice-setyandexextcorpbrowserheader
+  - NetworkService Yandex header seeds.
+- source-path-cluster-ai_alice_speechkit_yagpt
+  - 36 source-path evidence rows.
+
+First family packet
+- .workflows/active-stage/family-packets/ai_alice_speechkit_yagpt.txt
+
+Open issues
+- rizin-imports-unknown has 164 imports and needs manual bucketing.
+- Current Ghidra enhanced exporter did not recover external_refs from partial Ghidra analysis; rizin imports/exports are the source of import/export delta.
+- Baseline is approximate, so chunks are active-mapping evidence, not final exhaustive proof.
+
+Next actions
+1. Manually split rizin-imports-unknown into family buckets.
+2. Start validating ai_alice_speechkit_yagpt chunks in Ghidra using CSPEECHKIT imports and speechkit_action_lib exports.
+3. Validate NetworkService SetYandex* strings with targeted xrefs in browser.dll.
+4. Promote validated chunks from assigned to mapped_keep.

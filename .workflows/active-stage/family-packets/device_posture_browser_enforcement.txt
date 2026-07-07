@@ -1,0 +1,19 @@
+Family Packet: device_posture_browser_enforcement
+
+Diff chunks: 1
+
+source-path-cluster-device_posture_browser_enforcement
+- kind: source_path_cluster
+- title: Source path cluster: device_posture_browser_enforcement
+- status: assigned
+- evidence count: 5
+  - source_path: components/yandex/corporate/device_posture/condition_context.cc | offset=203159348, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/http/browser_enforcement_state.cc | offset=206616948, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/browser_enforcement/browser_enforcement_service.cc | offset=209665836, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/yandex/device_posture/device_posture_rules_manager.cc | offset=209704260, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/browser_enforcement/browser_enforcement_fetcher.cc | offset=211658032, artifact=Browser-bin/25.6.0.2372/browser.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

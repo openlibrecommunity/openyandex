@@ -1,0 +1,87 @@
+Family Packet: enterprise_policy_and_prefs
+
+Diff chunks: 1
+
+source-path-cluster-enterprise_policy_and_prefs
+- kind: source_path_cluster
+- title: Source path cluster: enterprise_policy_and_prefs
+- status: assigned
+- evidence count: 73
+  - source_path: components/policy/core/browser/configuration_policy_handler_list.cc | offset=199827853, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/browser/configuration_policy_pref_store.cc | offset=199828016, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/browser/policy_conversions_client.cc | offset=199828656, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/browser/policy_in_file_loader.cc | offset=199830544, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/cloud_policy_client.cc | offset=199831318, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/cloud_policy_client_registration_helper.cc | offset=199832576, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/cloud_policy_refresh_scheduler.cc | offset=199833255, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/cloud_policy_service.cc | offset=199833536, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/cloud_policy_validator.cc | offset=199834336, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/component_cloud_policy_store.cc | offset=199835984, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/device_management_service.cc | offset=199837757, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/dmserver_job_configurations.cc | offset=199838947, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/machine_level_user_cloud_policy_manager.cc | offset=199840536, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/machine_level_user_cloud_policy_store.cc | offset=199840820, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/user_cloud_policy_store.cc | offset=199842018, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/user_cloud_policy_store_base.cc | offset=199842246, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/user_info_fetcher.cc | offset=199842421, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/policy_map.cc | offset=199843752, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/policy_migrator.cc | offset=199844112, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/policy_proto_decoders.cc | offset=199844430, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/policy_service_impl.cc | offset=199844580, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/remote_commands/remote_command_job.cc | offset=199845296, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/remote_commands/remote_commands_invalidator.cc | offset=199846424, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/remote_commands/remote_commands_service.cc | offset=199847350, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/profile_cloud_policy_manager.cc | offset=199851280, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/profile_cloud_policy_store.cc | offset=199851740, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/common/prefs_constants.js | offset=201598689, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/common/trusted_types/unsafe_internal_policy.js | offset=201598830, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_checkbox/bro_pref_checkbox.html.js | offset=201602375, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_checkbox/bro_pref_checkbox.js | offset=201602435, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_enforce_indicator/bro_pref_enforce_indicator.html.js | offset=201602490, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_enforce_indicator/bro_pref_enforce_indicator.js | offset=201602568, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_radio_group/bro_pref_radio_group.html.js | offset=201602641, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_radio_group/bro_pref_radio_group.js | offset=201602707, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_select/bro_pref_select.html.js | offset=201602768, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_select/bro_pref_select.js | offset=201602824, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_slider/bro_pref_slider.html.js | offset=201602875, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_slider/bro_pref_slider.js | offset=201602931, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_enforce_indicator/bro_pref_enforce_indicator.css.js | offset=201609055, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_radio_group/bro_pref_radio_group.css.js | offset=201609132, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_select/bro_pref_select.css.js | offset=201609197, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/bro_pref_slider/bro_pref_slider.css.js | offset=201609252, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/polymer_mixins/prefs_actions_mixin/prefs_actions_mixin.js | offset=201616421, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/redux/prefs_actions.js | offset=201617925, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/redux/prefs_reducers.js | offset=201617955, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/turboapp/navigation_policy_util.cc | offset=202040923, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/extensions/activity_log/counting_policy.cc | offset=202630458, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/extensions/activity_log/fullstream_ui_policy.cc | offset=202633101, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/enterprise/idle/idle_timeout_policy_handler.cc | offset=203404118, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/media/cdm_pref_service_helper.cc | offset=205788484, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/platform_auth/platform_auth_policy_observer.cc | offset=205800190, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: sandbox/policy/win/sandbox_win.cc | offset=207417987, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/no_state_prefetch/browser/no_state_prefetch_contents.cc | offset=208427239, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/proxy_config/pref_proxy_config_tracker_impl.cc | offset=209052274, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/prefs_override/prefs_override_watcher.cc | offset=209065589, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/wallpaper/store/policy_wallpaper.cc | offset=209695920, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/policy/policy_value_and_status_aggregator.cc | offset=209787477, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/policy/chrome_policy_conversions_client.cc | offset=209787599, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/corporate/policy_reloader.cc | offset=209862316, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/browser_switcher/browser_switcher_policy_migrator.cc | offset=209903372, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/skia/src/sksl/ir/SkSLPrefixExpression.c | offset=210152366, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/re2/src/re2/prefilter_tree.cc | offset=210304304, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/re2/src/re2/prefilter.cc | offset=210304512, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/sync_preferences/pref_model_associator.cc | offset=210938847, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/content_settings/core/browser/content_settings_policy_provider.cc | offset=211027784, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/policy/chrome_extension_policy_migrator.cc | offset=211896348, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/bookmarks/managed/managed_bookmarks_policy_handler.cc | offset=213739036, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/browsing_data/browsing_data_lifetime_policy_handler.cc | offset=213739402, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/policy/cloud/fm_registration_token_uploader.cc | offset=213741592, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/prefetch/list_downloader.cc | offset=215027080, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/yandex/dlp_connectors_policy_handler.cc | offset=215035537, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/views/policy/enterprise_startup_dialog_view.h | offset=215036638, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: crypto/ct/ct_policy.c | offset=8275636, artifact=Browser-bin/25.6.0.2372/cspeechkit.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

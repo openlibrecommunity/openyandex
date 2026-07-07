@@ -1,0 +1,62 @@
+Family Packet: updater_service_onboarding
+
+Diff chunks: 2
+
+rizin-imports-updater_service_onboarding
+- kind: yandex_only_imports
+- title: Yandex-only imports: updater_service_onboarding
+- status: assigned
+- evidence count: 1
+  - rizin_import: CRYPT32.dll::CryptMsgUpdate
+
+source-path-cluster-updater_service_onboarding
+- kind: source_path_cluster
+- title: Source path cluster: updater_service_onboarding
+- status: assigned
+- evidence count: 41
+  - source_path: components/policy/core/common/cloud/component_cloud_policy_updater.cc | offset=199836675, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/common/cloud/external_policy_data_updater.cc | offset=199839776, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/color_change_listener/colors_css_updater.js | offset=201625327, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/native_cache/native_cache_update_job.cc | offset=202062881, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: extensions/browser/updater/extension_downloader.cc | offset=202324305, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: extensions/browser/updater/extension_installer.cc | offset=202325460, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: extensions/browser/updater/update_data_provider.cc | offset=202326398, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: extensions/browser/updater/update_service.cc | offset=202326576, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/extensions/updater/extension_updater.cc | offset=202691721, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/extensions/updater/local_extension_cache.cc | offset=202712740, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/web_applications/isolated_web_apps/isolated_web_app_update_discovery_task.cc | offset=202774894, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/web_applications/isolated_web_apps/isolated_web_app_update_manager.cc | offset=202775493, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/color_change_listener/colors_css_updater.js.c | offset=203183625, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/iwa_key_distribution_component_installer.cc | offset=205812622, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/subresource_filter_component_tag.cc | offset=205874014, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/component_updater/component_updater_service.cc | offset=207575490, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/component_updater/component_installer.cc | offset=207575927, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/enterprise/content/url_rule_updater.cc | offset=208378288, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/installer/service_update/pipe_commands_common.cc | offset=208959414, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/update_checker.cc | offset=210939928, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/url_fetcher_downloader.cc | offset=210940226, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/background_downloader_win.cc | offset=210940409, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/views/web_apps/web_app_identity_update_confirmation_view.h | offset=211456728, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/cookie_lifetime_limiter_service/cookie_expire_date_updater_util.cc | offset=211806669, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/yandex/brodef_tool_component_installer.cc | offset=211838468, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/widevine_cdm_component_installer.cc | offset=211924568, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/trust_token_key_commitments_component_installer.cc | offset=211924993, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/first_party_sets_component_installer.cc | offset=211925185, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/yandex/readability_ml_component_installer.cc | offset=211928371, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/component_updater/yandex/yandex_payments_autofill_popup_component_installer.cc | offset=211929038, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/component.cc | offset=213034216, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/request_sender.cc | offset=213034759, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/views/yandex/passman/passman_update_password_content_view.h | offset=213561748, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/component_updater/installer_policies/trust_token_key_commitments_component_installer_policy.cc | offset=213780706, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/component_updater/installer_policies/first_party_sets_component_installer_policy.cc | offset=213781086, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/component_updater/installer_policies/client_side_phishing_component_installer_policy.cc | offset=213781622, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/yandex/turbo2/cache_entry_updater_impl.cc | offset=214227792, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/broupdater/telemost/telemost.cc | offset=215037283, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/op_download.cc | offset=215220792, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/update_client/unpacker.cc | offset=215624153, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/color_change_listener/colors_css_updater.js | offset=2882971, artifact=Browser-bin/25.6.0.2372/resources.pak
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

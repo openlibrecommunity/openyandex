@@ -1,0 +1,180 @@
+Family Packet: widgets_flutter_bubbles
+
+Diff chunks: 2
+
+rizin-yandex-only-exports
+- kind: yandex_only_exports
+- title: Yandex-only browser.dll exports
+- status: assigned
+- evidence count: 86
+  - rizin_export: FlutterEngineCollectAOTData
+  - rizin_export: FlutterEngineCreateAOTData
+  - rizin_export: FlutterEngineDeinitialize
+  - rizin_export: FlutterEngineDispatchSemanticsAction
+  - rizin_export: FlutterEngineGetCurrentTime
+  - rizin_export: FlutterEngineGetProcAddresses
+  - rizin_export: FlutterEngineInitialize
+  - rizin_export: FlutterEngineLoadDeferredLibrary
+  - rizin_export: FlutterEngineMarkExternalTextureFrameAvailable
+  - rizin_export: FlutterEngineNotifyDisplayUpdate
+  - rizin_export: FlutterEngineNotifyLowMemoryWarning
+  - rizin_export: FlutterEngineOnVsync
+  - rizin_export: FlutterEnginePostCallbackOnAllNativeThreads
+  - rizin_export: FlutterEnginePostDartObject
+  - rizin_export: FlutterEnginePostRenderThreadTask
+  - rizin_export: FlutterEngineRegisterExternalTexture
+  - rizin_export: FlutterEngineReloadSystemFonts
+  - rizin_export: FlutterEngineRemoveView
+  - rizin_export: FlutterEngineRun
+  - rizin_export: FlutterEngineRunInitialized
+  - rizin_export: FlutterEngineRunTask
+  - rizin_export: FlutterEngineRunsAOTCompiledDartCode
+  - rizin_export: FlutterEngineScheduleFrame
+  - rizin_export: FlutterEngineSendKeyEvent
+  - rizin_export: FlutterEngineSendPlatformMessage
+  - rizin_export: FlutterEngineSendPlatformMessageResponse
+  - rizin_export: FlutterEngineSendPointerEvent
+  - rizin_export: FlutterEngineSendWindowMetricsEvent
+  - rizin_export: FlutterEngineSetNextFrameCallback
+  - rizin_export: FlutterEngineSetVmServiceUrlUpdatedCallback
+  - rizin_export: FlutterEngineShutdown
+  - rizin_export: FlutterEngineTraceEventDurationBegin
+  - rizin_export: FlutterEngineTraceEventDurationEnd
+  - rizin_export: FlutterEngineTraceEventInstant
+  - rizin_export: FlutterEngineUnregisterExternalTexture
+  - rizin_export: FlutterEngineUpdateAccessibilityFeatures
+  - rizin_export: FlutterEngineUpdateLocales
+  - rizin_export: FlutterEngineUpdateSemanticsEnabled
+  - rizin_export: FlutterPlatformMessageCreateResponseHandle
+  - rizin_export: FlutterPlatformMessageReleaseResponseHandle
+  - rizin_export: InternalFlutterGpuTestClass_Create
+  - rizin_export: InternalFlutterGpuTestClass_Method
+  - rizin_export: InternalFlutterGpuTestProc
+  - rizin_export: InternalFlutterGpuTestProcWithCallback
+  - rizin_export: InternalFlutterGpu_CommandBuffer_Initialize
+  - rizin_export: InternalFlutterGpu_CommandBuffer_Submit
+  - rizin_export: InternalFlutterGpu_Context_GetDefaultColorFormat
+  - rizin_export: InternalFlutterGpu_Context_GetDefaultDepthStencilFormat
+  - rizin_export: InternalFlutterGpu_Context_GetDefaultStencilFormat
+  - rizin_export: InternalFlutterGpu_Context_InitializeDefault
+  - rizin_export: InternalFlutterGpu_DeviceBuffer_Initialize
+  - rizin_export: InternalFlutterGpu_DeviceBuffer_InitializeWithHostData
+  - rizin_export: InternalFlutterGpu_DeviceBuffer_Overwrite
+  - rizin_export: InternalFlutterGpu_HostBuffer_EmplaceBytes
+  - rizin_export: InternalFlutterGpu_HostBuffer_Initialize
+  - rizin_export: InternalFlutterGpu_RenderPass_Begin
+  - rizin_export: InternalFlutterGpu_RenderPass_BindIndexBufferDevice
+  - rizin_export: InternalFlutterGpu_RenderPass_BindIndexBufferHost
+  - rizin_export: InternalFlutterGpu_RenderPass_BindPipeline
+  - rizin_export: InternalFlutterGpu_RenderPass_BindTexture
+  - rizin_export: InternalFlutterGpu_RenderPass_BindUniformDevice
+  - rizin_export: InternalFlutterGpu_RenderPass_BindUniformHost
+  - rizin_export: InternalFlutterGpu_RenderPass_BindVertexBufferDevice
+  - rizin_export: InternalFlutterGpu_RenderPass_BindVertexBufferHost
+  - rizin_export: InternalFlutterGpu_RenderPass_ClearBindings
+  - rizin_export: InternalFlutterGpu_RenderPass_Draw
+  - rizin_export: InternalFlutterGpu_RenderPass_Initialize
+  - rizin_export: InternalFlutterGpu_RenderPass_SetColorAttachment
+  - rizin_export: InternalFlutterGpu_RenderPass_SetColorBlendEnable
+  - rizin_export: InternalFlutterGpu_RenderPass_SetColorBlendEquation
+  - rizin_export: InternalFlutterGpu_RenderPass_SetDepthCompareOperation
+  - rizin_export: InternalFlutterGpu_RenderPass_SetDepthStencilAttachment
+  - rizin_export: InternalFlutterGpu_RenderPass_SetDepthWriteEnable
+  - rizin_export: InternalFlutterGpu_RenderPipeline_Initialize
+  - rizin_export: InternalFlutterGpu_ShaderLibrary_GetShader
+  - rizin_export: InternalFlutterGpu_ShaderLibrary_InitializeWithAsset
+  - rizin_export: InternalFlutterGpu_Shader_GetUniformMemberOffset
+  - rizin_export: InternalFlutterGpu_Shader_GetUniformStructSize
+  - rizin_export: InternalFlutterGpu_Texture_AsImage
+  - rizin_export: InternalFlutterGpu_Texture_BytesPerTexel
+
+source-path-cluster-widgets_flutter_bubbles
+- kind: source_path_cluster
+- title: Source path cluster: widgets_flutter_bubbles
+- status: assigned
+- evidence count: 224
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder.cc | offset=201705624, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_external_texture_gl.cc | offset=201712544, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/dl_op_receiver.h | offset=201712736, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_surface_gl.cc | offset=201713004, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_surface_gl_impeller.cc | offset=201713347, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_surface_software.cc | offset=201713598, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_task_runner.cc | offset=201713940, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/embedder_thread_host.cc | offset=201714081, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/pixel_formats.cc | offset=201714340, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/shell/platform/embedder/platform_view_embedder.cc | offset=201714488, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/assets/directory_asset_bundle.cc | offset=201714727, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/file.cc | offset=201715068, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/unique_object.h | offset=201715184, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/icu_util.cc | offset=201715323, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/mapping.cc | offset=201715567, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/message_loop.cc | offset=201715636, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/message_loop_impl.cc | offset=201715811, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/message_loop_task_queues.cc | offset=201715947, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/shared_thread_merger.cc | offset=201716448, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/task_source.cc | offset=201716896, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/thread.cc | offset=201716972, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/platform/win/message_loop_win.cc | offset=201717146, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/common/graphics/persistent_cache.cc | offset=201717482, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/dl_builder.cc | offset=201719624, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/dl_builder.h | offset=201719689, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/display_list.h | offset=201719859, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/dl_vertices.cc | offset=201720263, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/skia/dl_sk_canvas.cc | offset=201720618, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/skia/dl_sk_dispatcher.cc | offset=201720935, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/display_list/utils/dl_matrix_clip_tracker.cc | offset=201721168, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/runtime_stage/runtime_stage.cc | offset=201721339, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/base/validation.cc | offset=201721514, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/core/formats.h | offset=201722301, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/core/texture.cc | offset=201722492, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/core/texture_descriptor.h | offset=201722936, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/typographer/lazy_glyph_atlas.cc | offset=201723720, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/context.h | offset=201724496, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/flow/raster_cache_util.h | offset=201729769, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/flow/layers/layer_tree.cc | offset=201730003, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/flow/layers/offscreen_surface.cc | offset=201730188, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/flow/layers/transform_layer.cc | offset=201730447, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/aiks/canvas.cc | offset=201731056, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/content_context.h | offset=201732197, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/clip_contents.cc | offset=201732503, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/color_source_contents.h | offset=201732776, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/fml/status_or.h | offset=201738450, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/filters/blend_filter_contents.cc | offset=201738895, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/filters/gaussian_blur_filter_contents.cc | offset=201740149, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/filters/inputs/filter_input.cc | offset=201740490, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/core/shader_types.h | offset=201741766, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/contents/runtime_effect_contents.cc | offset=201741852, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/entity_pass.cc | offset=201743420, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/entity_pass_delegate.cc | offset=201744884, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/entity/geometry/fill_path_geometry.cc | offset=201745064, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/display_list/dl_dispatcher.cc | offset=201862380, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/blit_command_gles.cc | offset=201862672, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/blit_pass_gles.cc | offset=201863060, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/blit_pass_gles.h | offset=201863216, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/base/config.h | offset=201863363, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/formats_gles.h | offset=201863909, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/capabilities_gles.cc | offset=201864215, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/device_buffer_gles.cc | offset=201864620, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/pipeline_library_gles.cc | offset=201864970, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/proc_table_gles.cc | offset=201866046, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/reactor_gles.cc | offset=201866560, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/render_pass_gles.cc | offset=201866976, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/sampler_gles.cc | offset=201867372, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/shader_library_gles.cc | offset=201867804, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/renderer/backend/gles/texture_gles.cc | offset=201867989, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/shader_archive/multi_arch_shader_archive.cc | offset=201868965, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/impeller/shader_archive/shader_archive.cc | offset=201869134, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/dart_runtime_hooks.cc | offset=201869721, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/color_filter.cc | offset=201876350, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/fragment_shader.cc | offset=201877065, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_decoder_impeller.cc | offset=201877572, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_decoder_skia.cc | offset=201878455, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_encoding.cc | offset=201879504, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_encoding_impeller.cc | offset=201880045, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_encoding_skia.cc | offset=201880328, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/flutter/src/flutter/lib/ui/painting/image_encoding_impl.h | offset=201880476, artifact=Browser-bin/25.6.0.2372/browser.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

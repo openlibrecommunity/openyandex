@@ -1,0 +1,35 @@
+Family Packet: passport_yandex_id_account
+
+Diff chunks: 1
+
+source-path-cluster-passport_yandex_id_account
+- kind: source_path_cluster
+- title: Source path cluster: passport_yandex_id_account
+- status: assigned
+- evidence count: 21
+  - source_path: components/signin/public/identity_manager/access_token_fetcher.cc | offset=199613513, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/internal/identity_manager/oauth_multilogin_helper.cc | offset=199625001, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/internal/identity_manager/oauth_multilogin_token_fetcher.cc | offset=199625315, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/internal/identity_manager/primary_account_manager.cc | offset=199625723, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/internal/identity_manager/account_capabilities_fetcher_gaia.cc | offset=199627125, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/internal/identity_manager/yandex/passport_oauth2_token_service_delegate.cc | offset=199627643, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/policy/core/browser/cloud/user_policy_signin_service_base.cc | offset=199830048, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /services/passport.svg | offset=202557753, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/passport/update_oauth2_tokens.cc | offset=207279969, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/policy/cloud/profile_token_policy_web_signin_service.cc | offset=209704473, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/signin/user_policy_oidc_signin_service.cc | offset=209704640, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/signin/enterprise_signin_service.cc | offset=209705595, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/signin/total_sync_bubble_service.cc | offset=209784849, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/signin/signin_params_from_passport.cc | offset=209786211, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/signin/public/webdata/token_service_table.cc | offset=210797332, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/signin/total_sync_data_checker.cc | offset=211793263, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/views/passwords/auto_signin_first_run_dialog_view.h | offset=213628029, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/password_manager/core/browser/passman/passport_recovery_key_writer.cc | offset=213706808, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/password_manager/core/browser/passman/passport_recovery_key_reader.cc | offset=213707021, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/views/webauthn/ambient/ambient_signin_bubble_view.h | offset=213723366, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/signin/signout_helper.cc | offset=215516940, artifact=Browser-bin/25.6.0.2372/browser.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

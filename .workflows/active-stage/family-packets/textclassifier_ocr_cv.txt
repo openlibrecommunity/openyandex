@@ -1,0 +1,20 @@
+Family Packet: textclassifier_ocr_cv
+
+Diff chunks: 1
+
+source-path-cluster-textclassifier_ocr_cv
+- kind: source_path_cluster
+- title: Source path cluster: textclassifier_ocr_cv
+- status: assigned
+- evidence count: 6
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-256.png | offset=79314, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-32.png | offset=79517, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-48.png | offset=79719, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-256.png | offset=73438, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-32.png | offset=73641, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+  - source_path: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-48.png | offset=73843, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

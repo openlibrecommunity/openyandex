@@ -1,0 +1,136 @@
+Family Packet: ai_alice_speechkit_yagpt
+
+Diff chunks: 2
+
+rizin-imports-ai_alice_speechkit_yagpt
+- kind: yandex_only_imports
+- title: Yandex-only imports: ai_alice_speechkit_yagpt
+- status: assigned
+- evidence count: 220
+  - rizin_import: cspeechkit.dll::YSKAudioPlayerListener_getMethods
+  - rizin_import: cspeechkit.dll::YSKAudioPlayer_create
+  - rizin_import: cspeechkit.dll::YSKAudioPlayer_destroy
+  - rizin_import: cspeechkit.dll::YSKAudioPlayer_getContext
+  - rizin_import: cspeechkit.dll::YSKAudioSourceListener_getMethods
+  - rizin_import: cspeechkit.dll::YSKError_create
+  - rizin_import: cspeechkit.dll::YSKError_destroy
+  - rizin_import: cspeechkit.dll::YSKLanguage_createRussian
+  - rizin_import: cspeechkit.dll::YSKLanguage_destroy
+  - rizin_import: cspeechkit.dll::YSKLogger_createDefault
+  - rizin_import: cspeechkit.dll::YSKLogger_destroy
+  - rizin_import: cspeechkit.dll::YSKLogger_setLogLevel
+  - rizin_import: cspeechkit.dll::YSKModel_create
+  - rizin_import: cspeechkit.dll::YSKModel_destroy
+  - rizin_import: cspeechkit.dll::YSKPhraseSpotterSettings_createDefault
+  - rizin_import: cspeechkit.dll::YSKPhraseSpotterSettings_destroy
+  - rizin_import: cspeechkit.dll::YSKPhraseSpotterSettings_setModelPath
+  - rizin_import: cspeechkit.dll::YSKPhraseSpotterSettings_setSoundLoggingSettings
+  - rizin_import: cspeechkit.dll::YSKPlatformInfo_createDefault
+  - rizin_import: cspeechkit.dll::YSKPlatformInfo_setAppId
+  - rizin_import: cspeechkit.dll::YSKPlatformInfo_setAppName
+  - rizin_import: cspeechkit.dll::YSKRecognition_getBestResultText
+  - rizin_import: cspeechkit.dll::YSKRecognition_getRequestId
+  - rizin_import: cspeechkit.dll::YSKRecognizerSettings_createDefault
+  - rizin_import: cspeechkit.dll::YSKRecognizerSettings_destroy
+  - rizin_import: cspeechkit.dll::YSKRecognizerSettings_setEnableCapitalization
+  - rizin_import: cspeechkit.dll::YSKSoundBuffer_create
+  - rizin_import: cspeechkit.dll::YSKSoundBuffer_destroy
+  - rizin_import: cspeechkit.dll::YSKSoundBuffer_getData
+  - rizin_import: cspeechkit.dll::YSKSoundBuffer_getSoundInfo
+  - rizin_import: cspeechkit.dll::YSKSoundInfo_create
+  - rizin_import: cspeechkit.dll::YSKSoundInfo_destroy
+  - rizin_import: cspeechkit.dll::YSKSoundInfo_getChannelCount
+  - rizin_import: cspeechkit.dll::YSKSoundInfo_getSampleRate
+  - rizin_import: cspeechkit.dll::YSKSoundInfo_getSampleSize
+  - rizin_import: cspeechkit.dll::YSKSoundLoggingSettings_createDefault
+  - rizin_import: cspeechkit.dll::YSKSoundLoggingSettings_destroy
+  - rizin_import: cspeechkit.dll::YSKSoundLoggingSettings_setSoundLengthAfterTrigger
+  - rizin_import: cspeechkit.dll::YSKSoundLoggingSettings_setSoundLengthBeforeTrigger
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_createDefault
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_destroy
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_setActivationPhraseSpotterSettings
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_setRecognizerSettings
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_setSynchronizeStatePayload
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_setUniProxyUrl
+  - rizin_import: cspeechkit.dll::YSKVoiceDialogSettings_setVocalizerSettings
+  - rizin_import: cspeechkit.dll::YSK_disableDnsCache
+  - rizin_import: cspeechkit.dll::YSK_enableDnsCache
+  - rizin_import: cspeechkit.dll::YSK_setApiKey
+  - rizin_import: cspeechkit.dll::YSK_setPlatformInfo
+  - rizin_import: cspeechkit.dll::YSK_setUUID
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_BooleanValue
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ClassLibrary
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ClassName
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_Cleanup
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CloseNativePort
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ClosureFunction
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CreateIsolateGroup
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CreateIsolateInGroup
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CurrentIsolate
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CurrentIsolateData
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CurrentIsolateGroup
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_CurrentIsolateGroupData
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DeferredLoadComplete
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DeferredLoadCompleteError
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DeleteFinalizableHandle
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DeletePersistentHandle
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DeleteWeakPersistentHandle
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DetectNullSafety
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_DumpNativeStackTrace
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_EmptyString
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_EnterIsolate
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_EnterScope
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ErrorGetException
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ErrorGetStackTrace
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ExitIsolate
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_ExitScope
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_False
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_FinalizeLoading
+  - rizin_import: libdart_precompiled_runtime_product.dll::Dart_Free
+
+source-path-cluster-ai_alice_speechkit_yagpt
+- kind: source_path_cluster
+- title: Source path cluster: ai_alice_speechkit_yagpt
+- status: assigned
+- evidence count: 36
+  - source_path: yandex/alice_voice_activation/images/icon48.png | offset=202546979, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_alice_2025.svg | offset=202578526, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_alice.svg | offset=202578584, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/speechkit/speechkit_service_host_controller.cc | offset=202844719, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/services/speech/yandex/language_classifier_client.cc | offset=205421058, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/services/speech/audio_source_fetcher_impl.cc | offset=205537104, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/neuro_question/neuro_question_ui_controller.cc | offset=205819710, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/neuro_question/browser/neuro_question_driver.cc | offset=209817648, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/neuroedit/neuroedit_component_service.cc | offset=209859137, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/neuro_question/browser/neuro_question_data_fetcher.cc | offset=211808448, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/blink/renderer/core/yandex/alice_link_hover_tracker.cc | offset=213359495, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/ui/webui/yandex/neuro_editor/neuro_editor_page_handler.cc | offset=213590080, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/yandex/speech_recognition/browser/speech_recognition_logger_service.cc | offset=214296154, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: build/build_root/9nts/000669/speechkit/protos/client_ws.pb.cc | offset=7822104, artifact=Browser-bin/25.6.0.2372/cspeechkit.dll
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=6164, artifact=Browser-bin/25.6.0.2372/ntp/manifest.json
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=6248, artifact=Browser-bin/25.6.0.2372/ntp/manifest.json
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/2f3b276c39b33206_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=5734, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/365e5d23f1395d77_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=5814, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/365e5d23f1395d77_0
+  - source_path: /services/neurosearch_service/neurosearch_service_types.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: /services/neurosearch_service/neurosearch_service.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: /components/services/neurosearch_service/neurosearch_service_tests.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=704308, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/ba2d6ab36f3a8e7d_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=705125, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/ba2d6ab36f3a8e7d_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=5475, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/c6dc8e3c179fad86_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=5553, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/c6dc8e3c179fad86_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=6226, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/cf25e3492d86e09f_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice_2025-1f1ffd4542.svg | offset=6310, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/cf25e3492d86e09f_0
+  - source_path: services//neurosearch_service//neurosearch_service.ts | offset=160491, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/d3bd0260f454ced8_0
+  - source_path: /media/components/ntp_neurotools/images/neuro_alice-dbc34d68be.svg | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/de3fd020d4af2127_0
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-256.png | offset=454, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-32.png | offset=679, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-48.png | offset=903, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps.json
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-256.png | offset=454, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-32.png | offset=679, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+  - source_path: net/old/get/browser/launcher_images/windows/yandex/alice_win.targetsize-48.png | offset=903, artifact=Browser-bin/25.6.0.2372/web_app_config/component/apps_corp360.json
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

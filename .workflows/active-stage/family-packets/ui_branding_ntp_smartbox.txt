@@ -1,0 +1,101 @@
+Family Packet: ui_branding_ntp_smartbox
+
+Diff chunks: 2
+
+rizin-imports-ui_branding_ntp_smartbox
+- kind: yandex_only_imports
+- title: Yandex-only imports: ui_branding_ntp_smartbox
+- status: assigned
+- evidence count: 1
+  - rizin_import: POWRPROF.dll::CallNtPowerInformation
+
+source-path-cluster-ui_branding_ntp_smartbox
+- kind: source_path_cluster
+- title: Source path cluster: ui_branding_ntp_smartbox
+- status: assigned
+- evidence count: 300
+  - source_path: third_party/skia/src/gpu/graphite/PaintParamsKey.c | offset=197250848, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/folder.svg | offset=201611717, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_account.svg | offset=201611742, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_add_account.svg | offset=201611778, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_cards.svg | offset=201611818, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_disk.svg | offset=201611852, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_favorites.svg | offset=201611885, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_feedback.svg | offset=201611923, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_info.svg | offset=201611960, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_logo_en.svg | offset=201611993, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_logo.svg | offset=201612029, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_mail.svg | offset=201612062, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_notifications.svg | offset=201612095, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_passwords.svg | offset=201612137, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_personal.svg | offset=201612175, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_plus.svg | offset=201612212, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_profiles.svg | offset=201612245, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_services.svg | offset=201612282, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_settings.svg | offset=201612319, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_sync.svg | offset=201612356, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/yandex_id_wallet.svg | offset=201612389, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/images/loader.svg | offset=201612424, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/dark_mode.svg | offset=201620828, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/light_mode.svg | offset=201620884, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/system_mode.svg | offset=201620941, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/browser_proxy.js | offset=201620999, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/customize_color_scheme_mode.html.js | offset=201621058, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/customize_color_scheme_mode.js | offset=201621136, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button.html.js | offset=201621209, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button.js | offset=201621276, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button_option.html.js | offset=201621338, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button_option.js | offset=201621412, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/customize_color_scheme_mode.css.js | offset=201621481, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button.css.js | offset=201621558, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/segmented_button_option.css.js | offset=201621624, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/customize_color_scheme_mode/customize_color_scheme_mode.mojom-webui.js | offset=201621697, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/help_bubble/custom_help_bubble_proxy.js | offset=201621782, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/help_bubble/custom_help_bubble.mojom-webui.js | offset=201622396, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: ui/views/yandex/view_utils/view_layout_unit.h | offset=202028221, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: ui/views/yandex/view_utils/view_watcher.h | offset=202028840, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/cloud.svg | offset=202576948, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/fog.svg | offset=202576998, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/hail.svg | offset=202577046, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/lightning.svg | offset=202577095, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/moon.svg | offset=202577149, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/rain.svg | offset=202577198, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/snow.svg | offset=202577247, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/sun.svg | offset=202577296, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_animated_icon/images/wind.svg | offset=202577344, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_chip/images/cross.svg | offset=202577393, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/alice_gpt.png | offset=202577434, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/background.png | offset=202577484, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/cross.svg | offset=202577535, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/import.png | offset=202577581, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/neuro_dnd.png | offset=202577628, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/neuro_editing.png | offset=202577678, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/neuro_wallpapers.png | offset=202577732, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/on_client_subtitles_en.png | offset=202577789, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/on_client_subtitles.png | offset=202577852, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/summarization_article.png | offset=202577912, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/summarization_video.png | offset=202577974, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/sync_en.png | offset=202578034, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/sync.png | offset=202578082, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/tablo.png | offset=202578127, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/theme.png | offset=202578173, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/video_qr_code.png | offset=202578219, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_education/images/video_translation_ja_ko.png | offset=202578273, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_folder_view/images/close.svg | offset=202578337, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_folder_view/ntp_folder_view_menu/images/menu_add_button_icon.svg | offset=202578385, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/eye_description.svg | offset=202578469, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_editor_2025.svg | offset=202578637, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_editor.svg | offset=202578696, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_summary_2025.svg | offset=202578750, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_summary.svg | offset=202578810, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_translate_2025.svg | offset=202578865, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_neurotools/images/neuro_translate.svg | offset=202578927, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_page/images/arrow.svg | offset=202578984, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_page/images/info.svg | offset=202579025, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_page/ntp_page_incognito_cookie_section/ntp_page_incognito_cookie_section_control/images/arrow.svg | offset=202579065, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: /components/ntp_page/ntp_page_menu/images/menu_add_button_icon.svg | offset=202579182, artifact=Browser-bin/25.6.0.2372/browser.dll
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

@@ -1,0 +1,65 @@
+Family Packet: telemetry_metrics_abt
+
+Diff chunks: 2
+
+rizin-imports-telemetry_metrics_abt
+- kind: yandex_only_imports
+- title: Yandex-only imports: telemetry_metrics_abt
+- status: assigned
+- evidence count: 1
+  - rizin_import: browser_elf.dll::CanWriteCrashpadMetrics_ExportThunk
+
+source-path-cluster-telemetry_metrics_abt
+- kind: source_path_cluster
+- title: Source path cluster: telemetry_metrics_abt
+- status: assigned
+- evidence count: 44
+  - source_path: base/metrics/statistics_recorder.cc | offset=3031729, artifact=Browser-bin/browser.exe
+  - source_path: base/metrics/statistics_recorder.cc | offset=966873, artifact=Browser-bin/browser_proxy.exe
+  - source_path: base/metrics/statistics_recorder.cc | offset=947541, artifact=Browser-bin/25.6.0.2372/brodef.dll
+  - source_path: media/capture/video/video_capture_metrics.cc | offset=199575040, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: yandex/elements/perf_metrics_tracker/perf_metrics_tracker.js | offset=201604283, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/history_clusters/metrics_proxy.js | offset=201623616, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/chromium/client-variations/client-variations.js | offset=201675871, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/enterprise/connectors/device_trust/common/metrics_utils.cc | offset=203156301, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/page_load_metrics/browser/observers/ad_metrics/page_ad_density_tracker.cc | offset=203394726, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/welcome_experiment/welcome_experiment_utils.cc | offset=205860666, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: base/metrics/statistics_recorder.cc | offset=205972699, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: base/metrics/field_trial.cc | offset=205973856, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: net/content/get/experiments/browser.proto | offset=206879733, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/field_trial_parser.cc | offset=207055920, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/variations/service/variations_service.cc | offset=207705629, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/variations/abt_testid.cc | offset=209809841, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/metrics/abt_helper.cc | offset=209811769, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/yandex/abt/abt_service.cc | offset=209842860, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/performance_monitor/external_process_metrics_monitor_win.cc | offset=209846570, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/metrics/chrome_feature_list_creator_helper.cc | offset=209927344, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: chrome/browser/profiles/profile_activity_metrics_recorder.cc | offset=209949638, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/struct_parameters_parser.cc | offset=210456176, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/variations/service/variations_field_trial_creator_base.cc | offset=211021396, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/skia/experimental/rust_png/decoder/impl/SkPngRustCodec.c | offset=212112398, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/alr_experiment.cc | offset=212166445, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/rate_control_settings.cc | offset=212167116, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/min_video_bitrate_experiment.cc | offset=212173162, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/variations/study_filtering.cc | offset=213022196, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/variations/enterprise/enterprise_feature_override.cc | offset=213061396, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/encoder_info_settings.cc | offset=214049952, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/balanced_degradation_settings.cc | offset=215123021, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/quality_scaling_experiment.cc | offset=215124119, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/quality_scaler_settings.cc | offset=215124635, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: third_party/webrtc/rtc_base/experiments/normalize_simulcast_size_experiment.cc | offset=215133508, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/segmentation_platform/internal/database/ukm_metrics_table.cc | offset=215548597, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: components/segmentation_platform/internal/database/uma_metrics_table.cc | offset=215549549, artifact=Browser-bin/25.6.0.2372/browser.dll
+  - source_path: base/metrics/statistics_recorder.cc | offset=2073333, artifact=Browser-bin/25.6.0.2372/browser_elf.dll
+  - source_path: base/metrics/statistics_recorder.cc | offset=2053813, artifact=Browser-bin/25.6.0.2372/notification_helper.exe
+  - source_path: base/metrics/statistics_recorder.cc | offset=2919157, artifact=Browser-bin/25.6.0.2372/service_update.exe
+  - source_path: /services/experiments_service/experiments_service_types.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: /services/experiments_service/experiments_service.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: /components/common/perf_metrics_tracker/perf_metrics_tracker_tests.ts | offset=24, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/43b3689f9307cd0e_0
+  - source_path: services//experiments_service//experiments_service.ts | offset=160491, artifact=Browser-bin/25.6.0.2372/ntp/NativeCacheStorage/web_ntp_cache/d3bd0260f454ced8_0
+  - source_path: base/metrics/statistics_recorder.cc | offset=1898397, artifact=pins/alice/Alice.exe
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.

@@ -1,0 +1,50 @@
+Family Packet: network_yandex_headers
+
+Diff chunks: 6
+
+browser-seed-network-mojom-networkservice-setyandexcustomheader
+- kind: browser_seed
+- title: network::mojom::NetworkService::SetYandexCustomHeader
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexCustomHeader | offset=198821101
+
+browser-seed-network-mojom-networkservice-setyandexnoreferersettingallowlist
+- kind: browser_seed
+- title: network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist | offset=198821407
+
+browser-seed-network-mojom-networkservice-setyandexextcorpbrowserheader
+- kind: browser_seed
+- title: network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexExtCorpBrowserHeader | offset=198821282
+
+browser-seed-yandexcustomheader
+- kind: browser_seed
+- title: YandexCustomHeader
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexCustomHeader | offset=198821101
+
+browser-seed-yandexnoreferersettingallowlist
+- kind: browser_seed
+- title: YandexNoRefererSettingAllowlist
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist | offset=198821407
+
+browser-seed-yandexextcorpbrowserheader
+- kind: browser_seed
+- title: YandexExtCorpBrowserHeader
+- status: assigned
+- evidence count: 1
+  - browser_string: network::mojom::NetworkService::SetYandexExtCorpBrowserHeader | offset=198821282
+
+Next actions
+- Validate each chunk with targeted Ghidra xrefs where needed.
+- Promote chunks to mapped_keep/drop/defer after evidence review.
+- Create implementation tasks only after Chromium touch points are named.
