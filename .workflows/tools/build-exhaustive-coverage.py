@@ -12,7 +12,8 @@ ACTIVE = ROOT / ".workflows" / "active-stage"
 OUT = META / "exhaustive-change-coverage.jsonl"
 TXT = ACTIVE / "exhaustive-change-coverage.txt"
 
-BASELINE_BINARY_PRESENT = False
+BASELINE_BINARY_PRESENT = True
+BASELINE_BINARY_EXACT = False
 BINDIFF_TOOL_PRESENT = False
 
 SUBAGENT_COVERED = {
@@ -59,7 +60,9 @@ def main():
         coverage = SUBAGENT_COVERED.get(fam, "seed_only")
         blockers = []
         if not BASELINE_BINARY_PRESENT:
-            blockers.append("missing_matching_chromium_windows_baseline_binary")
+            blockers.append("missing_chromium_windows_baseline_binary")
+        elif not BASELINE_BINARY_EXACT:
+            blockers.append("baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156")
         if not BINDIFF_TOOL_PRESENT:
             blockers.append("missing_bindiff_or_diaphora_cli")
         if coverage == "metadata_low_evidence":
@@ -87,6 +90,7 @@ def main():
                 "metadata_coverage": coverage,
                 "exhaustive_state": exhaustive_state,
                 "baseline_binary_present": BASELINE_BINARY_PRESENT,
+                "baseline_binary_exact": BASELINE_BINARY_EXACT,
                 "bindiff_tool_present": BINDIFF_TOOL_PRESENT,
                 "blockers": blockers,
                 "required_to_close": [
@@ -105,7 +109,7 @@ def main():
 
     lines = ["Exhaustive Change Coverage", ""]
     lines.append("Verdict: blocked_not_exhaustive")
-    lines.append("Reason: missing matching Chromium Windows baseline binary and BinDiff/Diaphora CLI.")
+    lines.append("Reason: only approximate Chrome-for-Testing 136.0.7103.113 win32 baseline is present; exact 136.0.7103.156 baseline and BinDiff/Diaphora CLI are still missing.")
     lines.append("")
     for row in rows:
         d = row["data"]

@@ -5,15 +5,19 @@ Date: 2026-07-06
 Observed local state
 - Chromium source snapshot exists:
   - chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
-- No local Chromium/Chrome Windows baseline PE was found by workspace search.
+- A temporary comparable Chrome-for-Testing Windows baseline is now present:
+  - artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/chrome-win32/chrome.dll
+  - version: 136.0.7103.113 win32
+- The exact target baseline 136.0.7103.156 Windows PE is still not present.
 - No local BinDiff/Diaphora CLI was found.
 - Ghidra headless is available.
 - radare2/rizin are available.
 
-Why this blocks exhaustive BinDiff
+Why this still blocks exhaustive BinDiff
 - Yandex browser.dll can only be exhaustively diffed against a comparable Chromium/Chrome binary.
-- Source-only Chromium is useful for implementation planning but not enough for function-level binary diff.
-- Without a comparable baseline binary, we can map evidence families but cannot prove every changed function.
+- The downloaded 136.0.7103.113 baseline can support approximate pipeline setup.
+- It cannot close final exhaustive coverage for target 136.0.7103.156 because patch/build drift can produce false deltas.
+- Without exact or justified-equivalent baseline and function-level diff tooling, we can map evidence families but cannot prove every changed function.
 
 Required acquisition/build task
 1. Build or acquire Chromium/Chrome Windows x86 binary from commit 465616851cd99c308e1ce42d0fd818c04c094830 or closest official 136.0.7103.156.

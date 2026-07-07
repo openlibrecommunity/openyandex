@@ -1,39 +1,39 @@
 Exhaustive Change Coverage
 
 Verdict: blocked_not_exhaustive
-Reason: missing matching Chromium Windows baseline binary and BinDiff/Diaphora CLI.
+Reason: only approximate Chrome-for-Testing 136.0.7103.113 win32 baseline is present; exact 136.0.7103.156 baseline and BinDiff/Diaphora CLI are still missing.
 
 P0 network_yandex_headers decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 enterprise_policy_and_prefs decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 telemetry_metrics_abt decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 gost_crypto_security decision=keep coverage=metadata_low_evidence state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli, needs_direct_binary_or_string_evidence
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli, needs_direct_binary_or_string_evidence
 P0 ui_branding_ntp_smartbox decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 ai_alice_speechkit_yagpt decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 privacy_antitracking_adblock decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 dlp_clipboard_drag_download_watermark decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P0 device_posture_browser_enforcement decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P1 passport_yandex_id_account decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P1 widgets_flutter_bubbles decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P1 updater_service_onboarding decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P1 textclassifier_ocr_cv decision=keep coverage=metadata_mapped state=blocked_not_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P3 media_video_engine decision=defer coverage=defer_mapped state=defer_mapped_but_not_bindiff_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P3 gpu_angle_swiftshader_runtime decision=drop coverage=drop_mapped state=drop_mapped_but_not_bindiff_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 P3 crash_wer_internals decision=defer coverage=defer_mapped state=defer_mapped_but_not_bindiff_exhaustive
-- blockers: missing_matching_chromium_windows_baseline_binary, missing_bindiff_or_diaphora_cli
+- blockers: baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156, missing_bindiff_or_diaphora_cli
 
 Do not claim all changes are documented until every row reaches a terminal non-blocked state and every BinDiff chunk is assigned.
