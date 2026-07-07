@@ -1,0 +1,69 @@
+Active Reconnaissance Ready Index
+
+Generated UTC: 2026-07-06T23:12:18Z
+
+Readiness
+- Static-first workspace is prepared.
+- PE quick triage, widget quick triage, PDB probe, and one Ghidra headless import are complete.
+- Heavy tools capa/FLOSS are opt-in only; do not batch-run them across large C++ DLLs.
+- PE execution remains forbidden unless a VM/snapshot/network capture plan is explicitly approved.
+
+Generated Machine Files
+- .workflows/metadata/browser-dll-seed-pack.jsonl
+- .workflows/metadata/active-pe-triage.jsonl
+- .workflows/metadata/active-widget-elf-triage.jsonl
+- .workflows/metadata/active-pdb-probes.jsonl
+
+Ghidra
+- Existing project: /tmp/opencode/ghidra-projects/yb-25.6.0.2372-speechkit_action_lib
+- Log: .workflows/active-stage/logs/speechkit_action_lib.ghidra.log
+- First project target: speechkit_action_lib.dll
+- Next Ghidra step: run ExportOpenYandexFacts.java against that project.
+
+Counts
+- browser.dll seed rows: 29
+- policy priority rows: 175
+- PE triage rows: 4 (cspeechkit.dll, service_update.exe, speechkit_action_lib.dll, textclassifier.dll)
+- widget triage rows: 5 (neuroedit_bubble.so, neuro_question_bubble.so, coupons_bubble.so, flutter_components_demo.so, suggest.so)
+- PDB probe rows: 112
+- PDB HEAD statuses: {'000': 57, '404': 55}
+- PDB range statuses: {'000': 56, '404': 56}
+- PDB hits: 0
+
+Top browser.dll Seeds
+- score 160 | network::mojom::NetworkService::SetYandexCustomHeader | kind=direct_browser_string | strings=1 | paths=0 | policy=None
+- score 160 | network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist | kind=direct_browser_string | strings=1 | paths=0 | policy=None
+- score 160 | network::mojom::NetworkService::SetYandexExtCorpBrowserHeader | kind=direct_browser_string | strings=1 | paths=0 | policy=None
+- score 106 | YandexCustomHeader | kind=policy_or_related_seed | strings=1 | paths=0 | policy=139
+- score 106 | YandexNoRefererSettingAllowlist | kind=policy_or_related_seed | strings=1 | paths=0 | policy=139
+- score 100 | network::mojom::NetworkService::SetYandexAllowedDomainsForApps | kind=direct_browser_string | strings=0 | paths=0 | policy=None
+- score 100 | network::mojom::NetworkService::SetYandexLocaleHeader | kind=direct_browser_string | strings=0 | paths=0 | policy=None
+- score  98 | YandexExtCorpBrowserHeader | kind=policy_or_related_seed | strings=1 | paths=0 | policy=114
+- score  60 | YandexAntiTracking | kind=policy_or_related_seed | strings=0 | paths=0 | policy=195
+- score  56 | YandexAdblock | kind=policy_or_related_seed | strings=0 | paths=0 | policy=170
+- score  56 | YandexDevicePosture | kind=policy_or_related_seed | strings=0 | paths=0 | policy=170
+- score  53 | YandexClipboardAccessByPolicyEnabled | kind=policy_or_related_seed | strings=0 | paths=0 | policy=160
+- score  48 | YandexCMURLAllowlistIfNotEnrolled | kind=policy_or_related_seed | strings=0 | paths=0 | policy=145
+- score  43 | YandexDevicePostureRules | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexPasteExt | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexDownloadRestrictionsEnabled | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexDownloadRestrictionsBlockedUrls | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexDownloadRestrictionsAllowedUrls | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexDownloadRestrictionsBlockedTypes | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+- score  43 | YandexDownloadRestrictionsAllowedTypes | kind=policy_or_related_seed | strings=0 | paths=0 | policy=130
+
+Immediate Active Recon Queue
+1. Run Ghidra export script on speechkit_action_lib.dll project and review ActionLibInitialize/ExecuteDirective/ProcessDirective xrefs.
+2. Run browser.dll targeted string/xref search for NetworkService SetYandex* strings, not full manual browsing.
+3. Cluster widget strings for neuro/suggest/coupon endpoints and JSON keys.
+4. Add source_mapping_hypothesis rows only when two independent evidence types agree.
+5. Deprioritize public PDB search unless new symbol hosts/leads appear; current probe had zero hits.
+
+Concrete Commands
+- Build this pack: python3 .workflows/tools/build-active-ready-pack.py
+- PE quick triage: python3 .workflows/tools/static-pe-triage.py all
+- Widget quick triage: python3 .workflows/tools/static-elf-widget-triage.py
+- PDB probe: python3 .workflows/tools/probe-pdb-symbols.py
+- Ghidra project path: /tmp/opencode/ghidra-projects/yb-25.6.0.2372-speechkit_action_lib
+- Browser seed pack: .workflows/active-stage/browser-dll-seed-pack.txt
+

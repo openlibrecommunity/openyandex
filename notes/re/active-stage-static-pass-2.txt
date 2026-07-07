@@ -1,0 +1,61 @@
+Active Stage Static Pass 2
+
+Date: 2026-07-06
+
+Scope
+- Continue active static-first work from pass 1.
+- No PE execution performed.
+- No dynamic unpacking/debugging performed.
+- No full browser.dll Ghidra analysis performed.
+
+Generated artifacts
+- .workflows/tools/static-elf-widget-triage.py
+- .workflows/tools/probe-pdb-symbols.py
+- .workflows/metadata/active-widget-elf-triage.jsonl
+- .workflows/metadata/active-pdb-probes.jsonl
+- .workflows/active-stage/logs/speechkit_action_lib.ghidra.log
+- .workflows/active-stage/logs/speechkit_action_lib.ghidra-script.log
+
+Ghidra headless result
+- Target: speechkit_action_lib.dll.
+- Project storage: /tmp/opencode/ghidra-projects/yb-25.6.0.2372-speechkit_action_lib.
+- First attempt with project path under .workflows failed because Ghidra rejects path elements starting with '.'.
+- Second attempt succeeded.
+- Analysis total time: 141 seconds.
+- Ghidra skipped PDB processing because speechkit_action_lib.pdb was not available in configured locations.
+- Imports were not linked to Windows system DLLs because those libraries are not present in the project.
+
+Widget ELF quick pass
+- active-widget-elf-triage rows: 5.
+- All first-pass widgets have Build IDs extracted from ELF notes.
+- All first-pass widgets report no DT_NEEDED libraries in readelf dynamic output, consistent with self-contained stripped Flutter/Dart-style shared objects or unusual linking.
+- neuroedit_bubble.so
+  - build id: 7cdd6b1c03656dfe6ffc023b7c92757b
+  - strings categories: alice, neuro, suggest, http/https, json, dart, flutter.
+- neuro_question_bubble.so
+  - build id: 7cdd6b1c668ff3a96ffc023be9e07ef2
+  - strings categories: neuro, suggest, https, json, dart, flutter.
+- coupons_bubble.so
+  - build id: 7cdd6b1cb17ffdc66ffc023bd5e6cbea
+  - strings categories: yandex, suggest, coupon, https, json, dart, flutter.
+- flutter_components_demo.so
+  - build id: 7cdd6b1c1ff6d0656ffc023be590bbb5
+  - strings categories: yandex, alice, suggest, http/https, json, dart, flutter.
+- suggest.so
+  - build id: 7cdd6b1c8dca84366ffc023b77ac6ce5
+  - strings categories: yandex, alice, suggest, http/https, json, dart, flutter.
+
+PDB probe result
+- Probed P0/P1 PDB identities against Yandex-like symbol hosts, Chromium symbol server, and Microsoft symbol server.
+- Rows: 112.
+- Hits: 0.
+- HEAD status distribution: 55 x 404, 57 x 000/network-DNS-timeout class.
+- Range status distribution: 56 x 404, 56 x 000/network-DNS-timeout class.
+- No uncompressed PDB or compressed .pd_ variant found in this pass.
+
+Current next actions
+1. Open the Ghidra project for speechkit_action_lib.dll and inspect the four exported functions: ActionLibInitialize, ActionLibUninitialize, ExecuteDirective, ProcessDirective.
+2. Add a small Ghidra export script for function list, entry points, strings, and xrefs from speechkit_action_lib.dll so the result is machine-readable.
+3. Run widget string clustering for the five widget outputs: URLs, JSON keys, Dart/Flutter symbols, service endpoints.
+4. Do targeted browser.dll string/xref pass around NetworkService SetYandex* strings before any full browser.dll import.
+5. Treat public PDB search as low-probability now; prioritize local symbols/strings/source paths and Linux debug artifacts.

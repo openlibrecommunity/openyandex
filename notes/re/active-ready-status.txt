@@ -1,0 +1,50 @@
+Active Ready Status
+
+Date: 2026-07-06
+
+Status
+- The project is now prepared for active static reconnaissance.
+- Static triage has been completed for the first standalone PE modules.
+- The first Ghidra project has been created and analyzed.
+- A Ghidra export script has been added and tested.
+- Browser.dll targeted seed pack has been generated.
+- Widget ELF first-pass queue has been triaged.
+- PDB probe has been run and produced zero public hits.
+
+Primary readiness files
+- .workflows/active-stage/active-ready-index.txt
+- .workflows/active-stage/active-ready-index.json
+- .workflows/active-stage/browser-dll-seed-pack.txt
+- .workflows/metadata/browser-dll-seed-pack.jsonl
+- .workflows/active-stage/active-recon-commands.txt
+- .workflows/active-stage/runbook.txt
+
+Machine indexes ready for active work
+- .workflows/metadata/active-pe-triage.jsonl
+- .workflows/metadata/active-widget-elf-triage.jsonl
+- .workflows/metadata/active-pdb-probes.jsonl
+- .workflows/metadata/policy-priority.jsonl
+- .workflows/metadata/yandex-strings.jsonl
+- .workflows/metadata/yandex-source-paths.jsonl
+- .workflows/metadata/yandex-pdb-index.jsonl
+
+Ghidra ready state
+- Project location: /tmp/opencode/ghidra-projects
+- Project name: yb-25.6.0.2372-speechkit_action_lib
+- Program: speechkit_action_lib.dll
+- Analysis: succeeded.
+- Fact export: .workflows/active-stage/exports/speechkit_action_lib.ghidra-facts.jsonl
+- Script: .workflows/active-stage/ghidra/scripts/ExportOpenYandexFacts.java
+
+Immediate active recon start
+1. Open speechkit_action_lib.dll in Ghidra and inspect ActionLibInitialize, ExecuteDirective, ProcessDirective.
+2. Use browser-dll-seed-pack for targeted browser.dll xrefs, starting with NetworkService SetYandex* strings.
+3. Cluster widget strings for neuro/suggest/coupon endpoints and JSON keys.
+4. Write source_mapping_hypothesis rows only after at least two independent evidence types agree.
+5. Keep dynamic execution disabled unless VM snapshot/network/capture plan is explicitly approved.
+
+Known negative result
+- Public PDB probe for P0/P1 identities found no hits across tested Yandex-like, Chromium, and Microsoft symbol URLs.
+
+Performance rule
+- Do not batch-run FLOSS/capa across large C++ DLLs. FLOSS already timed out on cspeechkit.dll. Use opt-in per module with timeouts.

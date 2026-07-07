@@ -4,6 +4,7 @@ Scope
 - Prepare and run static-first RE for Yandex Browser 25.6.0.2372.
 - This runbook avoids executing Windows samples on the host.
 - Heavy outputs must stay under .workflows/active-stage/ or artifacts/ ignored dirs.
+- Current status: active-ready. Static triage, first Ghidra project, browser.dll seed pack, widget queue, and PDB probe are prepared.
 
 Baseline Inputs
 - Payload root: artifacts/binaries/yandex-browser-25.6.0.2372/payload/
@@ -21,6 +22,10 @@ Preparation Commands
    python3 .workflows/tools/build-active-artifact-map.py
 3. Check high-level queue:
    sed -n '1,220p' .workflows/active-stage/artifact-map.txt
+4. Build active-ready pack:
+   python3 .workflows/tools/build-active-ready-pack.py
+5. Review active-ready index:
+   sed -n '1,260p' .workflows/active-stage/active-ready-index.txt
 
 Static Triage Command Templates
 - Do not run these until active RE starts.
@@ -62,8 +67,24 @@ Command shape:
     -log .workflows/active-stage/logs/<name>.ghidra.log \
     -scriptlog .workflows/active-stage/logs/<name>.ghidra-script.log
 
+Existing Ghidra Project
+- speechkit_action_lib.dll has already been imported and analyzed.
+- Project location: /tmp/opencode/ghidra-projects
+- Project name: yb-25.6.0.2372-speechkit_action_lib
+- Exported facts path: .workflows/active-stage/exports/speechkit_action_lib.ghidra-facts.jsonl
+
+Run Ghidra fact export again:
+  analyzeHeadless /tmp/opencode/ghidra-projects yb-25.6.0.2372-speechkit_action_lib \
+    -process speechkit_action_lib.dll \
+    -scriptPath .workflows/active-stage/ghidra/scripts \
+    -postScript ExportOpenYandexFacts.java /home/zaraza/Projects/openyandex/.workflows/active-stage/exports/speechkit_action_lib.ghidra-facts.jsonl \
+    -log .workflows/active-stage/logs/speechkit_action_lib.ghidra-export.log \
+    -scriptlog .workflows/active-stage/logs/speechkit_action_lib.ghidra-export-script.log
+
 Policy Queue Use
 - Primary file: .workflows/metadata/policy-priority.jsonl
+- Browser seed pack: .workflows/metadata/browser-dll-seed-pack.jsonl
+- Human-readable browser seed pack: .workflows/active-stage/browser-dll-seed-pack.txt
 - Start with top Yandex-only policy roots.
 - Require at least two independent evidence types before creating source_mapping_hypothesis rows:
   - policy name
@@ -73,14 +94,31 @@ Policy Queue Use
   - decompiler/xref evidence
 
 First Active RE Batch
-1. Run static triage templates for standalone modules only:
-   - service_update.exe
-   - cspeechkit.dll
-   - speechkit_action_lib.dll
-   - textclassifier.dll
-2. Import standalone modules into Ghidra headless.
-3. Defer browser.dll full analysis until targeted strings/xrefs are selected.
-4. For browser.dll, start with policy-priority names as string/xref seeds, not full manual browsing.
+1. Inspect speechkit_action_lib.dll exported functions in Ghidra:
+   - ActionLibInitialize
+   - ActionLibUninitialize
+   - ExecuteDirective
+   - ProcessDirective
+2. Use browser-dll-seed-pack for targeted browser.dll string/xref work. Start with:
+   - network::mojom::NetworkService::SetYandexCustomHeader
+   - network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+   - network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+3. Cluster widget strings for:
+   - neuroedit_bubble.so
+   - neuro_question_bubble.so
+   - coupons_bubble.so
+   - flutter_components_demo.so
+   - suggest.so
+4. Defer full browser.dll Ghidra analysis until targeted browser.dll string/xref results are written down.
+5. Do not run FLOSS/capa as a batch; run them only per module with explicit timeout.
+
+Current Machine Indexes
+- .workflows/metadata/active-pe-triage.jsonl
+- .workflows/metadata/active-widget-elf-triage.jsonl
+- .workflows/metadata/active-pdb-probes.jsonl
+- .workflows/metadata/browser-dll-seed-pack.jsonl
+- .workflows/active-stage/active-ready-index.json
+- .workflows/active-stage/active-ready-index.txt
 
 Dynamic Gate
 - If any unpacking/debugging requires executing PE code, stop.

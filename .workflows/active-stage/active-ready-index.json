@@ -1,0 +1,220 @@
+{
+  "browser_seed_rows": 29,
+  "browser_seed_top": [
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821101,
+          "value": "network::mojom::NetworkService::SetYandexCustomHeader"
+        }
+      ],
+      "kind": "direct_browser_string",
+      "policy_classification": null,
+      "policy_families": [],
+      "policy_priority": null,
+      "rank_hint": 1,
+      "score": 160,
+      "term": "network::mojom::NetworkService::SetYandexCustomHeader"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821407,
+          "value": "network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist"
+        }
+      ],
+      "kind": "direct_browser_string",
+      "policy_classification": null,
+      "policy_families": [],
+      "policy_priority": null,
+      "rank_hint": 2,
+      "score": 160,
+      "term": "network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821282,
+          "value": "network::mojom::NetworkService::SetYandexExtCorpBrowserHeader"
+        }
+      ],
+      "kind": "direct_browser_string",
+      "policy_classification": null,
+      "policy_families": [],
+      "policy_priority": null,
+      "rank_hint": 3,
+      "score": 160,
+      "term": "network::mojom::NetworkService::SetYandexExtCorpBrowserHeader"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821101,
+          "value": "network::mojom::NetworkService::SetYandexCustomHeader"
+        }
+      ],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "network_privacy",
+        "yandex_services"
+      ],
+      "policy_priority": 139,
+      "rank_hint": 16,
+      "score": 106,
+      "term": "YandexCustomHeader"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821407,
+          "value": "network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist"
+        }
+      ],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "network_privacy",
+        "yandex_services"
+      ],
+      "policy_priority": 139,
+      "rank_hint": 17,
+      "score": 106,
+      "term": "YandexNoRefererSettingAllowlist"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "direct_browser_string",
+      "policy_classification": null,
+      "policy_families": [],
+      "policy_priority": null,
+      "rank_hint": 4,
+      "score": 100,
+      "term": "network::mojom::NetworkService::SetYandexAllowedDomainsForApps"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "direct_browser_string",
+      "policy_classification": null,
+      "policy_families": [],
+      "policy_priority": null,
+      "rank_hint": 5,
+      "score": 100,
+      "term": "network::mojom::NetworkService::SetYandexLocaleHeader"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [
+        {
+          "encoding": "ascii",
+          "offset": 198821282,
+          "value": "network::mojom::NetworkService::SetYandexExtCorpBrowserHeader"
+        }
+      ],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "yandex_services"
+      ],
+      "policy_priority": 114,
+      "rank_hint": 18,
+      "score": 98,
+      "term": "YandexExtCorpBrowserHeader"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "network_privacy",
+        "yandex_services"
+      ],
+      "policy_priority": 195,
+      "rank_hint": 6,
+      "score": 60,
+      "term": "YandexAntiTracking"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "yandex_services"
+      ],
+      "policy_priority": 170,
+      "rank_hint": 7,
+      "score": 56,
+      "term": "YandexAdblock"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "yandex_services"
+      ],
+      "policy_priority": 170,
+      "rank_hint": 8,
+      "score": 56,
+      "term": "YandexDevicePosture"
+    },
+    {
+      "browser_source_path_hits": [],
+      "browser_string_hits": [],
+      "kind": "policy_or_related_seed",
+      "policy_classification": "yandex_only",
+      "policy_families": [
+        "clipboard_dlp",
+        "yandex_services"
+      ],
+      "policy_priority": 160,
+      "rank_hint": 12,
+      "score": 53,
+      "term": "YandexClipboardAccessByPolicyEnabled"
+    }
+  ],
+  "generated_at_utc": "2026-07-06T23:12:18Z",
+  "ghidra_log": ".workflows/active-stage/logs/speechkit_action_lib.ghidra.log",
+  "ghidra_project": "/tmp/opencode/ghidra-projects/yb-25.6.0.2372-speechkit_action_lib",
+  "pdb_head_status": {
+    "000": 57,
+    "404": 55
+  },
+  "pdb_hits": [],
+  "pdb_probe_rows": 112,
+  "pdb_range_status": {
+    "000": 56,
+    "404": 56
+  },
+  "pe_targets": [
+    "cspeechkit.dll",
+    "service_update.exe",
+    "speechkit_action_lib.dll",
+    "textclassifier.dll"
+  ],
+  "pe_triage_rows": 4,
+  "policy_priority_rows": 175,
+  "widget_targets": [
+    "neuroedit_bubble.so",
+    "neuro_question_bubble.so",
+    "coupons_bubble.so",
+    "flutter_components_demo.so",
+    "suggest.so"
+  ],
+  "widget_triage_rows": 5
+}

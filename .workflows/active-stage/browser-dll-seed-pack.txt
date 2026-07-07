@@ -1,0 +1,143 @@
+browser.dll Seed Pack
+
+Use these as targeted string/xref seeds before any full browser.dll pass.
+
+network::mojom::NetworkService::SetYandexCustomHeader
+- score: 160
+- kind: direct_browser_string
+- string hit: offset=198821101 encoding=ascii value=network::mojom::NetworkService::SetYandexCustomHeader
+
+network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+- score: 160
+- kind: direct_browser_string
+- string hit: offset=198821407 encoding=ascii value=network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+
+network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+- score: 160
+- kind: direct_browser_string
+- string hit: offset=198821282 encoding=ascii value=network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+
+YandexCustomHeader
+- score: 106
+- kind: policy_or_related_seed
+- policy: 139 yandex_only network_privacy,yandex_services
+- string hit: offset=198821101 encoding=ascii value=network::mojom::NetworkService::SetYandexCustomHeader
+
+YandexNoRefererSettingAllowlist
+- score: 106
+- kind: policy_or_related_seed
+- policy: 139 yandex_only network_privacy,yandex_services
+- string hit: offset=198821407 encoding=ascii value=network::mojom::NetworkService::SetYandexNoRefererSettingAllowlist
+
+network::mojom::NetworkService::SetYandexAllowedDomainsForApps
+- score: 100
+- kind: direct_browser_string
+
+network::mojom::NetworkService::SetYandexLocaleHeader
+- score: 100
+- kind: direct_browser_string
+
+YandexExtCorpBrowserHeader
+- score: 98
+- kind: policy_or_related_seed
+- policy: 114 yandex_only yandex_services
+- string hit: offset=198821282 encoding=ascii value=network::mojom::NetworkService::SetYandexExtCorpBrowserHeader
+
+YandexAntiTracking
+- score: 60
+- kind: policy_or_related_seed
+- policy: 195 yandex_only network_privacy,yandex_services
+
+YandexAdblock
+- score: 56
+- kind: policy_or_related_seed
+- policy: 170 yandex_only yandex_services
+
+YandexDevicePosture
+- score: 56
+- kind: policy_or_related_seed
+- policy: 170 yandex_only yandex_services
+
+YandexClipboardAccessByPolicyEnabled
+- score: 53
+- kind: policy_or_related_seed
+- policy: 160 yandex_only clipboard_dlp,yandex_services
+
+YandexCMURLAllowlistIfNotEnrolled
+- score: 48
+- kind: policy_or_related_seed
+- policy: 145 yandex_only cloud_management,yandex_services
+
+YandexDevicePostureRules
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only yandex_services
+
+YandexPasteExt
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only clipboard_dlp,yandex_services
+
+YandexDownloadRestrictionsEnabled
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only download_restrictions,yandex_services
+
+YandexDownloadRestrictionsBlockedUrls
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only download_restrictions,yandex_services
+
+YandexDownloadRestrictionsAllowedUrls
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only download_restrictions,yandex_services
+
+YandexDownloadRestrictionsBlockedTypes
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only download_restrictions,yandex_services
+
+YandexDownloadRestrictionsAllowedTypes
+- score: 43
+- kind: policy_or_related_seed
+- policy: 130 yandex_only download_restrictions,yandex_services
+
+YandexBrowserEnforcement
+- score: 33
+- kind: policy_or_related_seed
+- policy: 100 yandex_only yandex_services
+
+YandexExternalDLPConfig
+- score: 33
+- kind: policy_or_related_seed
+- policy: 100 yandex_only yandex_services
+
+yandex/common/drag_and_drop.js
+- score: 30
+- kind: policy_or_related_seed
+- source path hit: offset=201598530 path=yandex/common/drag_and_drop.js
+
+X-Ybe-Hmac
+- score: 0
+- kind: policy_or_related_seed
+
+X-Ybe-Timestamp
+- score: 0
+- kind: policy_or_related_seed
+
+X-Ybe-Id
+- score: 0
+- kind: policy_or_related_seed
+
+ClipboardRestrictionViolation
+- score: 0
+- kind: policy_or_related_seed
+
+DevicePostureViolation
+- score: 0
+- kind: policy_or_related_seed
+
+DevicePostureReport
+- score: 0
+- kind: policy_or_related_seed

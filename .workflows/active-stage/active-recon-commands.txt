@@ -1,0 +1,49 @@
+Active Recon Commands
+
+Regenerate readiness pack:
+python3 .workflows/tools/build-active-ready-pack.py
+
+Validate JSONL:
+python3 - <<'PY'
+import json
+for p in [
+    '.workflows/metadata/browser-dll-seed-pack.jsonl',
+    '.workflows/metadata/active-pe-triage.jsonl',
+    '.workflows/metadata/active-widget-elf-triage.jsonl',
+    '.workflows/metadata/active-pdb-probes.jsonl',
+]:
+    rows = 0
+    with open(p, encoding='utf-8') as f:
+        for line in f:
+            if line.strip():
+                json.loads(line)
+                rows += 1
+    print(p, rows)
+PY
+
+Run Ghidra export on existing speechkit_action_lib project:
+analyzeHeadless /tmp/opencode/ghidra-projects yb-25.6.0.2372-speechkit_action_lib \
+  -process speechkit_action_lib.dll \
+  -scriptPath .workflows/active-stage/ghidra/scripts \
+  -postScript ExportOpenYandexFacts.java /home/zaraza/Projects/openyandex/.workflows/active-stage/exports/speechkit_action_lib.ghidra-facts.jsonl \
+  -log .workflows/active-stage/logs/speechkit_action_lib.ghidra-export.log \
+  -scriptlog .workflows/active-stage/logs/speechkit_action_lib.ghidra-export-script.log
+
+Run browser.dll targeted string search from seed pack:
+python3 - <<'PY'
+import json
+terms=[]
+for line in open('.workflows/metadata/browser-dll-seed-pack.jsonl', encoding='utf-8'):
+    d=json.loads(line)['data']
+    terms.append(d['term'])
+for t in terms[:30]:
+    print(t)
+PY
+
+Open Ghidra project manually:
+ghidraRun
+Project location: /tmp/opencode/ghidra-projects
+Project name: yb-25.6.0.2372-speechkit_action_lib
+
+Do not run PE samples on host.
+Do not batch-run FLOSS/capa on large C++ DLLs.
