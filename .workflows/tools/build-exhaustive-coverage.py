@@ -14,7 +14,7 @@ TXT = ACTIVE / "exhaustive-change-coverage.txt"
 
 BASELINE_BINARY_PRESENT = True
 BASELINE_BINARY_EXACT = False
-BINDIFF_TOOL_PRESENT = False
+GHIDRA_RIZIN_DIFF_PIPELINE_PRESENT = True
 
 SUBAGENT_COVERED = {
     "network_yandex_headers": "metadata_mapped",
@@ -63,15 +63,15 @@ def main():
             blockers.append("missing_chromium_windows_baseline_binary")
         elif not BASELINE_BINARY_EXACT:
             blockers.append("baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156")
-        if not BINDIFF_TOOL_PRESENT:
-            blockers.append("missing_bindiff_or_diaphora_cli")
+        if not GHIDRA_RIZIN_DIFF_PIPELINE_PRESENT:
+            blockers.append("missing_ghidra_rizin_function_diff_pipeline")
         if coverage == "metadata_low_evidence":
             blockers.append("needs_direct_binary_or_string_evidence")
         exhaustive_state = "blocked_not_exhaustive"
         if d["decision"] == "drop" and coverage == "drop_mapped":
-            exhaustive_state = "drop_mapped_but_not_bindiff_exhaustive"
+            exhaustive_state = "drop_mapped_but_not_function_diff_exhaustive"
         elif d["decision"] == "defer" and coverage == "defer_mapped":
-            exhaustive_state = "defer_mapped_but_not_bindiff_exhaustive"
+            exhaustive_state = "defer_mapped_but_not_function_diff_exhaustive"
         rows.append({
             "schema": "exhaustive_change_coverage",
             "schema_version": 1,
@@ -91,11 +91,11 @@ def main():
                 "exhaustive_state": exhaustive_state,
                 "baseline_binary_present": BASELINE_BINARY_PRESENT,
                 "baseline_binary_exact": BASELINE_BINARY_EXACT,
-                "bindiff_tool_present": BINDIFF_TOOL_PRESENT,
+                "ghidra_rizin_diff_pipeline_present": GHIDRA_RIZIN_DIFF_PIPELINE_PRESENT,
                 "blockers": blockers,
                 "required_to_close": [
-                    "matching_chromium_windows_baseline_binary",
-                    "function_level_bindiff_or_equivalent",
+                    "exact_or_accepted_chromium_windows_baseline_binary",
+                    "ghidra_rizin_function_level_diff",
                     "diff_chunks_assigned_to_patch_map_family",
                     "terminal_status_for_every_diff_chunk",
                 ],
@@ -109,7 +109,7 @@ def main():
 
     lines = ["Exhaustive Change Coverage", ""]
     lines.append("Verdict: blocked_not_exhaustive")
-    lines.append("Reason: only approximate Chrome-for-Testing 136.0.7103.113 win32 baseline is present; exact 136.0.7103.156 baseline and BinDiff/Diaphora CLI are still missing.")
+    lines.append("Reason: Ghidra+rizin diff pipeline is available, but only approximate Chrome-for-Testing 136.0.7103.113 win32 baseline is present; exact or explicitly accepted 136.0.7103.156-equivalent baseline is still missing.")
     lines.append("")
     for row in rows:
         d = row["data"]
@@ -117,7 +117,7 @@ def main():
         if d["blockers"]:
             lines.append(f"- blockers: {', '.join(d['blockers'])}")
     lines.append("")
-    lines.append("Do not claim all changes are documented until every row reaches a terminal non-blocked state and every BinDiff chunk is assigned.")
+    lines.append("Do not claim all changes are documented until every row reaches a terminal non-blocked state and every Ghidra+rizin diff chunk is assigned.")
     TXT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(OUT.relative_to(ROOT))
     print(TXT.relative_to(ROOT))

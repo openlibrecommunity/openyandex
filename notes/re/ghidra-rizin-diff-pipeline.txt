@@ -1,0 +1,45 @@
+Ghidra+rizin Diff Pipeline
+
+Date: 2026-07-07
+
+Decision
+- IDA, Diaphora runtime, and BinDiff are not required for this project.
+- Official path is Ghidra+rizin custom diff.
+
+Current inputs
+- Baseline: Chrome for Testing 136.0.7103.113 win32 chrome.dll.
+- Target: Yandex Browser 25.6.0.2372 browser.dll.
+- Caveat: baseline is approximate, not exact 136.0.7103.156.
+
+Generated scripts
+- .workflows/active-stage/ghidra/scripts/ExportOpenYandexFunctionDiffFacts.java
+- .workflows/tools/rizin-pe-facts.py
+- .workflows/tools/build-ghidra-rizin-diff.py
+
+Generated outputs
+- .workflows/active-stage/exports/chrome_136_7103_113_win32.function-diff-facts.jsonl
+- .workflows/active-stage/exports/yandex_browser_dll.function-diff-facts.jsonl
+- .workflows/metadata/rizin-pe-facts.jsonl
+- .workflows/metadata/ghidra-rizin-diff-summary.jsonl
+- .workflows/active-stage/ghidra-rizin-diff-summary.txt
+
+What the enhanced exporter records
+- function name
+- entry address
+- body size
+- instruction count
+- mnemonic hash
+- called symbols
+- external refs
+- string refs where Ghidra has data typing
+
+Current summary
+- Ghidra function facts exported for baseline and Yandex projects.
+- rizin/rabin2 PE facts exported for baseline and Yandex modules.
+- Custom diff summary created.
+- Coverage gate now expects Ghidra+rizin diff chunks, not BinDiff chunks.
+
+Rules
+- The current diff can assign chunks for research/triage.
+- It cannot close final exhaustive coverage while baseline remains approximate.
+- Exact or explicitly accepted baseline is still required for final all-changes claim.

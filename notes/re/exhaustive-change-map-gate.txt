@@ -4,7 +4,7 @@ Date: 2026-07-06
 
 Purpose
 - Prevent false completion claims.
-- The project must not claim that every Yandex change is known until a baseline binary diff exists and every family/chunk is assigned a terminal status.
+- The project must not claim that every Yandex change is known until a Ghidra+rizin function-level diff exists and every family/chunk is assigned a terminal status.
 
 Hard requirement
 - Exhaustive means every observed binary/resource/source/policy delta is either:
@@ -18,9 +18,11 @@ Hard requirement
 Current blocker
 - Matching Chromium source snapshot exists locally:
   - chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
-- Matching Chromium Windows baseline binary is not present locally.
-- BinDiff/Diaphora CLI tooling is not present locally.
-- Therefore a true function-level exhaustive BinDiff over browser.dll cannot be completed yet.
+- Temporary Chrome-for-Testing 136.0.7103.113 win32 baseline exists locally.
+- Exact 136.0.7103.156 Windows baseline binary is not present locally.
+- IDA/BinDiff/Diaphora are not project requirements.
+- Official route is Ghidra+rizin custom function-level diff.
+- Therefore final exhaustive coverage is blocked by baseline exactness/acceptance and by assigning every custom diff chunk, not by missing IDA.
 
 What is complete now
 - Metadata-driven patch-map families are seeded.
@@ -35,8 +37,8 @@ What is not complete now
 - Every policy is not mapped to handler/pref/enforcement code.
 
 Completion gate
-1. Acquire or build matching Chromium Windows baseline binaries.
-2. Generate Ghidra/BinExport/BinDiff or equivalent function-level diff for browser.dll versus baseline.
+1. Acquire/build exact Chromium Windows baseline binaries or explicitly accept the available 136.0.7103.113 baseline as approximate-only.
+2. Generate Ghidra+rizin function-level diff for browser.dll versus baseline.
 3. Export unmatched/low-similarity functions, string xrefs, source-path xrefs, and callgraph neighborhoods.
 4. Assign every diff chunk to a patch-map family or create a new family.
 5. Mark each chunk keep/drop/defer/duplicate/not_yandex_delta/blocked.
@@ -48,10 +50,11 @@ Baseline binary candidates
 - Not acceptable for final exhaustive claim: source tree only, metadata-only mapping, or comparing to unrelated Chrome version.
 
 Tooling candidates
-- BinDiff with BinExport from Ghidra/IDA.
-- Diaphora/IDA if BinDiff unavailable.
-- Ghidra BSim or custom normalized function hash/callgraph export as fallback, explicitly marked non-BinDiff.
+- Ghidra headless custom exporters.
+- rizin/rabin2 static facts.
+- Ghidra Version Tracking or BSim if practical.
+- Custom normalized function hash/callgraph/string/import diff.
 
 Rule for subagents
 - Subagent reports can promote a family from seed to metadata_mapped.
-- Subagent reports cannot mark exhaustive_complete without function-level diff coverage.
+- Subagent reports cannot mark exhaustive_complete without Ghidra+rizin function-level diff coverage.

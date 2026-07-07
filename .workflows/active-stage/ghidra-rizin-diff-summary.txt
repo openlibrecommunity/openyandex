@@ -1,0 +1,15 @@
+Ghidra+rizin Diff Summary
+
+- warning: custom Ghidra+rizin diff; not exact baseline; analysis was partial due Ghidra timeout
+- baseline_function_facts: 239700
+- yandex_function_facts: 260316
+- exact_mnemonic_size_hash_matches: 193449
+- yandex_unique_hash_sample_count: 20000
+- baseline_external_refs: 0
+- yandex_external_refs: 0
+- yandex_only_external_refs: 0
+- interesting_yandex_only_external_refs: 0 items
+- interesting_external_ref_edges_sample: 0 items
+- rizin_targets: 2 items
+
+Interesting Yandex-only external refs

@@ -5,8 +5,8 @@ Date: 2026-07-06
 Status
 - The project is now prepared for active static reconnaissance.
 - The project goal is a full Yandex-like Chromium fork, not a minimal overlay.
-- The next major objective is a BinDiff-driven all-changes map before implementation.
-- Exhaustive change mapping is currently blocked, not complete: no matching Chromium Windows baseline binary and no BinDiff/Diaphora CLI are present locally.
+- The next major objective is a Ghidra+rizin-driven all-changes map before implementation.
+- Exhaustive change mapping is currently blocked, not complete: only approximate Chrome-for-Testing 136.0.7103.113 baseline is present. IDA/BinDiff are not required.
 - Static triage has been completed for the first standalone PE modules.
 - The first Ghidra project has been created and analyzed.
 - A Ghidra export script has been added and tested.
@@ -45,10 +45,9 @@ Ghidra ready state
 - Script: .workflows/active-stage/ghidra/scripts/ExportOpenYandexFacts.java
 
 Immediate active recon start
-1. Acquire or build matching Chromium Windows baseline binary for Chromium 136.0.7103.156 / commit 465616851cd99c308e1ce42d0fd818c04c094830.
-2. Install or configure BinDiff/Diaphora or equivalent function-level diff tooling.
-3. Build BinDiff/all-changes evidence for browser.dll versus the matching Chromium build.
-4. Feed BinDiff chunks into patch-map-v1 families and subagent slices.
+1. Acquire or build exact Chromium Windows baseline binary for Chromium 136.0.7103.156 / commit 465616851cd99c308e1ce42d0fd818c04c094830, or keep the current 136.0.7103.113 baseline marked approximate.
+2. Build Ghidra+rizin all-changes evidence for browser.dll versus the baseline.
+3. Feed Ghidra+rizin diff chunks into patch-map-v1 families and subagent slices.
 5. Use browser-dll-seed-pack for targeted browser.dll xrefs, starting with NetworkService SetYandex* strings.
 6. Open speechkit_action_lib.dll in Ghidra and inspect ActionLibInitialize, ExecuteDirective, ProcessDirective as the first AI/SpeechKit slice.
 7. Cluster widget strings for neuro/suggest/coupon endpoints and JSON keys.
