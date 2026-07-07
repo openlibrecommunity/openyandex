@@ -1,0 +1,45 @@
+Baseline Acquisition Status
+
+Date: 2026-07-07
+
+Downloaded baseline
+- Source: Chrome for Testing.
+- Version: 136.0.7103.113.
+- Platform: win32.
+- URL: https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chrome-win32.zip
+- Local path: artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/
+
+Extracted baseline files
+- chrome.dll
+- chrome.exe
+- chrome_elf.dll
+- chrome_wer.dll
+
+Important caveat
+- This is not the exact target version 136.0.7103.156.
+- Local Chromium source target remains 136.0.7103.156 / commit 465616851cd99c308e1ce42d0fd818c04c094830 / refs/branch-heads/7103@{#2840}.
+- Chrome for Testing known-good metadata did not list 136.0.7103.156; nearest listed branch versions included 136.0.7103.113.
+- Therefore this baseline can unblock approximate diff pipeline setup, but cannot close final exhaustive coverage.
+
+Tooling status
+- Diaphora source was cloned to artifacts/tools/diaphora.
+- Diaphora normally requires IDA; IDA is not present in this environment.
+- Ghidra and radare2/rizin are present and can provide fallback fact exports, but this is not equivalent to official BinDiff.
+
+Next actions
+1. Continue looking for exact 136.0.7103.156 Windows x86 baseline or build it from source.
+2. Install real BinDiff/IDA/Diaphora runtime if available.
+3. Use current approximate Ghidra fact diff only for triage.
+
+Prepared command file
+- .workflows/active-stage/baseline-diff-commands.txt
+
+Completed after acquisition
+- Ghidra partial project for baseline chrome.dll.
+- Ghidra partial project for Yandex browser.dll.
+- Ghidra fact exports for both.
+- Approximate fact-level diff.
+
+Approximate diff caveat
+- The approximate diff is useful for triage, especially external imports and named symbols.
+- It is not a replacement for BinDiff because most functions are auto-named by address and the baseline is not exact.

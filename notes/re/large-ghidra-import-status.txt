@@ -1,0 +1,58 @@
+Large Ghidra Import Status
+
+Date: 2026-07-07
+
+Scope
+- Imported large baseline and Yandex browser DLLs into Ghidra for approximate diff preparation.
+- No PE execution performed.
+- This is not BinDiff and not exact-baseline exhaustive coverage.
+
+Baseline project
+- Project: /tmp/opencode/ghidra-projects/chrome-for-testing-136.0.7103.113-win32
+- Program: chrome.dll
+- Binary: artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/chrome-win32/chrome.dll
+- Version: Chrome for Testing 136.0.7103.113 win32.
+- Analysis timeout: 7200 seconds.
+- Result: import succeeded, save succeeded, analysis timed out.
+- Exported facts: .workflows/active-stage/exports/chrome_136_7103_113_win32.ghidra-facts.jsonl
+
+Yandex project
+- Project: /tmp/opencode/ghidra-projects/yandex-browser-25.6.0.2372-browser-dll
+- Program: browser.dll
+- Binary: artifacts/binaries/yandex-browser-25.6.0.2372/payload/Browser-bin/25.6.0.2372/browser.dll
+- Version: Yandex Browser 25.6.0.2372.
+- Analysis timeout: 7200 seconds.
+- Result: import succeeded, save succeeded, analysis timed out.
+- Exported facts: .workflows/active-stage/exports/yandex_browser_dll.ghidra-facts.jsonl
+
+Approximate diff
+- Script: .workflows/tools/build-ghidra-fact-diff.py
+- Machine output: .workflows/metadata/approx-ghidra-fact-diff.jsonl
+- Text output: .workflows/active-stage/approx-ghidra-fact-diff.txt
+- Baseline facts: .workflows/active-stage/exports/chrome_136_7103_113_win32.ghidra-facts.jsonl
+- Yandex facts: .workflows/active-stage/exports/yandex_browser_dll.ghidra-facts.jsonl
+
+Fact counts
+- Baseline fact rows: 259700.
+- Yandex fact rows: 280316.
+- Approx diff rows: 20073.
+- Baseline functions exported: 239698.
+- Yandex functions exported: 260314.
+- Common function names: 7691.
+- Yandex named hits sampled: 72.
+
+Useful immediate finding
+- Yandex browser.dll fact export exposes external CSPEECHKIT imports, including YSKAudioPlayer, YSKAudioSource, YSKRecognizerSettings, YSKVoiceDialogSettings, YSK_setApiKey, YSK_setPlatformInfo, and YSK_setUUID symbols.
+- This strengthens the ai_alice_speechkit_yagpt family and gives concrete browser.dll import anchors for SpeechKit integration work.
+
+Important caveats
+- Both Ghidra analyses timed out, so facts are partial.
+- Baseline is 136.0.7103.113, while target base is 136.0.7103.156.
+- The diff is name/fact-level only, not CFG/function-similarity BinDiff.
+- Use this output for triage and seed selection only.
+
+Next actions
+1. Inspect approx-ghidra-fact-diff.txt for Yandex-named symbol/function hits.
+2. Use targeted browser.dll strings/source-paths for xrefs; do not rely on approximate diff alone.
+3. Continue exact baseline acquisition or build from source.
+4. Install real BinDiff/IDA/Diaphora runtime if available.

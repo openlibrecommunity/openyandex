@@ -1,0 +1,90 @@
+Approximate Ghidra Fact Diff
+
+WARNING: not BinDiff; baseline is approximate 136.0.7103.113, target is 136.0.7103.156.
+- warning: approximate name/fact diff only; not BinDiff and not exact baseline
+- baseline: .workflows/active-stage/exports/chrome_136_7103_113_win32.ghidra-facts.jsonl
+- yandex: .workflows/active-stage/exports/yandex_browser_dll.ghidra-facts.jsonl
+- baseline_fact_rows: 259700
+- yandex_fact_rows: 280316
+- baseline_functions: 239698
+- yandex_functions: 260314
+- common_function_names: 7691
+- yandex_only_function_names: 252623
+- baseline_only_function_names: 232007
+- baseline_symbol_types: {'Label': 964, 'Function': 19036}
+- yandex_symbol_types: {'Label': 1090, 'Function': 18910}
+- yandex_named_hits_count_sampled: 72
+
+Sample Yandex named hits
+- ghidra_function 1b8b6e6e None DelayLoad_AddClipboardFormatListener
+- ghidra_function 1b8b6ef0 None DelayLoad_CloseClipboard
+- ghidra_function 1b8b701e None DelayLoad_EmptyClipboard
+- ghidra_function 1b8b712c None DelayLoad_GetClipboardData
+- ghidra_function 1b8b7136 None DelayLoad_GetClipboardSequenceNumber
+- ghidra_function 1b8b73a2 None DelayLoad_IsClipboardFormatAvailable
+- ghidra_function 1b8b74ba None DelayLoad_OpenClipboard
+- ghidra_function 1b8b753c None DelayLoad_RegisterClipboardFormatW
+- ghidra_function 1b8b7596 None DelayLoad_RemoveClipboardFormatListener
+- ghidra_function 1b8b75e6 None DelayLoad_SetClipboardData
+- ghidra_symbol EXTERNAL:00000073 Function KERNEL32.DLL::FreeLibraryAndExitThread
+- ghidra_symbol EXTERNAL:00000346 Label USER32.DLL::AddClipboardFormatListener
+- ghidra_symbol EXTERNAL:00000353 Label USER32.DLL::CloseClipboard
+- ghidra_symbol EXTERNAL:00000370 Label USER32.DLL::EmptyClipboard
+- ghidra_symbol EXTERNAL:0000038b Label USER32.DLL::GetClipboardData
+- ghidra_symbol EXTERNAL:0000038c Label USER32.DLL::GetClipboardSequenceNumber
+- ghidra_symbol EXTERNAL:000003ca Label USER32.DLL::IsClipboardFormatAvailable
+- ghidra_symbol EXTERNAL:000003e6 Label USER32.DLL::OpenClipboard
+- ghidra_symbol EXTERNAL:000003f3 Label USER32.DLL::RegisterClipboardFormatW
+- ghidra_symbol EXTERNAL:000003fc Label USER32.DLL::RemoveClipboardFormatListener
+- ghidra_symbol EXTERNAL:00000404 Label USER32.DLL::SetClipboardData
+- ghidra_symbol EXTERNAL:000005b5 Function CSPEECHKIT.DLL::YSKAudioPlayerListener_getMethods
+- ghidra_symbol EXTERNAL:000005b6 Function CSPEECHKIT.DLL::YSKAudioPlayer_create
+- ghidra_symbol EXTERNAL:000005b7 Function CSPEECHKIT.DLL::YSKAudioPlayer_destroy
+- ghidra_symbol EXTERNAL:000005b8 Function CSPEECHKIT.DLL::YSKAudioPlayer_getContext
+- ghidra_symbol EXTERNAL:000005b9 Function CSPEECHKIT.DLL::YSKAudioSourceListener_getMethods
+- ghidra_symbol EXTERNAL:000005ba Function CSPEECHKIT.DLL::YSKError_create
+- ghidra_symbol EXTERNAL:000005bb Function CSPEECHKIT.DLL::YSKError_destroy
+- ghidra_symbol EXTERNAL:000005bc Function CSPEECHKIT.DLL::YSKLanguage_createRussian
+- ghidra_symbol EXTERNAL:000005bd Function CSPEECHKIT.DLL::YSKLanguage_destroy
+- ghidra_symbol EXTERNAL:000005be Function CSPEECHKIT.DLL::YSKLogger_createDefault
+- ghidra_symbol EXTERNAL:000005bf Function CSPEECHKIT.DLL::YSKLogger_destroy
+- ghidra_symbol EXTERNAL:000005c0 Function CSPEECHKIT.DLL::YSKLogger_setLogLevel
+- ghidra_symbol EXTERNAL:000005c1 Function CSPEECHKIT.DLL::YSKModel_create
+- ghidra_symbol EXTERNAL:000005c2 Function CSPEECHKIT.DLL::YSKModel_destroy
+- ghidra_symbol EXTERNAL:000005c3 Function CSPEECHKIT.DLL::YSKPhraseSpotterSettings_createDefault
+- ghidra_symbol EXTERNAL:000005c4 Function CSPEECHKIT.DLL::YSKPhraseSpotterSettings_destroy
+- ghidra_symbol EXTERNAL:000005c5 Function CSPEECHKIT.DLL::YSKPhraseSpotterSettings_setModelPath
+- ghidra_symbol EXTERNAL:000005c6 Function CSPEECHKIT.DLL::YSKPhraseSpotterSettings_setSoundLoggingSettings
+- ghidra_symbol EXTERNAL:000005c7 Function CSPEECHKIT.DLL::YSKPlatformInfo_createDefault
+- ghidra_symbol EXTERNAL:000005c8 Function CSPEECHKIT.DLL::YSKPlatformInfo_setAppId
+- ghidra_symbol EXTERNAL:000005c9 Function CSPEECHKIT.DLL::YSKPlatformInfo_setAppName
+- ghidra_symbol EXTERNAL:000005ca Function CSPEECHKIT.DLL::YSKRecognition_getBestResultText
+- ghidra_symbol EXTERNAL:000005cb Function CSPEECHKIT.DLL::YSKRecognition_getRequestId
+- ghidra_symbol EXTERNAL:000005cc Function CSPEECHKIT.DLL::YSKRecognizerSettings_createDefault
+- ghidra_symbol EXTERNAL:000005cd Function CSPEECHKIT.DLL::YSKRecognizerSettings_destroy
+- ghidra_symbol EXTERNAL:000005ce Function CSPEECHKIT.DLL::YSKRecognizerSettings_setEnableCapitalization
+- ghidra_symbol EXTERNAL:000005cf Function CSPEECHKIT.DLL::YSKSoundBuffer_create
+- ghidra_symbol EXTERNAL:000005d0 Function CSPEECHKIT.DLL::YSKSoundBuffer_destroy
+- ghidra_symbol EXTERNAL:000005d1 Function CSPEECHKIT.DLL::YSKSoundBuffer_getData
+- ghidra_symbol EXTERNAL:000005d2 Function CSPEECHKIT.DLL::YSKSoundBuffer_getSoundInfo
+- ghidra_symbol EXTERNAL:000005d3 Function CSPEECHKIT.DLL::YSKSoundInfo_create
+- ghidra_symbol EXTERNAL:000005d4 Function CSPEECHKIT.DLL::YSKSoundInfo_destroy
+- ghidra_symbol EXTERNAL:000005d5 Function CSPEECHKIT.DLL::YSKSoundInfo_getChannelCount
+- ghidra_symbol EXTERNAL:000005d6 Function CSPEECHKIT.DLL::YSKSoundInfo_getSampleRate
+- ghidra_symbol EXTERNAL:000005d7 Function CSPEECHKIT.DLL::YSKSoundInfo_getSampleSize
+- ghidra_symbol EXTERNAL:000005d8 Function CSPEECHKIT.DLL::YSKSoundLoggingSettings_createDefault
+- ghidra_symbol EXTERNAL:000005d9 Function CSPEECHKIT.DLL::YSKSoundLoggingSettings_destroy
+- ghidra_symbol EXTERNAL:000005da Function CSPEECHKIT.DLL::YSKSoundLoggingSettings_setSoundLengthAfterTrigger
+- ghidra_symbol EXTERNAL:000005db Function CSPEECHKIT.DLL::YSKSoundLoggingSettings_setSoundLengthBeforeTrigger
+- ghidra_symbol EXTERNAL:000005dc Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_createDefault
+- ghidra_symbol EXTERNAL:000005dd Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_destroy
+- ghidra_symbol EXTERNAL:000005de Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_setActivationPhraseSpotterSettings
+- ghidra_symbol EXTERNAL:000005df Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_setRecognizerSettings
+- ghidra_symbol EXTERNAL:000005e0 Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_setSynchronizeStatePayload
+- ghidra_symbol EXTERNAL:000005e1 Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_setUniProxyUrl
+- ghidra_symbol EXTERNAL:000005e2 Function CSPEECHKIT.DLL::YSKVoiceDialogSettings_setVocalizerSettings
+- ghidra_symbol EXTERNAL:000005e3 Function CSPEECHKIT.DLL::YSK_disableDnsCache
+- ghidra_symbol EXTERNAL:000005e4 Function CSPEECHKIT.DLL::YSK_enableDnsCache
+- ghidra_symbol EXTERNAL:000005e5 Function CSPEECHKIT.DLL::YSK_setApiKey
+- ghidra_symbol EXTERNAL:000005e6 Function CSPEECHKIT.DLL::YSK_setPlatformInfo
+- ghidra_symbol EXTERNAL:000005e7 Function CSPEECHKIT.DLL::YSK_setUUID

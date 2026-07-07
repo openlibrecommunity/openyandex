@@ -1,0 +1,49 @@
+Baseline Diff Commands
+
+Current temporary baseline
+- Chrome for Testing 136.0.7103.113 win32.
+- Local: artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/chrome-win32/chrome.dll
+- Caveat: target Yandex/Chromium base is 136.0.7103.156. This is approximate only.
+
+Exact target commit
+- Chromium commit: 465616851cd99c308e1ce42d0fd818c04c094830
+- Commit position: refs/branch-heads/7103@{#2840}
+
+Diaphora status
+- Source cloned: artifacts/tools/diaphora
+- IDA CLI is not present, so Diaphora is not runnable in this environment yet.
+
+Ghidra approximate baseline import
+- This may take a long time because chrome.dll is ~213MB.
+
+analyzeHeadless /tmp/opencode/ghidra-projects chrome-for-testing-136.0.7103.113-win32 \
+  -import artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/chrome-win32/chrome.dll \
+  -analysisTimeoutPerFile 7200 \
+  -log .workflows/active-stage/logs/chrome_136_7103_113_win32.ghidra.log \
+  -scriptlog .workflows/active-stage/logs/chrome_136_7103_113_win32.ghidra-script.log
+
+Ghidra facts export after import
+analyzeHeadless /tmp/opencode/ghidra-projects chrome-for-testing-136.0.7103.113-win32 \
+  -process chrome.dll \
+  -scriptPath .workflows/active-stage/ghidra/scripts \
+  -postScript ExportOpenYandexFacts.java /home/zaraza/Projects/openyandex/.workflows/active-stage/exports/chrome_136_7103_113_win32.ghidra-facts.jsonl \
+  -log .workflows/active-stage/logs/chrome_136_7103_113_win32.ghidra-export.log \
+  -scriptlog .workflows/active-stage/logs/chrome_136_7103_113_win32.ghidra-export-script.log
+
+Recommended final baseline task
+- Build exact Windows x86 Chromium from local source snapshot or acquire exact official build if found.
+- Do not use the 136.0.7103.113 baseline to claim exhaustive coverage.
+
+Completed local approximate outputs
+- .workflows/active-stage/exports/chrome_136_7103_113_win32.ghidra-facts.jsonl
+- .workflows/active-stage/exports/yandex_browser_dll.ghidra-facts.jsonl
+- .workflows/metadata/approx-ghidra-fact-diff.jsonl
+- .workflows/active-stage/approx-ghidra-fact-diff.txt
+
+Approximate diff summary:
+- baseline fact rows: 259700
+- yandex fact rows: 280316
+- approx diff rows: 20073
+- baseline functions: 239698
+- yandex functions: 260314
+- common function names: 7691
