@@ -1,0 +1,38 @@
+Import Caller Evidence v1
+
+rizin-imports-ai_alice_speechkit_yagpt | matched_terms=126 caller_functions=742
+- dart_booleanvalue: callers=1 sample=FUN_15e854f0
+- dart_classlibrary: callers=1 sample=FUN_15e2dc00
+- dart_classname: callers=1 sample=FUN_15e2dc00
+- dart_closenativeport: callers=1 sample=FUN_15e6a1c0
+- dart_closurefunction: callers=1 sample=FUN_15e2dc00
+- dart_createisolategroup: callers=1 sample=FUN_15e808b0
+- dart_createisolateingroup: callers=2 sample=FUN_15e807b0, FUN_15e80f40
+- dart_currentisolate: callers=10 sample=FUN_15e2da50, FUN_15e2dc20, FUN_15e585d0, FUN_15e5c7b0, FUN_15e60090
+- dart_currentisolatedata: callers=1 sample=FUN_15e60090
+- dart_currentisolategroup: callers=3 sample=FUN_15e2da50, FUN_15e5c7b0, FUN_15e7fd60
+- dart_currentisolategroupdata: callers=2 sample=FUN_15e2da50, FUN_15e7fd60
+- dart_deletefinalizablehandle: callers=1 sample=FUN_15e756d0
+- dart_deletepersistenthandle: callers=4 sample=FUN_15e5c7b0, FUN_15e6a1c0, FUN_15e6a520, FUN_15e80fd0
+- dart_dumpnativestacktrace: callers=1 sample=FUN_15e7bde0
+- dart_emptystring: callers=1 sample=FUN_15e668e0
+- dart_enterisolate: callers=2 sample=FUN_15e7d840, FUN_15e80700
+- dart_enterscope: callers=4 sample=FUN_15e2db40, FUN_15e2dc20, FUN_15e7d840, FUN_15e80fd0
+- dart_errorgetexception: callers=1 sample=FUN_15e854f0
+- dart_errorgetstacktrace: callers=1 sample=FUN_15e854f0
+- dart_exitisolate: callers=2 sample=FUN_15e67940, FUN_15e7d840
+rizin-imports-media_video_engine | matched_terms=2 caller_functions=2
+- mfcreatesourcereaderfrombytestream: callers=1 sample=FUN_149028a0
+- mfinvokecallback: callers=1 sample=FUN_148f3150
+rizin-imports-telemetry_metrics_abt | matched_terms=2 caller_functions=2
+- getcrashpaddatabasepath_exportthunk: callers=1 sample=FUN_10a3e660
+- setuploadconsent_exportthunk: callers=1 sample=FUN_1824cbb0
+rizin-imports-ui_branding_ntp_smartbox | matched_terms=2 caller_functions=2
+- accessibleobjectfromevent: callers=1 sample=FUN_168d0c30
+- callntpowerinformation: callers=1 sample=FUN_13047850
+rizin-imports-crash_wer_internals | matched_terms=1 caller_functions=1
+- isextensionpointdisableset: callers=1 sample=FUN_106891c0
+rizin-imports-gost_crypto_security | matched_terms=1 caller_functions=1
+- systemfunction036: callers=1 sample=FUN_134b7ea0
+rizin-imports-unknown | matched_terms=1 caller_functions=1
+- getuserdatadirectorythunk: callers=1 sample=FUN_11442b80

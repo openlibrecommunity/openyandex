@@ -1,0 +1,43 @@
+Unknown Import Split v1
+
+Status counts:
+- defer_os_integration: 1
+- defer_runtime_plumbing: 6
+- drop_baseline_equivalent: 1
+
+rizin-imports-unknown-browser_elf_baseline_equivalent | drop_baseline_equivalent | imports=2
+- Same thunk names exist in Chrome baseline under CHROME_ELF.DLL; Yandex libname rename is not product evidence.
+- browser_elf.dll::GetUserDataDirectoryThunk
+- browser_elf.dll::IsTemporaryUserDataDirectoryCreatedForHeadless
+rizin-imports-unknown-com_security_runtime | defer_runtime_plumbing | imports=1
+- Generic COM security initialization; no product family proof yet.
+- ole32.dll::CoInitializeSecurity
+rizin-imports-unknown-console_runtime | defer_runtime_plumbing | imports=2
+- Console mode/runtime support; not user-visible browser feature evidence.
+- KERNEL32.dll::GetConsoleScreenBufferInfo
+- KERNEL32.dll::SetConsoleMode
+rizin-imports-unknown-ipc_pipe_process_runtime | defer_runtime_plumbing | imports=3
+- Generic child-process/IPC runtime imports; no Yandex family proof yet.
+- KERNEL32.dll::CreatePipe
+- KERNEL32.dll::DisconnectNamedPipe
+- KERNEL32.dll::TerminateThread
+rizin-imports-unknown-network_error_helper | defer_runtime_plumbing | imports=1
+- Socket error helper; no Yandex networking feature proof by itself.
+- WS2_32.dll::WSASetLastError
+rizin-imports-unknown-path_string_helpers | defer_runtime_plumbing | imports=6
+- Generic path/string compatibility imports; no product family proof yet.
+- KERNEL32.dll::GetFinalPathNameByHandleA
+- KERNEL32.dll::SetFileApisToANSI
+- KERNEL32.dll::SetFileApisToOEM
+- KERNEL32.dll::lstrcmpA
+- KERNEL32.dll::lstrcpynW
+- KERNEL32.dll::lstrlenW
+rizin-imports-unknown-sync_wait_runtime | defer_runtime_plumbing | imports=3
+- Generic synchronization/runtime imports; no product family proof yet.
+- KERNEL32.dll::CreateWaitableTimerW
+- KERNEL32.dll::OpenEventW
+- KERNEL32.dll::OpenMutexW
+rizin-imports-unknown-uwp_package_lookup | defer_os_integration | imports=2
+- Windows package lookup plumbing; keep only if tied to visible install/web-app behavior.
+- KERNEL32.dll::GetPackagePathByFullName
+- KERNEL32.dll::GetPackagesByPackageFamily

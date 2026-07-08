@@ -1,0 +1,92 @@
+Mapped Chunks v1
+
+Status counts:
+- defer_vendor_runtime: 2
+- drop_misassigned: 1
+- drop_or_defer_crash_internals: 1
+- mapped_keep_candidate: 10
+- mapped_keep_candidate_call_seen: 1
+- mapped_keep_candidate_raw_xref_seen: 6
+- mapped_keep_candidate_requires_xref: 5
+- mapped_keep_candidate_split_required: 4
+- mapped_keep_candidate_xref_seen: 1
+- split_resolved_defer_or_drop: 1
+
+Keep-candidate families:
+- ai_alice_speechkit_yagpt: 2
+- device_posture_browser_enforcement: 2
+- dlp_clipboard_drag_download_watermark: 3
+- enterprise_policy_and_prefs: 2
+- gost_crypto_security: 2
+- network_yandex_headers: 6
+- passport_yandex_id_account: 2
+- telemetry_metrics_abt: 2
+- ui_branding_ntp_smartbox: 2
+- updater_service_onboarding: 2
+- widgets_flutter_bubbles: 2
+
+Chunks:
+rizin-imports-updater_service_onboarding | updater_service_onboarding | mapped_keep_candidate_requires_xref blockers=caller_or_xref_proof_required
+- Service, WinHTTP/WinINet, installer/updater imports match visible updater/onboarding family; caller-level proof still required.
+rizin-imports-telemetry_metrics_abt | telemetry_metrics_abt | mapped_keep_candidate_call_seen
+- Crashpad/upload consent imports have caller-level function evidence; remaining work is mapping telemetry behavior, not proving the import is live.
+rizin-imports-device_posture_browser_enforcement | device_posture_browser_enforcement | mapped_keep_candidate_requires_xref blockers=caller_or_xref_proof_required
+- User/device/SID/interface imports support device posture and browser enforcement; source-path cluster already confirms family.
+rizin-imports-passport_yandex_id_account | passport_yandex_id_account | mapped_keep_candidate_requires_xref blockers=caller_or_xref_proof_required
+- Credential Manager and UUID imports support Passport/Yandex ID account storage; source-path cluster confirms OAuth delegate.
+rizin-imports-gost_crypto_security | gost_crypto_security | mapped_keep_candidate_requires_xref blockers=caller_or_xref_proof_required
+- CryptoAPI/CERT imports support GOST/certificate handling; noisy source-path cluster needs GOST-specific split and xrefs.
+rizin-imports-enterprise_policy_and_prefs | enterprise_policy_and_prefs | mapped_keep_candidate_requires_xref blockers=caller_or_xref_proof_required
+- Registry/NT key imports support enterprise policy and pref plumbing; source-path cluster confirms policy family.
+rizin-imports-ui_branding_ntp_smartbox | ui_branding_ntp_smartbox | mapped_keep_candidate_split_required blockers=split_required_before_implementation
+- UI/resource/accessibility imports align with visible UI work but need split into branding/NTP/smartbox subchunks.
+rizin-imports-dlp_clipboard_drag_download_watermark | dlp_clipboard_drag_download_watermark | mapped_keep_candidate_xref_seen
+- CopyFileEx pairs with DLP/download copy flows; clipboard xref and drag/drop source path give partial support.
+rizin-imports-unknown | unknown | split_resolved_defer_or_drop
+- Residual unknown imports were split into baseline-equivalent, OS-integration, and runtime-plumbing buckets; none are implementation-ready product features.
+rizin-imports-media_video_engine | media_video_engine | defer_vendor_runtime
+- Media Foundation/D3D9/DXVA imports are runtime/media plumbing; keep only if later tied to visible Yandex feature.
+rizin-imports-crash_wer_internals | crash_wer_internals | drop_or_defer_crash_internals
+- browser_elf crash/WER internals are not user-visible unless tied to telemetry policy behavior.
+rizin-imports-ai_alice_speechkit_yagpt | ai_alice_speechkit_yagpt | mapped_keep_candidate
+- Direct Yandex browser.dll imports from cspeechkit.dll and Dart runtime; confirmed by Ghidra/rizin and source-path cluster.
+rizin-yandex-only-exports | widgets_flutter_bubbles | mapped_keep_candidate
+- Yandex browser.dll exports full FlutterEngine embedder surface absent from Chrome baseline.
+browser-seed-network-mojom-networkservice-setyandexcustomheader | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Direct browser.dll NetworkService mojom method string with policy evidence.
+browser-seed-network-mojom-networkservice-setyandexnoreferersettingallowlist | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Direct browser.dll NetworkService mojom method string for no-referer allowlist with ADMX policy evidence.
+browser-seed-network-mojom-networkservice-setyandexextcorpbrowserheader | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Direct browser.dll NetworkService mojom method string for enterprise header with ADMX policy evidence.
+browser-seed-yandexcustomheader | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Policy/plumbing alias of SetYandexCustomHeader.
+browser-seed-yandexnoreferersettingallowlist | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Policy/plumbing alias of SetYandexNoRefererSettingAllowlist.
+browser-seed-yandexextcorpbrowserheader | network_yandex_headers | mapped_keep_candidate_raw_xref_seen
+- Policy/plumbing alias of SetYandexExtCorpBrowserHeader.
+browser-seed-yandex-common-drag-and-drop-js | dlp_clipboard_drag_download_watermark | mapped_keep_candidate
+- Direct Yandex drag/drop JS source-path anchor for DLP.
+source-path-cluster-telemetry_metrics_abt | telemetry_metrics_abt | mapped_keep_candidate
+- ABT/metrics/variations source-path cluster, dedicated abt-bindings evidence.
+source-path-cluster-dlp_clipboard_drag_download_watermark | dlp_clipboard_drag_download_watermark | mapped_keep_candidate
+- DLP source-path cluster; requires pruning but contains drag/drop and enterprise DLP anchors.
+source-path-cluster-ui_branding_ntp_smartbox | ui_branding_ntp_smartbox | mapped_keep_candidate_split_required blockers=split_required_before_implementation
+- Large visible UI/Yandex images cluster; split out unrelated Skia/resource noise before implementation.
+source-path-cluster-gost_crypto_security | gost_crypto_security | mapped_keep_candidate_split_required blockers=split_required_before_implementation
+- Contains generic SSL/certificate paths plus likely GOST/CryptoPro anchors; split to product-relevant crypto changes before implementation.
+source-path-cluster-passport_yandex_id_account | passport_yandex_id_account | mapped_keep_candidate
+- Passport OAuth2 token service delegate and Yandex signin/sync/account source paths.
+source-path-cluster-enterprise_policy_and_prefs | enterprise_policy_and_prefs | mapped_keep_candidate
+- Policy infrastructure and Yandex corporate policy/prefs source-path cluster; foundational for other families.
+source-path-cluster-updater_service_onboarding | updater_service_onboarding | mapped_keep_candidate_split_required blockers=split_required_before_implementation
+- Contains Yandex native_cache and updater/onboarding paths but also generic extension/policy updater paths; split before implementation.
+source-path-cluster-widgets_flutter_bubbles | widgets_flutter_bubbles | mapped_keep_candidate
+- Flutter embedder/runtime/source paths in browser.dll plus widget ELF AOT snapshots.
+source-path-cluster-ai_alice_speechkit_yagpt | ai_alice_speechkit_yagpt | mapped_keep_candidate
+- Strong C++ source-path subset for SpeechKit, neuro question, neuroedit, speech recognition, and Alice renderer/UI surfaces.
+source-path-cluster-device_posture_browser_enforcement | device_posture_browser_enforcement | mapped_keep_candidate
+- Clean source-path cluster for Yandex corporate device posture and browser enforcement services/state.
+source-path-cluster-media_video_engine | media_video_engine | defer_vendor_runtime
+- ANGLE D3D9/libGLES source paths are vendor runtime evidence, not a Yandex product feature by themselves.
+source-path-cluster-textclassifier_ocr_cv | textclassifier_ocr_cv | drop_misassigned
+- This source-path chunk is Zoho web-app launcher image evidence, not textclassifier/OCR/CV evidence; textclassifier module evidence remains separate and still needs caller proof.

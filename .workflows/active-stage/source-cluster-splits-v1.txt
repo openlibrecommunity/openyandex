@@ -1,0 +1,135 @@
+Source Cluster Splits v1
+
+Status counts:
+- defer_component_runtime: 1
+- defer_requires_gost_link: 2
+- defer_runtime_plumbing: 1
+- defer_vendor_runtime: 2
+- drop_misassigned: 1
+- mapped_keep_candidate: 8
+- mapped_keep_candidate_requires_xref: 2
+- needs_manual_review: 3
+
+source-path-cluster-ui_branding_ntp_smartbox
+- source-path-cluster-ui_branding_ntp_smartbox-branding_assets | mapped_keep_candidate | evidence=2
+- Branding/image assets are visible UI work.
+- sample: yandex/images/folder.svg
+- sample: yandex/images/loader.svg
+- source-path-cluster-ui_branding_ntp_smartbox-ntp_webapp_resources | mapped_keep_candidate | evidence=103
+- NTP resource paths are visible UI work.
+- sample: /components/ntp_animated_icon/images/cloud.svg
+- sample: /components/ntp_animated_icon/images/fog.svg
+- sample: /components/ntp_animated_icon/images/hail.svg
+- sample: /components/ntp_animated_icon/images/lightning.svg
+- sample: /components/ntp_animated_icon/images/moon.svg
+- source-path-cluster-ui_branding_ntp_smartbox-settings_search_ui | mapped_keep_candidate | evidence=1
+- Settings/search UI paths are visible configuration work.
+- sample: yandex/ui/custo/views/custo_search_engine_dialog_view.cc
+- source-path-cluster-ui_branding_ntp_smartbox-smartbox_omnibox | mapped_keep_candidate | evidence=5
+- Smartbox/omnibox paths are visible search UI work.
+- sample: yandex/ui/custo/views/title_bar/smartbox_rating_button.h
+- sample: yandex/ui/custo/views/title_bar/smartbox_protect_container.h
+- sample: yandex/ui/custo/views/title_bar/smartbox_protect_container.cc
+- sample: yandex/ui/custo/views/title_bar/smartbox_host.cc
+- sample: yandex/ui/custo/views/title_bar/smartbox_host.h
+- source-path-cluster-ui_branding_ntp_smartbox-third_party_rendering_noise | defer_vendor_runtime | evidence=2
+- Rendering/vendor paths are not Yandex UI features by themselves.
+- sample: third_party/skia/src/gpu/graphite/PaintParamsKey.c
+- sample: third_party/skia/src/gpu/ganesh/GrFragmentProcessor.h
+- source-path-cluster-ui_branding_ntp_smartbox-toolbar_frame_bubbles | mapped_keep_candidate | evidence=12
+- Toolbar/frame/bubble paths are visible browser UI work.
+- sample: components/help_bubble/custom_help_bubble_proxy.js
+- sample: components/help_bubble/custom_help_bubble.mojom-webui.js
+- sample: components/help_bubble/custom_help_bubble_proxy.js.c
+- sample: components/help_bubble/custom_help_bubble.mojom-webui.js.c
+- sample: yandex/ui/custo/views/title_bar/label_toolbar_menu_icon_view.cc
+- source-path-cluster-ui_branding_ntp_smartbox-unmatched_noise | needs_manual_review | evidence=63
+- No subcluster rule matched.
+- sample: components/customize_color_scheme_mode/dark_mode.svg
+- sample: components/customize_color_scheme_mode/light_mode.svg
+- sample: components/customize_color_scheme_mode/system_mode.svg
+- sample: components/customize_color_scheme_mode/browser_proxy.js
+- sample: components/customize_color_scheme_mode/customize_color_scheme_mode.html.js
+- source-path-cluster-ui_branding_ntp_smartbox-yandex_id_assets | mapped_keep_candidate | evidence=19
+- Yandex ID/profile menu assets are visible UI/product work.
+- sample: yandex/images/yandex_id_account.svg
+- sample: yandex/images/yandex_id_add_account.svg
+- sample: yandex/images/yandex_id_cards.svg
+- sample: yandex/images/yandex_id_disk.svg
+- sample: yandex/images/yandex_id_favorites.svg
+- source-path-cluster-ui_branding_ntp_smartbox-yandex_views_native_ui | mapped_keep_candidate | evidence=93
+- Native Yandex Views paths are visible browser UI work.
+- sample: ui/views/yandex/view_utils/view_layout_unit.h
+- sample: ui/views/yandex/view_utils/view_watcher.h
+- sample: ui/views/yandex/view_utils/bubbles/base_bubble_view.h
+- sample: ui/views/yandex/controls/yandex_progress_bar.h
+- sample: ui/views/yandex/controls/tooltip_decorator.h
+source-path-cluster-gost_crypto_security
+- source-path-cluster-gost_crypto_security-certificate_verifier_generic | defer_requires_gost_link | evidence=18
+- Generic certificate verifier evidence only stays if tied to GOST-specific behavior.
+- sample: services/cert_verifier/cert_verifier_creation.cc
+- sample: components/enterprise/client_certificates/core/certificate_provisioning_service.cc
+- sample: net/crl/d-trust_root_class_3_ca_2_2009.c
+- sample: net/crl/d-trust_root_class_3_ca_2_ev_2009.c
+- sample: net/AAACertificateServices.c
+- source-path-cluster-gost_crypto_security-crypto_storage_generic | defer_requires_gost_link | evidence=96
+- Generic crypto/storage evidence only stays if tied to Yandex product behavior.
+- sample: third_party/openscreen/src/util/crypto/random_bytes.cc
+- sample: components/password_manager/core/browser/passman/encryptor/passman_encryptor_impl.cc
+- sample: third_party/openscreen/src/cast/streaming/impl/frame_crypto.cc
+- sample: components/yandex/generic_encrypted_db/generic_encrypted_store_backend.cc
+- sample: components/yandex/generic_encrypted_db/generic_encrypted_db.cc
+- source-path-cluster-gost_crypto_security-gost_tls_cert_verifier | mapped_keep_candidate_requires_xref | evidence=6
+- GOST/CryptoPro/TLS-GOST paths are product/security relevant but need caller/policy linkage.
+- sample: net/cert/cert_verify_proc_tlsgost.cc
+- sample: components/yandex/tlsgost/tlsgost_config_service.cc
+- sample: chrome/browser/component_updater/yandex/tlsgost_crl_set_component_installer.cc
+- sample: components/yandex/tlsgost/tlsgost_service_host.cc
+- sample: third_party/boringssl/src/ssl/tls_gost.cc
+- source-path-cluster-gost_crypto_security-ssl_tls_generic | defer_vendor_runtime | evidence=177
+- Generic SSL/TLS/vendor paths are not Yandex-specific by themselves.
+- sample: third_party/webrtc/rtc_base/openssl_digest.cc
+- sample: third_party/webrtc/pc/dtls_srtp_transport.cc
+- sample: third_party/webrtc/pc/dtls_transport.cc
+- sample: third_party/boringssl/src/ssl/tls_method.cc
+- sample: third_party/boringssl/src/ssl/ssl_x509.cc
+- source-path-cluster-gost_crypto_security-unmatched_noise | needs_manual_review | evidence=3
+- No subcluster rule matched.
+- sample: components/security_interstitials/content/protect_ssl_policy.cc
+- sample: components/security_interstitials/content/protect_ssl_policy_win.cc
+- sample: chrome/browser/yandex/oscrypted_data_controller/oscrypted_data_controller_impl.cc
+source-path-cluster-updater_service_onboarding
+- source-path-cluster-updater_service_onboarding-css_color_update_noise | defer_runtime_plumbing | evidence=3
+- Color/CSS updater plumbing is not updater/onboarding evidence by itself.
+- sample: components/color_change_listener/colors_css_updater.js
+- sample: components/color_change_listener/colors_css_updater.js.c
+- sample: components/color_change_listener/colors_css_updater.js
+- source-path-cluster-updater_service_onboarding-extension_component_updater_generic | defer_component_runtime | evidence=7
+- Generic extension/component updater paths are not Yandex product features by themselves.
+- sample: components/policy/core/common/cloud/component_cloud_policy_updater.cc
+- sample: components/policy/core/common/cloud/external_policy_data_updater.cc
+- sample: extensions/browser/updater/extension_downloader.cc
+- sample: extensions/browser/updater/extension_installer.cc
+- sample: extensions/browser/updater/update_data_provider.cc
+- source-path-cluster-updater_service_onboarding-installer_yandex_service | mapped_keep_candidate_requires_xref | evidence=2
+- Yandex installer/service update paths need caller/service linkage before implementation.
+- sample: chrome/installer/service_update/pipe_commands_common.cc
+- sample: chrome/browser/yandex/broupdater/telemost/telemost.cc
+- source-path-cluster-updater_service_onboarding-unmatched_noise | needs_manual_review | evidence=28
+- No subcluster rule matched.
+- sample: chrome/browser/extensions/updater/local_extension_cache.cc
+- sample: chrome/browser/web_applications/isolated_web_apps/isolated_web_app_update_discovery_task.cc
+- sample: chrome/browser/web_applications/isolated_web_apps/isolated_web_app_update_manager.cc
+- sample: chrome/browser/component_updater/iwa_key_distribution_component_installer.cc
+- sample: chrome/browser/component_updater/subresource_filter_component_tag.cc
+- source-path-cluster-updater_service_onboarding-yandex_native_cache | mapped_keep_candidate | evidence=1
+- Yandex native cache update job affects visible web/NTP resource delivery.
+- sample: components/yandex/native_cache/native_cache_update_job.cc
+source-path-cluster-textclassifier_ocr_cv
+- source-path-cluster-textclassifier_ocr_cv-zoho_webapp_launcher_images | drop_misassigned | evidence=6
+- These are web app launcher image paths, not textclassifier/OCR/CV evidence.
+- sample: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-256.png
+- sample: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-32.png
+- sample: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-48.png
+- sample: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-256.png
+- sample: net/old/get/browser/launcher_images/windows/not_yandex/zohocrm_win.targetsize-32.png

@@ -1,0 +1,65 @@
+Active Mapping Pass 4
+
+Date: 2026-07-08
+
+Scope
+- Continued active mapping without changing the final exhaustive-coverage claim.
+- Recovered raw PE references for NetworkService Yandex method strings after Ghidra defined-string xrefs returned zero rows.
+- Mined existing Ghidra function-diff facts for caller evidence to avoid another large Ghidra analysis run.
+- Split residual unknown imports and noisy source-path clusters.
+
+New scripts
+- .workflows/tools/raw-pe-offset-xrefs.py
+- .workflows/tools/build-import-caller-evidence-v1.py
+- .workflows/tools/build-unknown-import-split-v1.py
+- .workflows/tools/build-source-cluster-splits-v1.py
+- .workflows/tools/build-mapped-chunks-v1.py
+
+Generated outputs
+- .workflows/metadata/raw-network-string-xrefs-v1.jsonl
+- .workflows/metadata/import-caller-evidence-v1.jsonl
+- .workflows/metadata/unknown-import-split-v1.jsonl
+- .workflows/metadata/source-cluster-splits-v1.jsonl
+- .workflows/metadata/mapped-chunks-v1.jsonl
+- .workflows/active-stage/mapped-chunks-v1.txt
+
+Network raw-offset xrefs
+- SetYandexCustomHeader string offset 198821101 maps to VA 0x1bdad7ed and is referenced from FUN_14335a90.
+- SetYandexExtCorpBrowserHeader string offset 198821282 maps to VA 0x1bdad8a2 and is referenced from FUN_14335d60.
+- SetYandexNoRefererSettingAllowlist string offset 198821407 maps to VA 0x1bdad91f and is referenced from FUN_14335e50.
+
+Caller evidence mined from function-diff facts
+- rizin-imports-ai_alice_speechkit_yagpt: 126 matched import terms, 742 caller-function hits.
+- rizin-imports-telemetry_metrics_abt: caller hits for GetCrashpadDatabasePath_ExportThunk and SetUploadConsent_ExportThunk.
+- rizin-imports-ui_branding_ntp_smartbox: caller hits for AccessibleObjectFromEvent and CallNtPowerInformation.
+- rizin-imports-gost_crypto_security: caller hit for SystemFunction036, still generic and not enough by itself.
+- rizin-imports-unknown: GetUserDataDirectoryThunk caller exists but same thunk family exists in Chrome baseline under CHROME_ELF.DLL.
+
+Unknown import split
+- 20 residual unknown imports were split into 8 buckets.
+- browser_elf GetUserDataDirectoryThunk and IsTemporaryUserDataDirectoryCreatedForHeadless are baseline-equivalent and dropped for product mapping.
+- UWP package lookup is deferred as OS integration.
+- Pipe, console, sync, path/string, WSASetLastError, and CoInitializeSecurity imports are deferred as generic runtime plumbing.
+
+Source-cluster splits
+- UI/NTP/smartbox split produced keep candidates for NTP resources, smartbox/titlebar, Yandex Views native UI, toolbar/bubbles, Yandex ID assets, branding assets, and settings/search UI; third-party rendering paths deferred.
+- GOST split isolated 6 product-relevant TLS-GOST paths: net/cert/cert_verify_proc_tlsgost.cc, components/yandex/tlsgost/tlsgost_config_service.cc, chrome/browser/component_updater/yandex/tlsgost_crl_set_component_installer.cc, components/yandex/tlsgost/tlsgost_service_host.cc, third_party/boringssl/src/ssl/tls_gost.cc, services/yandex/tlsgost/tlsgost_has_provider_win.cc.
+- Updater split isolated yandex native_cache and installer/service-update evidence; generic extension/component updater paths deferred.
+- textclassifier source-path chunk was confirmed misassigned Zoho web-app launcher images and dropped. The textclassifier module family remains separate and still needs browser caller proof.
+
+Mapped-chunks status after pass
+- defer_vendor_runtime: 2
+- drop_misassigned: 1
+- drop_or_defer_crash_internals: 1
+- mapped_keep_candidate: 10
+- mapped_keep_candidate_call_seen: 1
+- mapped_keep_candidate_raw_xref_seen: 6
+- mapped_keep_candidate_requires_xref: 5
+- mapped_keep_candidate_split_required: 4
+- mapped_keep_candidate_xref_seen: 1
+- split_resolved_defer_or_drop: 1
+
+Still blocked
+- Final exhaustive closure remains blocked by approximate baseline 136.0.7103.113 vs target 136.0.7103.156.
+- Some import buckets still need caller/xref proof: updater service imports, device posture imports, Passport credential imports, GOST CryptoAPI imports, enterprise policy registry imports.
+- Split-required parents still need subchunk-to-implementation planning: UI/NTP/smartbox, GOST/TLS-GOST, updater/onboarding.
