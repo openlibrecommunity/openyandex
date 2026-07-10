@@ -9,7 +9,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "artifacts" / "binaries" / "chrome-for-testing-136.0.7103.113-win32" / "chrome-win32"
+BASE = ROOT / "artifacts" / "binaries" / "chrome-for-testing-136.0.7103.156-win32" / "chrome-win32"
+VERSION = "136.0.7103.156"
+EXACT = True
 META = ROOT / ".workflows" / "metadata"
 OUT = META / "baseline-chrome-win32.jsonl"
 
@@ -50,12 +52,12 @@ def main():
             "confidence": 0.9,
             "data": {
                 "name": name,
-                "version": "136.0.7103.113",
+                "version": VERSION,
                 "platform": "win32",
                 "source": "Chrome for Testing",
-                "url": "https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chrome-win32.zip",
-                "exact_target_match": False,
-                "target_version": "136.0.7103.156",
+                "url": f"https://storage.googleapis.com/chrome-for-testing-public/{VERSION}/win32/chrome-win32.zip",
+                "exact_target_match": EXACT,
+                "target_version": VERSION,
                 "target_commit": "465616851cd99c308e1ce42d0fd818c04c094830",
                 "target_commit_position": "refs/branch-heads/7103@{#2840}",
                 "size": path.stat().st_size,

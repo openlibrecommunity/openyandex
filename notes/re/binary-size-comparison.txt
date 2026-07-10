@@ -1,0 +1,58 @@
+Binary Size Comparison: chrome.dll 136.0.7103.156 vs browser.dll Yandex 25.6.0.2372
+
+Date: 2026-07-09
+Baseline: EXACT Chrome-for-Testing 136.0.7103.156 win32 (SHA256 962b5fb899b2df21841277feb71429057ac877e81c8cd7b94a0cd5da7a7db284)
+Target: Yandex Browser 25.6.0.2372 browser.dll
+
+Overall
+- Chrome chrome.dll: 212,984,320 bytes (203.1 MB)
+- Yandex browser.dll: ~295 MB (payload)
+- Ghidra function count: Chrome 239,667 | Yandex 260,316 (+20,649)
+- Ghidra total body_size: Chrome 45.3 MB | Yandex 49.2 MB (+3.8 MB, +8.4%)
+
+PE Section Breakdown
+- .text:  Chrome 181.7 MB | Yandex 184.7 MB | delta +3.0 MB  (executable code)
+- .rdata: Chrome 22.5 MB  | Yandex 23.5 MB  | delta +1.0 MB  (read-only data: strings, source paths, mojom names, GOST/CryptoPro certs, import tables)
+- .data:  Chrome 1.03 MB  | Yandex 1.25 MB  | delta +0.2 MB  (global variables)
+- .rsrc:  Chrome 160 KB   | Yandex 213 KB   | delta +53 KB  (icons, manifests, branding)
+- .reloc: Chrome 6.6 MB   | Yandex 7.1 MB   | delta +0.5 MB (relocation tables, mechanical byproduct of more code)
+- Shared: Chrome —        | Yandex 512 B    | delta +512 B  (Yandex-only shared section)
+- CPADinfo/malloc_h/prot/tls/fptable/rodata: ~+1 KB combined
+
+Net new binary: +3.9 MB total
+
+Code vs Data Split
+- ~3.0 MB is new executable code (.text): SpeechKit bindings, Flutter embedder, Dart runtime, GOST/TLS-GOST cert verification, Yandex UI (smartbox, NTP, views), Alice/neuroedit, DLP, device posture, Passport, updater, telemetry/ABT, corporate headers, ~20,600 new functions.
+- ~1.0 MB is read-only data (.rdata): Yandex source paths (~15,000 paths), mojom method name strings (SetYandexCustomHeader, SetYandexExtCorpBrowserHeader, SetYandexNoRefererSettingAllowlist), GOST/CryptoPro certificate blobs, Dart/SpeechKit symbol tables, Yandex image/asset paths.
+- ~53 KB is resources (.rsrc): Yandex branding icons, manifest changes.
+- ~0.5 MB is relocation (.reloc): mechanical byproduct of larger .text section.
+
+Named Function Diff
+- Chrome named: 1,310 | Yandex named: 1,902 | Shared names: 915
+- Of 915 shared named functions: 905 identical code (same mnemonic hash), 10 modified
+- Yandex-only named functions: 987 (Dart_*, YSK_*, FlutterEngine*, Catch/Catch_All exception handlers, GOST/crypto imports, WinHTTP/WinINet updater imports, Accessibility APIs, Crashpad upload)
+- Chrome-only named: 395 (relocated or replaced by Yandex equivalents)
+
+Top 10 Modified Shared Functions
+- ChromeMain:              +197 bytes (Yandex startup/branding/flags integration)
+- GetHandleVerifier:       +58 bytes
+- tls_callback_2:          -34 bytes
+- tls_callback_5:          +0 bytes (same size, different code)
+- 6x DelayLoad_* thunks:   ~17 bytes each (new/changed delay-load imports)
+
+Key Yandex-only Named Function Families (987 functions)
+- Dart runtime: Dart_BooleanValue, Dart_ClassLibrary, Dart_Cleanup, Dart_CreateIsolateGroup, Dart_CurrentIsolate, etc.
+- SpeechKit: YSK_* (setApiKey, setUUID, setPlatformInfo, VoiceDialogSettings, PhraseSpotterSettings, RecognizerSettings)
+- Flutter: FlutterEngineRun, FlutterEngineInitialize, FlutterEngineSendKeyEvent, FlutterEngineCreateAOTData, FlutterEngineSendPlatformMessage, FlutterEngineShutdown
+- Crypto/GOST: BCryptGenRandom, CryptoPro/CERT imports, tls_gost related
+- Accessibility/UI: AccessibleObjectFromEvent
+- Crashpad: CanWriteCrashpadMetrics_ExportThunk, SetUploadConsent_ExportThunk
+- Updater: service_update, broupdater, WinHTTP/WinINet installer imports
+- Exception handling: ~200+ Catch/Catch_All entries (C++ exception handling tables for new code)
+
+Important Caveats
+- Ghidra analysis timed out at 7200 seconds for both binaries; projects are partial.
+- Most functions are unnamed (FUN_*): Chrome 238,355 | Yandex 258,412.
+- Full named-function coverage requires completed Ghidra analysis or PDB symbols.
+- Images/resources in .pak files are NOT included in this DLL comparison.
+- The 395 Chrome-only named functions may be relocated rather than removed (different VA in Yandex).

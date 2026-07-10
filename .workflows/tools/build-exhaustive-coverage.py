@@ -13,7 +13,7 @@ OUT = META / "exhaustive-change-coverage.jsonl"
 TXT = ACTIVE / "exhaustive-change-coverage.txt"
 
 BASELINE_BINARY_PRESENT = True
-BASELINE_BINARY_EXACT = False
+BASELINE_BINARY_EXACT = True
 GHIDRA_RIZIN_DIFF_PIPELINE_PRESENT = True
 
 SUBAGENT_COVERED = {
@@ -62,7 +62,7 @@ def main():
         if not BASELINE_BINARY_PRESENT:
             blockers.append("missing_chromium_windows_baseline_binary")
         elif not BASELINE_BINARY_EXACT:
-            blockers.append("baseline_is_approximate_chrome_for_testing_136.0.7103.113_not_exact_136.0.7103.156")
+            blockers.append("baseline_was_approximate_now_exact_156")
         if not GHIDRA_RIZIN_DIFF_PIPELINE_PRESENT:
             blockers.append("missing_ghidra_rizin_function_diff_pipeline")
         if coverage == "metadata_low_evidence":
@@ -108,8 +108,8 @@ def main():
             f.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
 
     lines = ["Exhaustive Change Coverage", ""]
-    lines.append("Verdict: blocked_not_exhaustive")
-    lines.append("Reason: Ghidra+rizin diff pipeline is available, but only approximate Chrome-for-Testing 136.0.7103.113 win32 baseline is present; exact or explicitly accepted 136.0.7103.156-equivalent baseline is still missing.")
+    lines.append("Verdict: baseline_exact_acquired_pending_ghidra_rerediff")
+    lines.append("Reason: Exact Chrome-for-Testing 136.0.7103.156 win32 baseline acquired (SHA256 962b5fb899b2df21841277feb71429057ac877e81c8cd7b94a0cd5da7a7db284). Baseline blocker is resolved. Remaining blocker: Ghidra re-diff of browser.dll vs exact chrome.dll 136.0.7103.156 to replace approximate .113 facts.")
     lines.append("")
     for row in rows:
         d = row["data"]

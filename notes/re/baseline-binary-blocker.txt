@@ -1,40 +1,29 @@
-Baseline Binary Blocker
+Baseline Binary Blocker Status
+Date: 2026-07-09
 
-Date: 2026-07-06
+RESOLVED
 
-Observed local state
-- Chromium source snapshot exists:
-  - chromium/chromium-465616851cd99c308e1ce42d0fd818c04c094830
-- A temporary comparable Chrome-for-Testing Windows baseline is now present:
-  - artifacts/binaries/chrome-for-testing-136.0.7103.113-win32/chrome-win32/chrome.dll
-  - version: 136.0.7103.113 win32
-- The exact target baseline 136.0.7103.156 Windows PE is still not present.
-- IDA/BinDiff/Diaphora are not required.
-- Ghidra headless is available.
-- radare2/rizin are available.
+Exact Chrome-for-Testing 136.0.7103.156 win32 baseline acquired.
 
-Why this still blocks exhaustive coverage
-- Yandex browser.dll can only be exhaustively diffed against a comparable Chromium/Chrome binary.
-- The downloaded 136.0.7103.113 baseline can support approximate pipeline setup.
-- It cannot close final exhaustive coverage for target 136.0.7103.156 because patch/build drift can produce false deltas.
-- Without exact or justified-equivalent baseline and assigned Ghidra+rizin function-level diff chunks, we can map evidence families but cannot prove every changed function.
+Source: https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.156/win32/chrome-win32.zip
 
-Required acquisition/build task
-1. Build or acquire Chromium/Chrome Windows x86 binary from commit 465616851cd99c308e1ce42d0fd818c04c094830 or closest official 136.0.7103.156.
-2. Preserve build metadata:
-   - commit/version
-   - target_cpu
-   - is_component_build
-   - symbol level
-   - GN args
-   - compiler/linker version if known
-3. Store under ignored artifacts path, for example:
-   - artifacts/binaries/chromium-baseline-136.0.7103.156-win-x86/
-4. Generate static metadata and Ghidra project.
-5. Generate Ghidra+rizin function diff against Yandex browser.dll.
+Binary: artifacts/binaries/chrome-for-testing-136.0.7103.156-win32/chrome-win32/chrome.dll
+SHA256: 962b5fb899b2df21841277feb71429057ac877e81c8cd7b94a0cd5da7a7db284
+Size: 212984320 bytes
+Format: PE32 executable (DLL) (console) Intel 80386, for MS Windows, 11 sections
 
-Immediate fallback until baseline exists
-- Continue metadata-based family mapping.
-- Continue targeted Ghidra/xref work on Yandex binaries.
-- Continue resource/config inventory.
-- Do not claim exhaustive function coverage until custom diff chunks are assigned.
+This exactly matches the Yandex Browser target:
+- Yandex Browser 25.6.0.2372
+- Chromium 136.0.7103.156
+- Commit 465616851cd99c308e1ce42d0fd818c04c094830
+- Branch position refs/branch-heads/7103@{#2840}
+
+Verification: chrome/VERSION at commit 465616851cd99c308e1ce42d0fd818c04c094830 shows PATCH=156.
+
+Previous approximate baseline (.113) is superseded. The coverage gate no longer has a baseline mismatch blocker.
+
+Remaining work:
+- Re-import exact chrome.dll 136.0.7103.156 into Ghidra for function-level diff.
+- Re-export function-diff facts for exact baseline.
+- Re-run diff pipeline to replace approximate .113 facts.
+- Assign every diff chunk to terminal status with exact evidence.
